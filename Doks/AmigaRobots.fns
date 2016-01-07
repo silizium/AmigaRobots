@@ -1,0 +1,48 @@
+\initial {B}
+\entry {\code {battery}}{34}
+\entry {\code {buy{\_}armour}}{39}
+\entry {\code {buy{\_}shells}}{39}
+\initial {C}
+\entry {\code {configure}}{45}
+\initial {D}
+\entry {\code {damage}}{33}
+\entry {\code {debug{\_}flag}}{38}
+\initial {F}
+\entry {\code {flying{\_}shells}}{43}
+\initial {G}
+\entry {\code {get{\_}big{\_}map}}{43}
+\entry {\code {get{\_}local{\_}map}}{40}
+\entry {\code {get{\_}shell{\_}status}}{41}
+\entry {\code {getxy}}{31}
+\initial {H}
+\entry {\code {highest{\_}player{\_}id}}{44}
+\entry {\code {hit{\_}from}}{44}
+\initial {I}
+\entry {\code {invisibility}}{40}
+\entry {\code {isinvisible}}{42}
+\initial {L}
+\entry {\code {l{\_}acos}}{36}
+\entry {\code {l{\_}asin}}{35}
+\entry {\code {l{\_}atan}}{37}
+\entry {\code {l{\_}atan2}}{42}
+\entry {\code {l{\_}cos}}{35}
+\entry {\code {l{\_}sin}}{34}
+\entry {\code {l{\_}sqrt}}{37}
+\entry {\code {l{\_}tan}}{36}
+\initial {M}
+\entry {\code {movement}}{28}
+\entry {\code {myid}}{45}
+\initial {R}
+\entry {\code {receive}}{33}
+\initial {S}
+\entry {\code {scan}}{29}
+\entry {\code {set{\_}pattern}}{38}
+\entry {\code {shells{\_}left}}{40}
+\entry {\code {shoot}}{30}
+\entry {\code {speed}}{34}
+\entry {\code {swaptask}}{28}
+\initial {T}
+\entry {\code {ticks}}{34}
+\entry {\code {transmit}}{32}
+\initial {V}
+\entry {\code {version}}{45}

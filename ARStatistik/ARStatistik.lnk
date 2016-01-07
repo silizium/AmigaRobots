@@ -1,0 +1,6 @@
+FROM LIB:c.o "ARStatistik.o"+"ARStatistik1.o"
+TO "ARStatistik"
+LIB liste.o LIB:scmieee.lib
+    LIB:sc.lib LIB:amiga.lib
+ADDSYM
+

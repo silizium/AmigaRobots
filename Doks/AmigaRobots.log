@@ -1,0 +1,173 @@
+This is a PD-Version of Pas-TeX (made Aug 29 1991 [br]/[hes])
+This is TeX, C Version 3.14 (format=plained 93.5.31)  6 JUL 1995 14:29
+**&plained AmigaRobots.texi
+(AmigaRobots.texi (tex:texinfo/texinfo/amigatexinfo.tex
+\acnt=\count26
+)
+(tex:texinfo/texinfo/texinfo.tex Loading texinfo package [Version 2.109]:
+Basics,
+\bindingoffset=\dimen16
+\normaloffset=\dimen17
+\pagewidth=\dimen18
+\pageheight=\dimen19
+\cornerlong=\dimen20
+\cornerthick=\dimen21
+\topandbottommargin=\dimen22
+\outerhsize=\dimen23
+\outervsize=\dimen24
+\EMsimple=\toks14
+\singlespaceskip=\skip18
+\groupinvalidhelp=\toks15
+\mil=\dimen25
+\exdentamount=\skip19
+ fonts,
+\sffam=\fam8
+\fontdepth=\count27
+ page headings,
+\titlepagetopglue=\skip20
+\titlepagebottomglue=\skip21
+\evenheadline=\toks16
+\oddheadline=\toks17
+\evenfootline=\toks18
+\oddfootline=\toks19
+ tables,
+\tableindent=\dimen26
+\itemindent=\dimen27
+\itemmargin=\dimen28
+\itemmax=\dimen29
+\itemno=\count28
+ indexing,
+\initialskipamount=\skip22
+\secondaryindent=\skip23
+\partialpage=\box16
+\doublecolumnhsize=\dimen30
+ sectioning,
+\chapno=\count29
+\secno=\count30
+\subsecno=\count31
+\subsubsecno=\count32
+\appendixno=\count33
+\contentsfile=\write0
+\absseclevel=\count34
+\secbase=\count35
+\chapheadingskip=\skip24
+\subsecheadingskip=\skip25
+\secheadingskip=\skip26
+ toc printing,
+\contentsrightmargin=\skip27
+\shortappendixwidth=\dimen31
+\tocindent=\dimen32
+
+environments,
+\dblarrowbox=\box17
+\longdblarrowbox=\box18
+\pushcharbox=\box19
+\bullbox=\box20
+\equivbox=\box21
+\errorbox=\box22
+\lispnarrowing=\skip28
+\envskipamount=\skip29
+\circthick=\dimen33
+\cartouter=\dimen34
+\cartinner=\dimen35
+\normbskip=\skip30
+\normpskip=\skip31
+\normlskip=\skip32
+\lskip=\skip33
+\rskip=\skip34
+ defuns,
+\defbodyindent=\skip35
+\defargsindent=\skip36
+\deftypemargin=\skip37
+\deflastargmargin=\skip38
+\parencount=\count36
+ cross reference,
+\auxfile=\write1
+\footnoteno=\count37
+ and turning on texinfo input format.
+\defaultparindent=\dimen36
+)
+(AmigaRobots.aux)
+@cpindfile=@write2
+@fnindfile=@write3
+@vrindfile=@write4
+@tpindfile=@write5
+@kyindfile=@write6
+@pgindfile=@write7
+ [1] [2] Kapitel 1 Kapitel 2 [1] [2]
+Overfull \hbox (3.16982pt too wide) in paragraph at lines 319--324
+[][]@textrm Die Her-aus-for-de-rung K^^?unstliche In-tel-li-genz war-tet hin-te
+r den er-sten Zei-len ei-nes @texttt AmigaRobots[]@textrm -
+
+@hbox(7.60416+2.43333)x455.24408, glue set - 1.0
+.@hbox(0.0+0.0)x15.0
+.@setlanguage1 (hyphenmin 2,3)
+.@textrm D
+.@textrm i
+.@textrm e
+.etc.
+
+[3] Kapitel 3 [4] Kapitel 4 [5] Kapitel 5 [6] [7] [8] [9] [10]
+Overfull \hbox (3.38205pt too wide) in paragraph at lines 693--695
+[][]@textrm Die ^^?ubrigen Standard-ID's fin-det man in der System-Includedatei
+ `@texttt graphics/displayinfo.h[]@textrm '[]. 
+
+@hbox(7.60416+2.43333)x455.24408, glue set - 1.0
+.@hbox(0.0+0.0)x15.0
+.@setlanguage1 (hyphenmin 2,3)
+.@textrm D
+.@textrm i
+.@textrm e
+.etc.
+
+Kapitel 6 [11] Kapitel 7 [12] [13] Kapitel 8 [14] Kapitel 9 [15] Kapitel 10
+[16] Kapitel 11 [17] Kapitel 12 [18] [19] Kapitel 13 [20] Kapitel 14 [21]
+Kapitel 15 [22] Kapitel 16 [23] Kapitel 17 [24]
+Underfull \hbox (badness 2229) in paragraph at lines 1339--1347
+ [] [][]@textrm Flie^^Ykommarechnungen sind nicht gern ge-se-hen. Nicht nur, da
+^^Y die @texttt PCRobots[]@textrm -
+
+@hbox(7.60416+2.12917)x455.24408, glue set 2.81502
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@glue 0.0
+.@hbox(7.05666+0.0)x0.0, glue set - 15.74411fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@textrm 6
+..@textrm .
+..@glue 7.22743
+.@setlanguage1 (hyphenmin 2,3)
+.etc.
+
+[25] Kapitel 18 [26] Kapitel 19 [27] [28] [29] [30] [31] [32] [33] [34]
+[35] [36] [37] [38] [39] [40] [41] [42] [43] [44]
+Overfull \hbox (6.74738pt too wide) in paragraph at lines 2418--2421
+ [][]@textrm Der R^^?uckgabewert die-ser Funk-tion ist die ko-dierte Ver-si-ons
+-num-mer von @texttt AmigaRobots[]@textrm . 
+
+@hbox(7.60416+2.43333)x455.24408, glue set - 1.0
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@setlanguage1 (hyphenmin 2,3)
+.@textrm D
+.@textrm e
+.etc.
+
+[45] Kapitel 20 [46] Kapitel 21 [47] Kapitel 22 [48] Kapitel 23 [49]
+Anhang @char 65 [50] [51] [52] Anhang @char 66 [53] (/Geschichte [54] [55]
+[56]) (Hauptindex) [57] (AmigaRobots.cps
+Overfull \hbox (7.21529pt too wide) in paragraph at lines 5--5
+[]\ninett -i\indit MonitorID\ninett ,\indit Schirm[][]Breite\ninett ,\indit Sch
+irm[][]Hohe\ninett ,\indit Breite\ninett ,\indit Hohe[] 
+
+\hbox(6.25+1.25)x218.1679
+.\setlanguage1 (hyphenmin 2,3)
+.\ninett -
+.\ninett i
+.\indit M
+.\indit o
+.etc.
+
+) [58] (Funktionsindex) [59] (AmigaRobots.fns) [60] (AmigaRobots.toc [-1]
+[-2]) [-3] )
+Output written on AmigaRobots.dvi (65 pages, 189656 bytes).

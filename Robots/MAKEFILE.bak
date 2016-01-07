@@ -1,0 +1,27 @@
+ROBOTS = nop.rob demo.rob runner.rob simple.rob Jaeger.rob\
+			explorer.rob DickeBerta.rob blinker.rob
+
+OBJS = /robotlib.o 
+HDRS = /pcrobots.h
+LIBS = lib:sc.lib 
+#CFLAGS = NOSTACKCHECK SAVEDS ERRORREXX IDIR=/
+
+all : $(OBJS) $(ROBOTS)
+
+/robotlib.o: /robotlib.c /ar_comm.h /pcrobots.h
+	SC $*.c 
+
+.c.rob	: 
+	SC $(CFLAGS) $*.c
+	SLINK WITH T:robots.with <<!(t:robots.with)
+		FROM
+		lib:c.o
+		$*.o
+		$(OBJS)
+		TO
+		$*.rob
+		LIB
+		$(LIBS)
+		$(LFLAGS)
+        <
+@  delete >nil: $*.o

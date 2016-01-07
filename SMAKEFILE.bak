@@ -1,0 +1,48 @@
+#SMakefile für AmigaRobots
+OBJS = AmigaRobots.o
+HDRS = ar_intui.h ar_comm.h pcrobots.h
+#LIBS = lib:sc.lib lib:scmieee.lib lib:amiga.lib
+
+.SILENT:
+all : AmigaRobots AmigaRobots.lha
+
+Amigarobots : AmigaRobots.c $(HDRS) SCOPTIONS
+	date >DATUM
+	copy version env:
+	copy version this_version
+	copy datum env:
+	echo ~>version.h "\#define VERSION *"1.3." noline
+	echo ~>~>version.h ~$version noline
+	echo ~>~>version.h "ß*""
+	echo ~>~>version.h "\#define DATUM *"" noline
+	rx ~>~>version.h "options results;address command;d=getenv(datum);say word(d,2)d2c(34)"
+	delete env:version env:datum ~>nil:
+	SC $*.c
+
+	eval TO NEWVERSION 1 + ? ~<VERSION ~>nil:
+	delete VERSION ~>nil:
+	rename newversion VERSION
+
+AmigaRobots.lha : AmigaRobots SMAKEFILE ROBOTS/SMAKEFILE Arena/ Robots/ doks/\
+		 kurzinfo liesmich.source Geschichte robots/gcc robots/dice robots/sas-c
+	lha -a -m -x u $@ \
+		AmigaRobots(%|.info|.colors) \
+		doks/AmigaRobots.(guide|dok|dvi|texi) rexx:ced/AmigaRobots_guide.ced\
+		Geschichte Kurzinfo\
+		PCROBOTS.(H|PAS|RNA) robotlib.(c|o) ar_comm.h\
+		Arena/* Icons/* 
+	lha -a -m -x u $@ \
+		robots/gcc/* robots/dice/* robots/sas-c/* \
+		Robots/SMAKEFILE(%|.info)\
+		Robots/demo.(rob|c|rob.info) robots/simple.(rob|c|rob.info) \
+		robots/nop.(rob|c|rob.info) robots/runner.(rob|c|rob.info)\
+		robots/DickeBerta.(rob|rob.info) robots/Blinker.(rob|rob.info)\
+		robots/Hase.(c|rob|rob.info)\
+		robots/Andere/*.(rob|rob.info)
+		robots/Beta/*.(rob|rob.info)
+
+	lha v AmigaRobots >t:AmigaRobots.list
+	cmds:disk/cut >nil: t:amigarobots.list t:amigarobots.list1 AmigaRobots.list 94
+	join liesmich.source amigarobots.list to liesmich
+	delete >nil: t:amigarobots.list t:amigarobots.list1
+	lha u AmigaRobots liesmich

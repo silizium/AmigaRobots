@@ -1,0 +1,11 @@
+Das linkfile robotlib.o für den SAS-Compiler ist im
+Hauptverzeichnis zu finden. 
+
+Das gluefile wird erzeugt mit
+
+	SC NOSTACKCHK SAVEDS robotlib.c 
+
+Ein Roboter wird erzeugt durch 
+
+	SC LINK IDIR=<verzeichnis-mit-pcrobots.h> ROBOTERNAME.c robotlib.o
+

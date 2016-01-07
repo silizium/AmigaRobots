@@ -1,0 +1,216 @@
+@appendixsec Programmentwicklung
+
+@itemize @bullet
+@item Betareleases vom 24.12.92 bis 29.1.93
+unveröffentlicht, nur für Beta-Tester
+
+@item Version 1.0.1 - 29.1.93
+erste Version in der MAG Hamburg
+
+@item Version 1.0.11 - 1.2.93
+geänderter   Infotext,  die  Zwischenversionen  sind  für  den
+Versuch  draufgegangen,  die langsamen Explosionen nebenläufig zu
+programmieren.   Da  der  Spaß  nichts  bringt  und sowieso nicht
+wirklich  stabil  lief,  habe  ich es wieder normal programmiert.
+Sven   wird   sich   sicherlich   ärgern...   Außerdem  ein  paar
+Schönheitsfehler  beseitigt,  die aber sicher niemandem außer mir
+auffallen werden.
+@itemize @minus
+@item erste Veröffentlichung im Fras-Netz
+@item Veröffentlichung auf TIME 206
+@end itemize
+
+@item Version 1.0.23 23-Jul-93
+@itemize @minus
+@item Bug bei nicht vorhandener req.library beseitigt
+
+@item Alle Fonts sind auf Topaz80 festgenagelt.  Bei Nutzung eines
+alternativen  Defaultfonts  unter  KS/WB  2.0 war die Darstellung
+total  vermackelt.   Leider hatte ich noch keine Zeit, einen frei
+wählbaren  Font  einzubauen.  Dafür müßte ich die gesamte Grafik-
+und  Menüstruktur  neuschreiben,  da ich in einem Anflug von Wahn
+eine abartige Menü/Grafiktoolbox benutzt habe.
+
+@item Update der Real- und Usenet-Anschrift 
+(@pxref{Kontaktadresse und Registrierung}).
+
+@item die Kommandozeilenoption -f hat sich geändert auf -o, da in
+Zukunft -f für den Font reserviert ist (@pxref{-o Option}).   
+
+@item Dokumentation vollständig umgestellt, Archiv beinhaltet
+jetzt texi,dvi,dok und guide - Dokumentationen
+@end itemize
+
+@item Version 1.1 Programm, Version 1.3 der Dokumentation
+@itemize @minus
+@item alle robotlib-Includefiles kompatibler für andere Compiler
+gemacht
+
+@item alle Roboter @code{_ProgramName}-Statements verpaßt und in
+@code{#ifndef __SASC} eingeschlossen und den ganzen Kram neu durchkompiliert.
+
+@item weitere Erweiterung und Verbesserung der Dokumentation, z.B.
+Dice/Gnu-C++-Anhang und 1000 Kleinigkeiten (keine Übertreibung)
+(@pxref{Fragen und Antworten}).
+
+@item Schüsse werden nur noch von Wänden aufgehalten, anders als
+bei PCRobots.  Dort werden Schüsse auch von den anderen
+Hindernissen aufgehalten.  Das original PCRobots-Verhalten kann
+man jetzt mit der neuen Option -c aktivieren (@pxref{-c Option}).
+
+@item Bug beseitigt, der manchmal zu falscher Parameterübergabe
+bei shoot führte und dort seltsame Effekte erzeugte.
+
+@item Der Menüpunkt "Entfernen" ermöglicht das Entfernen von
+schadhaften Robotern. 
+
+@item Linkfiles für Dice und Gnu-C++ liegen bei
+
+@item Neue Option -t Zeitfaktor, WB-Tooltype TIMEFACTOR, gibt die
+Schrittweite der Simulation an, so daß man die Simulation
+beschleunigen kann. Da dadurch eine Ungenauigkeit entsteht, ist
+diese Option als "Draftmodus" zu verstehen (@pxref{-t Option}).
+
+@item Das Konfigurationswindow wurde um das Zeitfaktorgadget
+erweitert
+
+@item Das Statusfenster schaltet sich nun automatisch inaktiv,
+damit die Menüs sofort weiter erreichbar sind.
+
+@item In der Icons-Directory liegen ein paar nette Icons für
+AmigaRobots von Oliver Clouth. Ich konnte mich noch nicht
+für eins entscheiden, weil die Dinger erst gestern
+angekommen sind.
+
+@item 8.9.93 Veröffentlichung im FRAS-Netz
+@end itemize
+
+@item Version 1.2
+@itemize @minus
+@item 10.9.93 neue -i Option, neuer MONITORID-Tooltype. Dokumentation
+dieser Features. Damit ist es nun möglich AmigaRobots auf
+jedem beliebigen Bildschirmmodus zu starten. Diese Option
+ist aber nur auf Kickstart 2.0 oder höher aktiviert (@pxref{-i
+Option}).
+
+@item PubName `AmigaRobots' unter 2.0. Der AmigaRobots-Bildschirm
+ist public (@ref{Systemanforderungen} und @ref{Fragen und Antworten}).
+
+@item Ausbau der Fragen und Antworten, der Einleitung und Hinzunahme
+des Geschichte-Anhangs, damit man direkt an die neuen Stellen
+blättern kann. 
+@xref{Fragen und Antworten}, @ref{Einleitung}.
+
+@item 11.9.93 Entfernte Roboter werden durchgestrichen
+
+@item  8.11.93 Statusfenster zeigt x/y Postition an
+
+@item  Die voreingestellte Schußzahl wurde auf 40 gesenkt und bei 
+Tarnvorrichtung nicht mehr 9/10 sondern 1/2 der Munition
+einbehalten.
+
+@xref{-m Option}, @ref{-c Option}, @ref{Konfiguration} und @ref{shoot}.
+
+@item  flying_shells()-Funktion hinzugefügt
+
+Diese Funktion ist nicht mehr PCRobots-kompatibel.
+
+@xref{flying_shells}.
+
+@item  get_big_map()-Funktion hinzugefügt
+
+Diese Funktion ist nicht mehr PCRobots-kompatibel.
+
+@xref{get_big_map}.
+
+@item hit_from()-Funktion hinzugefügt
+
+Diese Funktion ist nicht mehr PCRobots-kompatibel.
+
+@xref{hit_from}.
+
+@item AmigaRobots_guide.ced-Script dem Archiv beigelegt
+
+Mit diesem Script ist es möglich, vom CygnusED aus die
+AmigaRobots-Guide-Datei als Onlinehilfe zu benutzen. Es wird
+automatisch der Befehl aufgerufen, auf dem der Cursor steht.
+Anpassungen der Pfade sind allerdings von Hand vorzunehmen.
+
+@item Quadratischer Energiehaushalt für die Geschwindigkeit
+
+Der Energiebedarf für eine Strecke ist geringer bei kleinerer
+Geschwindigkeit. Dadurch entsteht ein realistischer
+Energiehaushalt. Ein Roboter mit einer Geschwindigkeit von 63
+verbraucht jetzt soviel Energie, wie die Generatoren aufladen
+können. Dadurch sind die Roboter insgesamt beweglicher geworden
+und die Simulation komplexer.
+
+@xref{Batterien}, @ref{-c Option}.
+
+@item Zusätzliche Energiekosten beim Beschleunigen
+
+Dadurch werden Schummeleffekte mit der Energie/Lenkbarkeit verhindert. Die
+einzige Lösung für das Problem war mehr Realismus. Diese Funktion
+ist nicht abschaltbar.
+
+@xref{Batterien}.
+
+@item 23.12.93 korrekte Glue-Datei für DICE beigelegt 
+Außerdem wurde die Herstellungsanweisung korrigiert. Unter 1.3
+müßte die Datei dann aber trotzdem neu hergestellt werden.
+
+@xref{Fragen und Antworten}.
+
+@end itemize
+
+@item Version 1.3
+@itemize @minus
+
+@item 26.6.95 hinzufügen der Funktionen l_asin und l_acos
+Diese beiden Funktionen wurden vermißt und deshalb nachträglich
+implementiert. Diese Funktionen sind nicht PC-Robots kompatibel.
+
+@xref{l_asin}, @ref{l_acos}.
+
+@item 6.7.95 hinzufügen der Funktion highest_player_id(), myid() und
+version(). Wechsel des rechtlichen Status von Giftware auf
+Fairware. Ab sofort voller Support auch für nicht registrierte
+Benutzer. Überweisungen von Geld werden trotzdem gern gesehen. Im
+Paket liegt außerdem der Roboter Nexus.rob bei, der nebenbei den
+ersten Platz abgesahnt hat.
+
+@xref{highest_player_id}, @ref{myid}, @ref{version} und 
+@ref{Kontaktadresse und Registrierung}
+
+@end itemize
+@end itemize
+
+@appendixsec bekannte Bugs
+@cindex Bugs
+
+@itemize @minus
+@item Kugeln am linken Rand verschwinden nicht.
+Unerklärlich. Ich muß darüber mit meinem Meditationsbrahmanen
+reden.
+
+@item Die Berta hat aufgehört zu schießen, obwohl noch ein Gegner
+vorhanden war. Bug in Berta oder Robots?
+
+@item unerklärlich ist auch, warum auf außergewöhnlich schnellen
+(40 MHz) 68040-Amigas die Roboter manchmal "Spuren" hinterlassen.
+Sollte eigentlich nicht passieren. Vielleicht ein Fehler in der
+graphics.library?
+@end itemize
+
+@appendixsec zu tun
+
+@itemize @minus
+@item vernünftige Statistikauswertung
+
+@item Arena-Editor
+
+@item Außergewöhnliches Icon, am besten in 8 "MagicWB"-Farben und
+Hochauflösung, d. h. 1/1 Pixelverhältnis
+
+@item Fertigstellung meines neuesten Robterprojektes "Gänger"
+@end itemize

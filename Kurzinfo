@@ -1,0 +1,47 @@
+Betrifft   : AmigaRobots1_2.lha
+Erstellt   : 12.11.93 
+
+Name...........: AmigaRobots
+Version........: Version 1.3ß
+Brett..........: Spiele
+Laenge..........: 246k
+Autor..........: Hanno Behrens
+Source.........: Hauptprogramm Nein/Roboter Ja
+AmigaOS........: 1.2/1.3/2.04+
+Ben.Libraries..: req oder entsprechender Patch, mathieeedoubbas
+                 mathieeedoubtrans, icon
+Copyright......: Giftware
+Beschreibung...: Simulation frei programmierbarer Kampf- oder
+                 Erkundungsroboter
+AmigaRobots ist ein Simulationsprogramm, auf das die Bezeichnung
+Spiel mehr schlecht als recht paßt. Ähnlich wie bei CRobots ist
+das Ziel einen programmierten Roboter in einer Arena mit anderen
+Robotern interagieren zu lassen. Die einfachste Art der
+Interaktion ist der Kampf, da aber auch die Möglichkeit der
+Kommunikation besteht, muß dies nicht so sein.  Das Programm ist
+stark angelehnt an PCRobots, so daß es dazu weitgehend
+Sourcecodekompatibel ist.  Programmiert werden kann prinzipiell
+in jeder beliebigen Sprache, aber bis jetzt wurde nur C probiert.
+Zu Anpassungen an andere Sprachen liegen die nötigen Sources bei.
+Jede Sprache, die mit anderen Programmen über Messageports
+kommunizieren kann, kann einen AmigaRobots-Roboter steuern.
+Weiteres in Amigrobots.dok.
+
+Neu an dieser Version:
+- l_asin und l_acos - Funktionen
+
+  Das Urheberrecht von AmigaRobots liegt uneingeschränkt bei H. Behrens
+--
+Hanno Behrens, Overland 9, 22159 Hamburg, (049) (0)40/6431257
+Internet/Z-Netz: h.behrens@amtrash.comlink.de, 
+Fido-Gate      : Hanno Behrens@242:49000/99.0
+
+Lokal:		AMTRASH Hamburg (040) (847838|846939)
+
+
+INTERNET/ZNetz: h.behrens@amtrash.comlink.de    PGP auf Request
+Fido-Gate     : Hanno Behrens@242:49000/99.0
+Hanno Behrens - Overland 9 - D-22159 Hamburg   +49-(0)40-6431257
+- Hat hier jemand eine heiße Tasse Tee?          Voice (Fax/Data)
+- *AmigaRobots* (T206) - Simulation ist Wirklichkeit  
+

@@ -1,0 +1,91 @@
+
+Listing of archive 'AmigaRobots.lha':
+Original  Packed Ratio    Date     Time    Name
+-------- ------- ----- --------- --------  -------------
+     845     217 74.3% 31-Jul-93 01:21:40  Robots/MAKEFILE.info
+     482     291 39.6% 12-Nov-93 14:32:20  Robots/MAKEFILE
+    2622     294 88.7% 24-Apr-95 17:05:02  Arena/Arena.info
+   10100     306 96.9% 19-Jun-94 15:34:46  Arena/Battlefield.rna
+    2622     294 88.7% 24-Apr-95 17:05:00  Arena/Battlefield.rna.info
+   10100      95 99.0% 19-Jun-94 15:34:48  Arena/Leer.rna
+    2622     296 88.7% 24-Apr-95 17:05:00  Arena/Leer.rna.info
+   10100     336 96.6% 19-Jun-94 15:34:48  Arena/Wald.rna
+    2622     297 88.6% 24-Apr-95 17:05:00  Arena/Wald.rna.info
+    4282     384 91.0% 24-Apr-95 17:05:06  Icons/ARobots.info
+    3962     349 91.1% 24-Apr-95 17:05:06  Icons/ARobots2.info
+   27030    1311 95.1% 24-Apr-95 17:05:06  Icons/ARobots_3.info
+    5341    1040 80.5% 19-Jun-94 15:34:42  PCROBOTS.PAS
+   10100     132 98.6% 19-Jun-94 15:34:44  PCROBOTS.RNA
+     921     493 46.4% 14-Jul-94 17:36:56  ced/AmigaRobots_guide.ced
+    5472    3608 34.0% 19-Jun-94 15:35:20  Robots/Andere/Thomas_20.rob
+    2947     412 86.0% 24-Apr-95 17:05:22  Robots/Andere/Thomas_20.rob.info
+    2947     414 85.9% 24-Apr-95 17:05:16  Robots/Blinker.rob.info
+    2947     419 85.7% 24-Apr-95 17:05:14  Robots/demo.rob.info
+    1768     886 49.8% 19-Jun-94 15:34:56  Robots/Dice/Herstellung
+     882     456 48.2% 19-Jun-94 15:34:56  Robots/Dice/Herstellung.bak
+    5133    1610 68.6% 24-Apr-95 17:05:16  Robots/Dice/Herstellung.info
+    2440    1277 47.6% 19-Jun-94 15:34:56  Robots/Dice/robotlib.o
+    2947     420 85.7% 24-Apr-95 17:05:14  Robots/DickeBerta.rob.info
+     186     116 37.6% 19-Jun-94 15:34:54  Robots/gcc/Herstellung
+    5133    1611 68.6% 24-Apr-95 17:05:18  Robots/gcc/Herstellung.info
+    3383    1332 60.6% 19-Jun-94 15:34:54  Robots/gcc/robotlib.o
+    2947     413 85.9% 24-Apr-95 17:05:10  Robots/hase.rob.info
+    2947     417 85.8% 24-Apr-95 17:05:12  Robots/nop.rob.info
+    2947     420 85.7% 24-Apr-95 17:05:12  Robots/runner.rob.info
+     250     176 29.6% 19-Jun-94 15:34:50  Robots/SAS-C/Herstellung
+    5133    1609 68.6% 24-Apr-95 17:05:18  Robots/SAS-C/Herstellung.info
+    2947     418 85.8% 24-Apr-95 17:05:10  Robots/simple.rob.info
+    2957     228 92.2% 24-Apr-95 17:05:12  Robots/SMAKEFILE.info
+    7172    3709 48.2% 19-Jun-94 15:34:58  Robots/Beta/berger_3.rob
+: 02-Aug-93  22:04:36
+    2947     408 86.1% 24-Apr-95 17:05:26  Robots/Beta/berger_3.rob.info
+    5540    3347 39.5% 19-Jun-94 15:34:58  Robots/Beta/Hinzi&Berger_1.rob
+    2947     412 86.0% 24-Apr-95 17:05:26  Robots/Beta/Hinzi&Berger_1.rob.info
+    3000    1795 40.1% 19-Jun-94 15:35:06  Robots/Beta/Manowar.rob
+    2947     412 86.0% 24-Apr-95 17:05:26  Robots/Beta/Manowar.rob.info
+    6336    3930 37.9% 19-Jun-94 15:35:06  Robots/Beta/MyDemo.rob
+    3619    1070 70.4% 24-Apr-95 17:05:28  Robots/Beta/MyDemo.rob.info
+    5636    3486 38.1% 19-Jun-94 15:35:08  Robots/Beta/Wolf.rob
+    3619    1070 70.4% 24-Apr-95 17:05:28  Robots/Beta/Wolf.rob.info
+    3619    1068 70.4% 26-Jun-95 02:52:30  Robots/Andere/Nexus.ROB.info
+      65      50 23.0% 26-Jun-95 03:18:58  AmigaRobots.colors
+    1906    1006 47.2% 26-Jun-95 03:20:40  Kurzinfo
+    3304     651 80.2% 01-Jul-95 23:49:30  AmigaRobots.info
+    1779     642 63.9% 06-Jul-95 12:19:22  ar_comm.h
+    7516    4934 34.3% 01-Jul-95 11:45:14  Robots/Andere/Nexus.ROB
+: von Denis Ahrens (denis@weixi.dialup.fu-berlin.de)
+   45092   25117 44.2% 06-Jul-95 13:51:18  AmigaRobots
+    7204    3321 53.9% 06-Jul-95 13:47:20  Geschichte
+    1989     789 60.3% 06-Jul-95 13:10:32  PCROBOTS.H
+    6088    1633 73.1% 06-Jul-95 13:10:48  robotlib.c
+    3288    1620 50.7% 06-Jul-95 12:44:32  robotlib.o
+    5392    3487 35.3% 06-Jul-95 12:45:54  Robots/Blinker.rob
+: von Hanno Behrens (H.Behrens@amtrash.comlink.de)
+    5915    2502 57.7% 06-Jul-95 12:45:14  Robots/DEMO.C
+    6236    4076 34.6% 06-Jul-95 12:45:24  Robots/demo.rob
+    7468    4399 41.0% 06-Jul-95 12:45:50  Robots/DickeBerta.rob
+: von Hanno Behrens (H.Behrens@amtrash.comlink.de)
+     356     266 25.2% 06-Jul-95 12:45:14  Robots/Hase.c
+: von Hanno Behrens (H.Behrens@amtrash.comlink.de)
+    3216    1910 40.6% 06-Jul-95 12:45:58  Robots/hase.rob
+: von Hanno Behrens (H.Behrens@amtrash.comlink.de)
+     207     168 18.8% 06-Jul-95 12:45:14  Robots/nop.c
+: von Hanno Behrens (H.Behrens@amtrash.comlink.de)
+    3172    1874 40.9% 06-Jul-95 12:45:20  Robots/nop.rob
+: von Hanno Behrens (H.Behrens@amtrash.comlink.de)
+     564     243 56.9% 06-Jul-95 12:45:14  Robots/runner.c
+: von Hanno Behrens (H.Behrens@amtrash.comlink.de)
+    3340    1983 40.6% 06-Jul-95 12:45:28  Robots/runner.rob
+: von Hanno Behrens (H.Behrens@amtrash.comlink.de)
+    2257    1169 48.2% 06-Jul-95 12:45:14  Robots/SIMPLE.C
+    5444    3528 35.1% 06-Jul-95 12:45:34  Robots/simple.rob
+     494     295 40.2% 06-Jul-95 12:44:00  Robots/SMAKEFILE
+    7523    2723 63.8% 06-Jul-95 13:52:00  liesmich
+   94233   33169 64.8% 06-Jul-95 14:04:58  Doks/AmigaRobots.dok
+  189636   57707 69.5% 06-Jul-95 14:04:40  Doks/AmigaRobots.dvi
+  117797   38155 67.6% 06-Jul-95 14:04:50  Doks/AmigaRobots.guide
+   94618   33149 64.9% 06-Jul-95 13:56:50  Doks/AmigaRobots.texi
+-------- ------- ----- --------- --------
+  823545  273650 66.7% 06-Jul-95 14:05:22   73 files
+
+Operation successful.

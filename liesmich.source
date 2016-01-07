@@ -1,0 +1,59 @@
+Zu dem Archiv AmigaRobots
+
+Dieses  Archiv  ist Giftware und darf, solange es nicht verändert
+wird, frei kopiert werden.  Nutzung auf eigene Verantwortung.
+
+Ich  habe  den original-PCRobots Robotern demo.rob und simple.rob
+noch ein paar eigene Roboter beigelegt, die ganz nützlich sind.
+
+1.   nop.rob  mit Source.  Der minimal-Roboter.  Als stilles Ziel
+und zum Testkompilieren verwendbar.
+
+2.   Runner.rob mit Source.  Läuft einfach solange geradeaus, bis
+er  Schaden  nimmt  und  läuft  dann  in  die Gegenrichtung.  Die
+Geschwindigkeit   wählt   maximal.    Normalerweise  beträgt  die
+Batterieladung  4  Punkte,  dann  fährt  er  auch  40.   Ist  die
+Batterieladung  höher,  paßt er seine Geschwindigkeit an.  Er ist
+als schnell fahrendes Ziel verwendbar.
+
+3.   Blinker.rob  ohne  Source.  Ist schwer zu orten, aber bewegt
+sich  nicht.   Eine  Herausforderung, nachdem man simple und demo
+besiegt hat.
+
+4.   DickeBerta.rob  ohne  Source.   Ich  arbeite noch daran, das
+heißt,  daß  diese  Version schon längst überholt sein wird, wenn
+ihr  sie  geschlagen  habt.  Ein schweres Geschütz, daß es (noch)
+nicht  nötig  hat,  sich  zu  bewegen.  DickeBertas schießen sich
+nicht  gegenseitig  ab.  DickeBertas kommunizieren untereinander,
+um  sich  Ziele  zuzuschustern,  wenn  sie selbst keine ausmachen
+können.   DickeBertas  schießen  dahin,  wo  der Gegner hinfährt,
+nicht  dahin,  wo  er steht.  DickeBertas kämpfen gern auf freien
+Flächen.   DickenBertas  ist  es ziemlich egal, wenn sich Roboter
+unsichtbar machen, aber es gibt noch vieles zu verbessern...  
+
+Leider  nutzt  die  DickeBerta  die malloc-Funktion und ist somit
+nicht kompatibel zu PC-Robots .
+
+5. Thomas_20.rob ohne Source
+Immer noch ungeschlagen.
+
+6. Hase.rob mit Source
+Zeigt den Umgang mit hit_from().
+
+Die Roboter wurden alle noch nicht an die neuen Simulationsbedingungen 
+angepaßt, die Autoren sollten für Updates sorgen.
+
+
+Lies die Anleitung für nähere Informationen über den Wettkampf.
+
+Hanno Behrens 
+
+EMail: h.behrens@amtrash.comlink.de
+
+Weitere  Anschriften  in  der  Anleitung  und  im  Programm unter
+Information.
+
+Das Archiv enthält:
+
+Dieses File +
+

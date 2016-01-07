@@ -1,0 +1,4 @@
+FROM LIB:c.o "Hinzi&Berger_1.o"+"MYDEMO.o"+"WOLF.o"
+TO "Hinzi&Berger_1"
+LIB source:robot/amigarobots/robotlib.o LIB:sc.lib LIB:amiga.lib
+

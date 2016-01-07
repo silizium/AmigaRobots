@@ -1,0 +1,54 @@
+******* ACHTUNG **********
+Die robotlib.o-Datei in diesem Verzeichnis wurde noch nicht auf
+die neuen Befehle geupdatet! Bitte mit DICE neu kompilieren, oder
+die neuen Befehle funktionieren nicht. 
+
+-------------------------------------------------------------------------------
+Brett        : H.BEHRENS
+Absender     : SETH@COCUNI.ZER
+Betreff      : Re^3:ARobots und DICE Prob
+Nachricht vom: 31.07.93 - 19:31
+-------------------------------------------------------------------------------
+...
+Auf jeden Fall wird robotlib.o so ohne Fehler und Warnung erzeugt :-)
+
+Der Aufruf heißt dann ganz einfach:
+DCC robotlib.c -c -orobotlib.o -mRR -proto   ==> liefert 'robotlib.o'
+  Übrigens können hier Längenunterschiede auftreten !
+  Je nachdem, unter welchem Namen man robotlib.c kompiliert.
+  Obengenannter Aufruf liefert eine Länge von 2316 Byte für robotlib.o
+  (ich hatte es als 'test.c' kompiliert, darum um 4 Byte kürzer -
+   nur kurz erwähnt, damit da keine Unklarheiten auftauchen :-) )
+
+Roboter werden dann per:
+DCC ROBOTER.c robotlib.o -oROBOTER.rob -mRR -proto
+kompiliert.
+...
+
+Betrifft:   RobotLib_Bemerk
+Erstellt:   15.11.93 04:08
+
+Realname: Thomas Hornik
+Program-Id: UMSZer V2.10 beta3
+
+Hallo,
+
+noch schnell ein paar Anmerkungen zu robotlib.o, diesmal aber vorsichtiger
+nachdem ich sah, was Du da in die Anleitung mit rein gebracht hast...
+
+  Compiler: DICE 2.07.54R / unter OS2.0
+
+  Compiliert wurde Robotlib.o mit:
+      DCC robotlib.c -orobotlib.o -c -mRR -proto -ms -mi
+
+  Roboter werden compiliert per:
+      DCC ROBOT.c -oROBOT.rob -mRR -proto -ms -mi
+
+Unter OS1.3 muesste man die Optionen '-mRR' und '-proto' weglassen,
+soweit ich weiss.
+(und robotlib.o selbst neu compilieren! [-> DCC robotlib.c -orobotlib.o -c ] )
+
+MfG, Thomas
+
+  ++ THOMAS@COCUNI.ZER
+

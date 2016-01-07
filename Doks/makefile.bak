@@ -1,0 +1,22 @@
+# makefile for generating output files from AmigaGuide.texi
+
+SOURCE=AmigaRobots
+
+all: dvi guide dok
+
+dvi:
+    execute s:s_tex
+    tex:bin/virtex &plained $(SOURCE).texi
+    texindex $(SOURCE).cp
+    texindex $(SOURCE).fn
+
+
+guide:
+    tex:texinfo/makeinfo --amiga-39 $(SOURCE).texi
+
+dok:
+    tex:texinfo/makeinfo --amiga-39 --no-headers -o $(SOURCE).dok $(SOURCE).texi
+
+ps:
+   dvips $(SOURCE)
+

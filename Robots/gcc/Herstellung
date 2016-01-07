@@ -1,0 +1,11 @@
+Der Gnu-C++-Compiler 2.3.3
+--------------------------
+Das Gnu-Linkfile wird erstellt mit
+
+gcc -c robotlib.c
+
+Roboter compiliert man dann mit
+
+gcc -lamy -o Robot.rob Robot.c robotlib.o
+
+

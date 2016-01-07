@@ -1,0 +1,4 @@
+FROM LIB:c.o "Thomas.rob.o"
+TO "Thomas.rob"
+LIB source:robot/amigarobots/robotlib.o LIB:sc.lib LIB:amiga.lib
+

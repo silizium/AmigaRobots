@@ -1,0 +1,3 @@
+LINK
+INCLUDEDIR=//
+LIBRARY=//robotlib.o

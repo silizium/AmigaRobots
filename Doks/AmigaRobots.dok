@@ -1,0 +1,2496 @@
+
+
+[1mAmigaRobots[0m V1.3 von Hanno Behrens (C) 1993
+*******************************************
+
+(Internet/Z-Netz: H.Behrens@amtrash.comlink.de)
+
+Dieses Dokument dokumentiert das Programm [1mAmigaRobots[0m, Version 1.3
+und später.
+
+                                                                                        Copyright (C) 1993 von Hanno Behrens
+
+Dieses Programmpaket ist Giftware.
+
+Das Copyright bezieht sich auf das Paket, alle Kopien des Paketes und
+alle dem Paket enthaltenen Dateien.
+
+Es ist erlaubt und sogar ausdrücklich erwünscht, dieses Programmpaket
+weiterzukopieren und zu benutzen, solange weder am Paket noch an
+irgendeinem der enthaltenen Dateien Veränderungen vorgenommen werden.
+
+Es ist erlaubt, diese Anleitung bei Bedarf zu verändern, zu erweitern
+oder zu übersetzen, wenn die Veränderung, Erweiterung oder
+Übersetzung mir mitgeteilt wird, ich eine Kopie dieser veränderten
+Version erhalte und dieser Copyright-Vermerk darin unverändert
+erhalten bleibt.
+
+Jede militärische oder kommerzielle Nutzung ist untersagt, ebenso
+Gebührenerhebungen, die den Preis einer Diskette um 5.- DM
+überschreiten. Für Hinweise auf Zuwiderhandlung bin ich dankbar.
+
+Es wird keinerlei Gewährleistungspflicht für die vollständige
+Funktionsfähigkeit des (der) in diesem Dokument beschriebenen
+Programmes (Programme) übernommen. Sie nutzen diese Software auf
+eigenes Risiko.
+
+Kontaktadresse und Registrierung
+********************************
+
+Nochmals: Dieses Programm ist nicht public domain, sondern Fairware.
+Das bedeutet, daß man das Programm zwar frei benutzen darf, daß ich
+es aber fair fände, wenn man an den Programmierer denkt und mir eine
+kleine Aufmerksamkeit irgendeiner Art, am liebsten 15.- DM zukommen
+läßt. Die paar Mark sollte doch jeder übrig haben. Wenn man momentan
+nichts bezahlen kann, was niemand besser versteht als ich, aber sich
+trotzdem über das Programm freut oder ärgert oder sonst einen
+Kommentar dazu abgeben will, kann er es gern tun, ich habe noch
+niemanden gefressen (urps).
+
+Auch nicht registrierte Benutzer bekommen von mir vollen Support!
+
+Die Adresse:
+Real
+     Hanno Behrens, D-22159 Hamburg, Overland 9
+
+Z-Netz/Internet
+     H.Behrens@amtrash.comlink.de
+
+lokale Box
+     M.A.G Hamburg, Username behrens
+
+Kontonr.
+     BLZ 200 505 50  KONTO 1284 / 453 105
+
+Einleitung
+**********
+
+    [1mAmigaRobots[0m ist eine weiterentwickelte Implementation von
+[1mPCRobots[0m auf MS-DOS von P.D.Smith (psmithb@CIX) vom August 1992.
+Jenes Programm war seinerseits eine Weiterentwicklung von [1mCRobots[0m von
+Tom Poindexter.
+
+Grundsätzlich ist die Spielidee die selbe wie von [1mCRobots[0m, von dem
+es auch eine Implementation auf dem Amiga von David Wright (1990) gab.
+Gegeben sind Roboter, die sich in einer Arena befinden und sich im
+Wettkampf miteinander messen. Der Wettkampf besteht darin, die anderen
+Roboter schnell und genau zu orten und durch Beschuß funktionsunfähig
+zu machen. Der Spieler programmiert für seinen Roboter dazu das nötige
+Steuerungsprogramm.
+
+    [1mAmigaRobots[0m ist dabei nicht auf eine spezielle Sprache
+festgelegt. Grundsätzlich kann der Roboter in jeder Sprache
+geschrieben werden, die Taskkommunikation auf dem Amiga direkt oder
+durch Einbinden eines Objektfiles ermöglicht.
+
+Die Roboterprogramme werden dabei als normale Programme compiliert und
+gestartet. Durch dieses Konzept entfällt die Beschränkung der
+Rechenzeit, die bei [1mCRobots[0m zur Bestrafung jedes intelligenten
+Roboters führte. Beliebig komplexer Berechnung und Planung sind
+dadurch Tür und Tor geöffnet. Anders als bei [1mPCRobots[0m gibt es weder
+eine 64k Beschränkung, noch gibt es einen zwingenden Grund, Standardein
+und -ausgabe nicht zu benutzen. Auch die Beschränkung auf
+Integerarithmetik und die fehlende Speicherverwaltung entfällt.  Man
+sollte allerdings zum einen aus Zeitgründen trotzdem auf
+Fließkommaarithmetik verzichten, zum anderen aus
+PC-Kompatibilitätsgründen Standartein und -ausgabe sowie
+Speicherverwaltungsfunktionen vermeiden. Der Verlust der
+Fließkommaarithmetik ist nicht weiter schmerzhaft, weil
+[1mAmigaRobots[0m ein weitreichendes Spektrum von Integerfunktionen
+anbietet, die soweit möglich, aus Tabellen ausgelesen werden. Wer auf
+die Speicherverwaltung nicht verzichten will, verzichtet eben nicht auf
+die Speicherverwaltung und ist nicht mehr [1mPCRobots[0m-kompatibel. Na und?
+
+Vorbereitet ist ein Linkfile für C (siehe Funktionen), die
+Programmierung in Pasal (siehe Pascal), Modula, Oberon, Basic oder
+Assembler (siehe Assembler) sollte kein Problem darstellen, denn die
+Sourcen für das Linkfile liegen bei.
+
+Ein weiteres Limit sind die gleichzeitig am Spiel teilnehmenden
+Roboter. Es liegt leider nicht wesentlich höher als 32000,
+vorausgesetzt der Hauptspeicher reicht - nur knapp über dem Limit von
+[1mPCRobots[0m von 7-8.
+
+Die Roboter sind konfigurierbar, das heißt wenn ein Programm einen
+schnellen wendigen Roboter braucht, der keine weitreichende Kanone
+nötig hat, ist dies ebenso machbar wie ein träger Kampfkoloß mit viel
+Panzerung und großem Geschütz.
+
+Eine weitere Erweiterung der Spielidee von [1mCRobots[0m ist die Arena.
+Diese ist nicht mehr unbedingt ein freies Feld, sondern kann den
+Robotern durch Wände, Tankstellen oder Schadensfelder eine
+anspruchsvollere Umwelt simulieren.
+
+Der Knüller von [1mAmigaRobots[0m sowie von [1mPCRobots[0m ist die
+Möglichkeit, die Roboter untereinander kommunizieren zu lassen. Dadurch
+sind Mannschaftswettkämpfe und Teamwork möglich.
+
+Am Schuß möchte ich noch ein paar Gedanken zur Gesinnung dieses
+Spieles fallenlassen. Es hat den Anschein, daß [1mAmigaRobots[0m ein
+kriegerisches, militärisches Spiel sei. Sicherlich kann man
+[1mAmigaRobots[0m in diesem Sinne mißbrauchen. Tatsächlich hängt
+alles von der Einstellung der Benutzer ab. [1mAmigaRobots[0m ist nicht
+destruktiv, es geht nicht darum, die Arbeit oder Leistung anderer
+abzuwerten oder zu vernichten. Jeder, der schon einmal versucht hat,
+einen Roboter zu programmieren, sieht in den anderen vielmehr ein
+Beispiel und einen Rahmen, eine Herausforderung im sportlichen Sinne.
+An diesem Maßstab kann er seine eigenen Fähigkeiten messen und
+abschätzen lernen, ebenso wie er seine Grenzen erkennen kann und
+versuchen wird, diese weiter zu stecken. Dabei werden seine
+Programmierfähigkeiten, sowie seine Phantasie gefördert. Phantasie
+ist nötig, denn die Erfahrung zeigt, daß eine gute Idee immer über
+brachialen Code, brachiale Gewalt gewinnt.
+
+Wettstreit ist natürlich, ist gesundes Verhalten. Fressen und
+gefressen werden, Jagd und Verstecken, Sieg und Niederlage sind unserer
+Existenz inhärent. Sie zu verleugnen hat keinen Sinn, wenn man sich
+nicht plötzlich vor der Frage wiederfinden will, ob Existenz
+eigentlich moralisch sei. Selbst wenn jemand diese Bedürfnisse mit
+[1mAmigaRobots[0m auslebt, ist das nicht verwerflich, weil niemand dabei zu
+Schaden kommt, im Gegenteil ich halte es für besser, als diese
+Gefühle solange zu unterdrücken, bis diese sich destruktiv in Gewalt
+Luft machen.  Aber zurück zur Kernaussage: [1mAmigaRobots[0m ist keine
+Therapie, sondern vor allem ein Spiel. Spiel ist immer, oder sollte es
+zumindest, ein Miteinander.
+
+Was mich persönlich an Computern stört, ist, daß man selten eine
+Chance bekommt, seinen Horizont über den von Systemtabellen zu
+erweitern. Wie kompliziert und schwer zu erfassen die wirkliche Welt
+ist, daß deutet [1mAmigaRobots[0m an. Schon bei einfachen Problemen trifft
+man schnell auf Herausforderungen wie Differenzialgleichungen, die sich
+ganz natürlich präsentieren und nicht, wie sonst, im erzwungenen
+mathematisch-theoretischen Rahmen. Damit will ich nicht sagen, daß man
+sich diesen Herausforderungen unbedingt stellen muß. Es gibt fast
+immer einen einfachen Weg, der mit kleinen Einschränkungen oder einem
+guten Trick zum Ziel führt.
+
+Die Herausforderung Künstliche Intelligenz wartet hinter den ersten
+Zeilen eines [1mAmigaRobots[0m-Roboters. Es stellen sich Fragen über das
+Umgehen von Hindernissen, dem Abschätzen von Bewegungen, dem
+Koordinieren von Teams und der Notwendigkeit an Flexibilität.
+
+Das Spielziel ist durchaus flexibel. Das gegenseitige Messen im Kampf
+ist nur die einfachste Form eines Miteinander. Mir schweben Labyrinthe
+vor, in denen ein Roboter als Ziel hingestellt wird und wer als erstes
+dieses Ziel erreicht, gewinnt. Oder das gemeinsame Erkunden einer
+unbekannten Umgebung, ein Mannschaftswettlauf sind denkbar. Man kann
+Roboter verschieden konfigurieren und so unterschiedliche Eigenschaften
+sich ergänzen lassen. Bei diesen Problemen wird Kommunikation immer
+wichtiger sein als, sagen wir mal, reine Muskelkraft.
+
+    [1mAmigaRobots[0m soll vor allen Dingen Spaß machen, es ist eine
+Herausforderung für jeden, der es satt hat, immer nur Daten zu
+verwalten und zu zählen. Man kann [3msehen[0m, wie sich das eigene
+Programm verhält, man lernt klarer zu erkennen und besser zu
+verstehen. Der Computer ist ein phantatisches Medium und kein stupider
+Rechenknecht, ein Medium, das es erlaubt mit Realitäten zu spielen,
+die anders nicht denkbar oder finanzierbar sind, eine Traummaschine.
+
+Die Entstehungsgeschichte
+*************************
+
+    [1mAmigaRobots[0m entstand aus einem unbeendeten Projekt, dessen Ziele
+weit über die von [1mAmigaRobots[0m hinausgingen. Ich griff die Idee
+wieder auf, als ich gegen Ende des Jahres 1992 [1mPCRobots[0m in die Finger
+bekam. Das Programm schrie regelrecht nach einer Implementation auf
+einem Multitasking-Grafikrechner wie dem Amiga. Sofort setzte ich mich
+daran, nur die Spielbeschreibung und den flüchtigen Eindruck eines
+einzigen Spieles vor Augen, das Programm in C zu schreiben.  Die
+eigentliche Simulation war innerhalb von wenigen Tagen beendet, wenn
+man von wenigen Bugs absieht; aber der Kleinkram erstreckte sich auf
+weitere Wochen. Heute steht das Programm vor mir, wie ich es mir
+vorgestellt hatte. Die Beschränkungen von [1mCRobots[0m und [1mPCRobots[0m
+sind beseitigt, und die Benutzerführung ist grafisch. Leider hat eine
+Prüfungsvorbereitung darunter sehr gelitten und meine Kasse ist leer.
+Wenn jemand das Programm benutzt und für gut befindet, würde ich mich
+sehr zu einer kleinen Aufmerksamkeit von 15.- DM freuen, oder wer es
+sich leisten kann, darf auch mehr bezahlen. Dies ist kein Zwang, denn
+ich habe mich entschlossen, das Programm als Giftware herauszugeben.
+Die weitere Entwicklung von AmigaRobots hängt natürlich von der
+Kritik, dem Zuspruch und der Unterstützung der Spieler ab, ebenso wie
+die Vielfalt an Robotern, Arenen und damit dem Spielspaß. AmigaRobots
+ist ein lebendiges Spiel, das durch das Miteinander an Reiz gewinnt.
+
+Natürlich soll das ganze nicht völlig umsonst sein. Ich freue mich
+über jede Art von Kritik, und wer sich registrieren läßt, der kann
+bei dem [1mAmigaRobots[0m-Wettbewerb teilnehmen. Dazu schickt ihr mir per
+Post oder E-Mail euren Roboter auf 68000-Code kompiliert und den
+Source. Ihr bekommt daraufhin alle bisher eingetroffenen Roboter.
+Natürlich ist ein kleiner Haken an der Sache: ihr bekommt nur den
+Source von Robotern, die Ihr besiegen konntet, die besseren werden ohne
+Source geliefert. Gleichzeitig werde ich eine Highscoreliste verwalten
+und für den Besten werde ich mir etwas besonderes ausdenken.
+
+Systemanforderungen
+*******************
+
+    [1mAmigaRobots[0m läuft nach meiner Erfahrung auf jedem Amiga, auf
+jedem Betriebssystem ab Kickstart 1.2 und jedem Prozessor ab 68000
+aufwärts. Ist Kickstart 2.0 oder höher vorhanden, dann öffnet
+AmigaRobots die 3D-look-Oberfläche. Mit den gängigen PD-Patches wie
+[1mReqPatch[0m und [1mMagicMenu[0m z.B. sieht [1mAmigaRobots[0m noch besser aus.
+
+An externen Libraries benötigt [1mAmigaRobots[0m
+
+   * [1mreq.library[0m von Colin Fox und Bruce Dawson, ich benutze die
+     Version 2.7, sicherlich gehen auch niedrigere Versionen.
+
+   * [1mmathieeedoubbas.library[0m ist eine Systemlibrary des Amiga.
+
+   * [1mmathieeedoubtrans.library[0m ist eine Systemlibrary des Amiga.
+
+   * [1micon.library[0m ist eine Systemlibrary des Amiga.
+
+Leider mußte ich [1mAmigaRobots[0m auf einem Interlace-Schirm schreiben,
+da sonst die Grafik keine ausreichende Auflösung mehr gehabt hätte.
+Die einzige sinnvolle Darstellung der 1000x1000-Felder Arena ist ein
+500x500-Feld. Ich empfehle daher die Nutzung einer Antiflickerkarte
+oder eines Monitors mit langer Nachleuchtdauer. So sorry, aber da man
+ja nicht an dem Schirm arbeiten muß, denke ich, ist es erträglich.
+
+Ab der Version 1.2 von [1mAmigaRobots[0m ist die [1m-i Option[0m (siehe -i
+Option), beziehungweise das [1mMONITORID[0m-Tooltype (siehe AmigaRobots von
+der Workbench) hinzugekommen. Damit kann der Benutzer jeden beliebigen
+Bildschirmmodus wählen. Leider ermöglicht das Betriebssystem so etwas
+erst ab der Version 2.0.
+
+AmigaRobots vom CLI
+*******************
+
+    [1mAmigaRobots[0m kann man einfach von CLI starten, indem man
+
+         [1mA m i g a R o b o t s RETURN[0m
+
+eintippt. Man hat die Shell frei, wenn man
+
+         [1mrun AmigaRobots[0m
+
+eingibt, was ich empfehlen würde. Wenn man Roboter starten will, dann
+gibt man diese entweder
+
+         [1mAmigaRobots [3mrobot1[0m [3mrobot2[0m [3mrobot3[0m ...[0m
+
+ein oder startet die Roboter nachträglich mit
+
+         [1mrun[0m [3mrobot1[0m
+     [1mrun[0m [3mrobot2[0m
+     [1mrun[0m [3mrobot3[0m
+
+Zusätzlich kann man [1mAmigaRobots[0m noch optionale Parameter mitgeben.
+Diese Parameter sind ebenso wie der Rest des Programmes weitgehend
+PC-kompatibel. Jedenfalls abwärtskompatibel.
+
+Die   Optionen   können  an  jeder  beliebigen  Position  in  der
+Kommandozeile plaziert werden.
+
+Die Optionen sind
+
+[1m-d[0m Option Debuggingmodus
+========================
+
+Der sogenannte Debuggingmodus wird aktiviert, das heißt, daß
+[1mAmigaRobots[0m nicht automatisch stoppt, wenn nur noch ein Roboter
+im Spiel ist. Dies ist nützlich um, ungestört das Verhalten eines
+Roboters auf einem leeren Spielfeld zu studieren.
+
+[1m-l[3mSpielrunden[0m[0m Option
+====================
+
+Mit dieser Option kann man die maximale Anzahl von Spielrunden
+begrenzen. Der voreingestellte Wert 0 bedeutet keine Zeitbegrenzung.
+Zum Beispiel würde die Option [1m-l5000[0m das Spiel in jedem Fall bei
+5000 Ticks abbrechen.
+
+[1m-o[3mDateiname[0m[0m Option Ausgabedatei
+===============================
+
+Die Ausgabe von [1mAmigaRobots[0m wird dem File [3mname[0m angehängt, statt
+einfach auf die Standardausgabe gedruckt zu werden. Zum Beispiel würde
+mit [1m-ot:spiele.log[0m in die Datei [1mt:spiele.log[0m gespeichert werden.
+
+[1m-s[0m Option Einzelschritt
+=======================
+
+Der Einzelschrittmodus wird aktiviert. Weiterschalten kann man mit
+jeder beliebigen Taste.
+
+[1m-q[0m Option Quickmodus
+====================
+
+Im Quickmodus werden die Menüs deaktiviert, die Explosionen nicht mehr
+dargestellt und das Programm nach einem Durchlauf beendet.  Damit sind
+nächtliche Stapeldateien mit langwierigen Wettkämpfen möglich. Das
+Programm kann selbstverständlich trotzdem noch mit ESC abgebrochen
+werden. Ich empfehle bei Nutzung dieser Option gleichzeitig eine
+Spielbeschränkung auf höchstens 10000 Runden durch die Option [1m-l[0m.
+
+Zusätzliche Amigaoptionen
+=========================
+
+(nicht bei [1mPCRobots[0m vorhandene Optionen)
+
+[1m-a[3mArenadatei[0m[0m Option
+===================
+
+Gibt die zu ladende Arenadatei an. Normalerweise wird wie bei
+[1mPCRobots[0m die Datei [1mPCRobots.rna[0m geladen. Für eigene Arenen
+empfehlen ich das spezielle Verzeichnis zu nutzen, da dies der
+Übersichtlichkeit zuträglich ist.
+
+[1m-p[0m Option feste Position
+========================
+
+Bei [1mAmigaRobots[0m hat man die Möglichkeit, in der Arena die Roboter
+nicht an zufälligen, sondern an festen, definierten Positionen den
+Wettkampf beginnen zu lassen. Diese Option aktiviert diese
+Möglichkeit. Siehe Arenen.
+
+[1m-x[0m Option langsame Explosion
+============================
+
+Es gibt eine schnelle und eine langsame Methode, die Explosionen
+darzustellen. Mit [1m-x[0m wählt man die langsame Methode, die allerdings
+hübscher anzusehen ist.
+
+[1m-v[3m1/50-Sekunden[0m[0m Option pausieren
+================================
+
+Verzögerung bei schneller Darstellung in 1/50 sec.
+
+[1m-r[3mBatterieladung[0m[0m Option
+=======================
+
+Die Batterien der Roboter werden normalerweise jede Runde um 4 Punkte
+geladen, das entspricht der Option [1m-r40[0m. Wenn man möchte, daß die
+Batterien schneller geladen werden, gibt man den Wert hier mit zehn
+multipliziert ein. Dadurch sind auch Zwischenwerte möglich.
+
+[1m-m[3mAnzahl-Munition[0m[0m Option
+========================
+
+Unter [1mPCRobots[0m werden jedem Roboter zu Beginn des Spieles 1000 Schuß
+Munition mitgegeben, was eine blödsinnig hohe Zahl ist (siehe -c
+Option). Auch der Preis für die Tarnvorrichtung (1/10 Munition) ist zu
+niedrig. Unter [1mAmigaRobots[0m werden Voreinstellungsgemäß 40 Schuß
+mitgegeben und der Preis für die Tarnung ist die Hälfte der Munition.
+Mit [1m-m50[0m würde man dem normalen Roboter 50 Schuß mitgeben, dem
+Roboter mit Tarnvorrichtung nur 1/2 davon, also 25.
+
+[1m-c[0m Option PCRobots-Wand
+=======================
+
+Diese Option schaltet die [1mPCRobots[0m-kompatiblen Wände ein.
+Normalerweise werden Schüsse ausschließlich von Wänden aufgehalten,
+nicht jedoch von Schadensfeldern oder Tankfeldern. Wird diese Option
+aktiviert, werden Schüsse von allem anderen als von einem freien Feld
+aufgehalten. Außerdem wird der Preis für die Tarnvorrichtung auf 9/10
+der Munition herabgesetzt. Normalerweise beträgt dieses Verhältnis
+bei [1mAmigaRobots[0m 1/2.
+
+Der Energiehaushalt wird durch Aktivierung dieser Option wieder linear.
+[1mAmigaRobots[0m simuliert ein quadratisches Anwachsen des Energiebedarfs
+bei steigender Geschwindigkeit (siehe Batterien).
+
+Siehe Arenen, Karte, -m Option.
+
+[1m-t[3mZeitfaktor[0m[0m Option
+===================
+
+Mit dieser Option kann man die Simulation von AmigaRobots
+beschleunigen. Dabei simuliert AmigaRobots [3mZeitfaktor[0m Spielrunden auf
+einmal. Dadurch wird die Simulation ungenauer und einige Roboter kommen
+damit überhaupt nicht klar, von allem, wenn sie einen festen
+Zeitablauf voraussetzen. Diese Option ist sozusagen der [3mDraft[0m-Modus
+für die Entwicklung eines Roboters, wenn man nur mal eben sehen will,
+ob es klappt. Der endgültige Test sollte in jedem Fall unter der
+Bedingung Zeitfaktor 1 stattfinden.
+
+Wenn man den Zeitfaktor während einer Simulation ändert, dann gelten
+die geänderten Geschwindigkeiten nur für Objekte, die ihre
+Geschwindigkeit oder Richtung nach der Zeitfaktorumstellung geändert
+haben. Das heißt, daß sich die Wirkung der Umstellung ein wenig
+verzögern kann. Die bereits in der Luft befindlichen Geschosse bleiben
+unveränderter Geschwindigkeit.
+
+Dadurch, daß die Simulation einige Schritte überstringt, kann es dazu
+kommen, daß Geschosse oder Roboter vorhandene Wände ignorieren und
+sich einfach durch sie hindurchbewegen.
+
+[1m-i[3mMonitorID[0m,[3mSchirm_Breite[0m,[3mSchirm_Hohe[0m,[3mBreite[0m,[3mHohe[0m[0m Option
+========================================================
+
+Diese Option ist erst ab Version der [1mintuition.library[0m 37 oder
+aufwärts verfügbar, also erst ab Kickstart 2.0. In tieferen Versionen
+wird diese Option einfach ignoriert.
+
+Unter 2.0 gibt es verschiedene Monitortreiber. Man findet diese Treiber
+normalerweise in der [1mdevs:monitors[0m-Schublade.  Jeder dieser Treiber
+stellt verschiedene Bildschirmmodi zur Verfügung. Dieser Modus bekommt
+vom Betriebssystem einen bestimmten Code. Gibt man der Variablen
+[3mMonitorID[0m diesen Code in Hexadezimal an, so öffnet AmigaRobots
+unter diesem Bildschirmmodus. Es ist dabei egal, ob man dem Code ein
+[1m0x[0m voranstellt, es dient allerdings als Erinnerungshilfe, daß es
+sich um eine Hexadezimalzahl handelt. Die Größe des gewählten
+Bildschirms muß in [3mSchirm_Breite[0m und [3mSchirm_Höhe[0m, jeweils durch
+ein Komma getrennt, angegeben werden. Danach wird in [3mBreite[0m und
+[3mHohe[0m noch die Größe des sichbaren Ausschnitts angegeben. Die
+maximale Größe dieses Ausschnitts hängt vom gewählten
+Bildschirmmodus ab. Ist der sichtbare Bereich kleiner als der
+Bildschirm, dann scrollt der AmigaRobots-Bildschirm automatisch, sobald
+die Maus den Bildschirmrand erreicht. Der Bildschirm kann nicht kleiner
+als 640x512 werden und der sichtbare Bereich nicht größer als der
+Schirm.
+
+    [3mMonitorID[0m wird Hexadezimal, die [3mBreite[0m und [3mHöhe[0m-Werte
+dezimal angegeben. Man beachte, daß die gewählten Teiber vorher
+aktiviert wurden, sonst startet AmigaRobots nicht. Die Treiber lassen
+sich durch Doppelklick aktivieren oder durch Legen in die Schublade
+[1mdevs:monitors[0m und anschließendem Booten.
+
+Ein paar Beispiele:
+     AmigaRobots -i0x29004,640,512,640,512
+       Öffnet einen PAL-HiresInterlaced-Schirm. Dies ist die
+       Voreinstellung
+     AmigaRobots -i0x29000,640,512,640,256
+       Öffnet einen PAL-Hires-Schirm.
+     AmigaRobots -i19004,800,512,640,400
+       Öffnet einen NTSC-HiresInterlaced-Schirm, rechts mit Platz für
+       einen Editor
+     AmigaRobots -i0x19000,640,512,640,200
+       Öffnet einen NTSC-Hires-Schirm.
+     AmigaRobots -i0x11000,640,512,320,200
+       Öffnet einen NTSC-Lores-Schirm.
+     AmigaRobots -i0x39024,640,512,640,480
+       Öffnet einen Productivity-Schirm.
+
+Die übrigen Standard-ID's findet man in der System-Includedatei
+[1mgraphics/displayinfo.h[0m.
+
+Ich konnte AmigaRobots sogar dazu bewegen auf der
+DOMINO-Truecolor-Grafikkarte zu laufen. Die entsprechende MonitorID
+kann man über die gespeicherte Preference herausbekommen. Man wähle
+den gewünschten Bildschirmmodus für die Workbench und klickt
+[1mbenutzen[0m. Im [1menv:sys/screenmode.prefs[0m steht dann an der Stelle
+0x33 [1m0F 10 12[0m. Das ist die Monitor-ID für 800x600. Also gibt man zum
+Beispiel im Icon [1mMONITORID=0x0f1012,800,600,800,600[0m an. Der 640x480
+DOMINO-Modus funktioniert nur mit einer Breite von 800 statt vermuteten
+640, also [1mMONITORID=0x0f1011,800,512,800,480[0m.  Dieser Modus kann aber
+leider nicht scrollen. Die Moral von der Geschicht: wenn's auf Anhieb
+nicht klappt, ein wenig probieren.  Es geht auf jeden Fall.
+
+AmigaRobots von der Workbench
+*****************************
+
+Roboter können mit aufgerufen werden, wenn man nach dem Anklicken von
+[1mAmigaRobots[0m die Shift-Taste hält und die gewünschten Roboter mit
+anklickt. Bei einem Doppelklick beim letzten Roboter wird die
+Simulation mit den angeklickten Robotern gestartet. Wenn man dabei auch
+ein Arenafile anklickt, wird auch dieses geladen, wenn in dessen
+Infodatei [1mFILETYPE=ARENA[0m ist.
+
+In  der  Infodatei  von  [1mAmigaRobots[0m selbst haben folgende Tooltypes
+eine Bedeutung.
+
+   * DEBUG=OFF / ON
+
+     Siehe -d Option.
+
+   * TICKS=[3mSpielrundenanzahl[0m
+
+     Siehe -l Option.
+
+   * FILE=[3mAusgabe-Dateiname[0m
+
+     Siehe -o Option.
+
+   * ARENA=[3mArena-Dateiname[0m
+
+     Siehe -a Option.
+
+   * SINGLESTEP=OFF / ON
+
+     Siehe -s Option.
+
+   * QUICKMODE=OFF / ON
+
+     Siehe -q Option.
+
+   * PREPOS=OFF / ON
+
+     Siehe -p Option.
+
+   * FASTEXPLOSION=ON / OFF
+
+     Siehe -x Option.
+
+   * EXP_TICKS=[3mVerzögerung-in-fünfzigstel-Sekunden[0m
+
+     Siehe -v Option.
+
+   * RELOAD=[3mBatterieladung-pro-Runde[0m
+
+     Siehe -r Option.
+
+   * SHELLS=[3mMaximale-und-anfängliche-Munition[0m
+
+     Siehe -m Option.
+
+   * PCROBOTWALLS=OFF / ON
+
+     Siehe -c Option.
+
+   * TIMEFACTOR=[3mSimulationsschritte pro Runde[0m
+
+     Siehe -t Option.
+
+   * MONITORID=[3mMonitoID[0m,[3mBreite[0m,[3mHöhe[0m
+
+     Siehe -i Option.
+
+Menufunktion
+************
+
+Das Programmenu
+===============
+
+Es finden sich folgenden Menüpunkte im Programmenü:
+
+   * Informationen (I)
+
+     ruft einen Requester mit Informationen über das Programm auf.
+
+   * Roboter laden (L)
+
+     öffnet einen Filerequester, mit dem man die zu startenden Roboter
+     auswählen kann. Dazu muß sich der [1mRUN[0m-Befehl in der
+     [1mC:[0m-Directory oder sonstwie im [3mPfad[0m befinden. Mehrere
+     Roboter lassen sich durch Drücken der SHIFT-Taste anwählen.  Es
+     werden nur Files mit der Endung [1m*.rob[0m angezeigt. Die Roboter
+     sollten aus Gründen der Übersichtlichkeit diese Endung haben.
+     Wenn ein Spiel läuft, wird dieser Menüpunkt deaktiviert.
+
+   * Arena laden (A)
+
+     öffnet einen Filerequester für das Laden einer Arena. Es werden
+     nur Files mit der Endung [1m*.rna[0m angezeigt. Wenn ein Spiel läuft,
+     wird dieser Menüpunkt deaktiviert.
+
+   * Konfiguration (K)
+
+     Hier kann man ein paar Werte verstellen, wie schon oben beim CLI-
+     und WB-Aufruf erklärt. Das sind die Spielrunden, die
+     Ladegeschwindigkeit der Batterien, die mitgegebene Munition und
+     ein Verzögerungswert für zukünftige Superrechner. Die
+     Verzögerung beträgt [3mEintrag[0m * 1/50 sec. Der Zeitfaktor ist
+     schon bei den Optionen erklärt worden (siehe -t Option).  Bei
+     Anklicken von Übernehmen oder Drücken von RETURN werden die
+     Werte übernommen, bei Drücken von ESC oder KLICKEN von
+     [1mVerwerfen[0m, werden die Werte verworfen.
+
+   * Farbwahl (F)
+
+     öffnet einen Farbwahlrequester. Die Farben werden im aktuellen
+     Verzeichnis in der Datei [1mAmigaRobots.colors[0m abgelegt und beim
+     nächsten Start geladen. Ist die Datei nicht vorhanden setzt das
+     Programm beim Start seine voreingestellten Farben.
+
+   * Programmende (Q)
+
+     Wenn gerade ein Spiel läuft, kommt vorher noch eine
+     Sicherheitsabfrage.
+
+Das Simulationsmenu
+===================
+
+Das Simulationsmenü hat folgende Untermenüs:
+
+   * Start Simulation (S)
+
+     startet ein Spiel. Wenn der Menüpunkt [1mHalt bei einem[0m aktiv ist,
+     ist dieser Menüpunkt bei weniger als zwei Robotern deaktiviert.
+     Wenn man diesen Punkt während eines laufenden Spieles anklickt,
+     taucht der Spielenderequester auf. Bei anklicken von [1mWeiter[0m wird
+     das Spiel fortgesetzt, bei [1mAbbruch[0m beendet.
+
+   * Einzelschritt (E)
+
+     Nach jeder Runde wartet [1mAmigaRobots[0m auf eine Taste oder einen
+     Mausklick.
+
+   * Halt bei einem (H)
+
+     Bei einem Überlebenden stoppt das Programm automatisch und bringt
+     den Spielausgangs-Requester hervor.
+
+   * Feste Postitionen (P)
+
+     Die Startposition der Roboter wird nicht mehr zufällig gewählt,
+     sondern jeder Roboter, der sich neu anmeldet, bekommt den Platz
+     zugewiesen, den ihm die Arenadatei vorschreibt. Siehe Arenen.
+
+Das Positionsmenu
+=================
+
+Nach  Anwahl  eines  Roboters  im  Menü  kann  man  ihn mit einem
+Mausklick  an einem beliebigen Platz in der Arena platzieren. Zum
+Rückgängigmachen einfach noch einmal ins Menü klicken.
+
+Das Statusmenu
+==============
+
+Der angewählte Roboter wird ausführlich im Statusfenster angezeigt.
+Um das Statusfenster zu schließen, einfach das Schließgadget
+anklicken.
+
+Das Entfernenmenu
+=================
+
+Der angewählte Roboter soll entfernt werden.  Nach einer
+Sicherheitabfrage wird dem Roboter mitgeteilt, daß er sich beenden
+soll. Wenn der Roboter sich zwei Sekunden nach Anruf noch nicht
+gemeldet hat, dann bedeutet das, daß er momentan keine
+[1mAmigaRobots[0m-befehle aufruft. Sollte das der Fall sein, öffnet
+[1mAmigaRobots[0m eine zweite Sicherheitsabfrage, denn nun läßt sich der
+Roboter nur noch mit der Betriebsystemfunktion [1mRemTask()[0m entfernen.
+Das kann zur Folge haben, daß alloziierte Resourcen nicht freigegeben
+werden und eventuell die Shell, von der gestartet wurde, weiterhin
+belegt bleibt. Man sollte deshalb einen Robter von der Shell nie direkt
+aufrufen, sondern immer mit [1mrun [3mRobotername[0m.rob[0m starten.
+
+Diese Funktion sollte nur in äußersten Notfällen aufgerufen werden,
+da AmigaRobots im Normalfall selbst für das Entfernen der Roboter
+sorgt.
+
+Die AmigaRobots Arena
+*********************
+
+Die Arena ist ein großes Gebiet von 1000x1000 Feldern. Jeder Roboter
+kann jede Runde maximal ein Feld vorwärtskommen. Dies ist anders als
+bei [1mCRobots[0m, wo sich ein Roboter bis zu 100 Felder pro Zug bewegen
+konnte.
+
+Die Arena ist durch das linke Fenster von 500x500 Pixeln
+repräsentiert. In diesem Window kann man verschiedene Hindernisse
+sehen, wenn diese in der aktuellen Arenadatei verzeichnet sind.  Jedes
+Hindernis ist weiß umrahmt, die Farbkodes im Inneren haben dabei
+folgende Bedeutung:
+
+   * Weiß - Eine Wand
+
+     Die Roboter können zwar durch die Wände sehen, sprich scannen,
+     aber weder durchfahren noch durchschießen. Wenn ein Roboter gegen
+     eine Wand fährt, verliert er ein Punkt der Panzerung. Die Wände
+     schützen den Roboter zwar vor direktem Beschuß, aber die
+     Druckwelle eines in der Nähe explodierenden Geschosses trifft ihn
+     trotzdem (siehe Karte).
+
+     Ist die [1m-c[0m Option eingeschaltet, kann der Roboter auch nicht
+     mehr durch Schadens- oder Tankfelder schießen, siehe auch -c
+     Option.
+
+   * Rot - Ein Schadensfeld
+
+     Jede Runde, in der sich ein Roboter auf diesem Feld befindet,
+     verliert er einen Punkt seiner Panzerung (siehe Schadennehmen).
+
+   * Grün - Ein Tankfeld
+
+     Ein Roboter auf diesem Feld bekommt zusätzliche Energie für seine
+     Batterien. Es gibt in einer Arena höchstens 10 solcher Felder
+     (siehe Tankfelder).
+
+Später noch mehr zu den Feldern (siehe Karte).
+
+Die Darstellung eines Roboters
+******************************
+
+Die Roboter werden in der Arena als 5x5 Pixel großes Ikon einer
+bestimmten Farbe repräsentiert. Die Form kann im Roboterprogramm
+definiert werden, ansonsten wird ein Roboter als Kreis mit einem Punkt
+in der Mitte dargestellt.
+
+Im umrandeten Fenster am rechten Bildrand sieht man eine Liste der
+Roboter. Hinter dem Roboternamen taucht ein [1mI[0m auf, wenn dieser
+unsichtbar ist, dahinter werden die Debugflags [1m1[0m und [1m2[0m angezeigt.
+In der Zeile unter dem Roboternamen wird hinter dem [1mB[0m die momentane
+Batteriefüllung, hinter dem [1mP[0m der Zustand der Panzerung dargestellt.
+Wenn die Panzerung auf Null fällt, scheidet der Roboter aus dem Spiel
+aus und sein Ikon wird in der Arena durch ein Kreuz ersetzt. Ein
+schnell fahrender Roboter wird seine Batterien schnell verbrauchen und
+mit leeren Batterien schließlich bewegungslos auf das Wiederaufladen
+harren müssen.
+
+Wenn ein Roboter eine Kugel abgefeuert hat, wird diese als ein kleiner
+Punkt dargestellt, der sich von dem Roboter entfernt.  Eine Kugel ist
+doppelt so schnell wie der schnellste Roboter, also viermal schneller
+als ein normaler Roboter mit der Geschwindigkeit 100.
+
+Das Koordinatensystem
+*********************
+
+Die Arena ist definiert mit dem Feld der Koordinaten 0,0 in der linken
+oberen Ecke und dem Feld mit den Koordinaten 999,999 in der rechten
+unteren Ecke des Fensters.
+
+Die Richtung 0° zeigt geradewegs nach rechts, und die Winkel steigen
+im Uhrzeigersinn, so daß 90° gerade nach unten, 180° nach links und
+270° nach oben zeigen. Damit kann man original [1mCRobots[0m-Programme
+benutzen, nur daß dort der Koordinatenpunkt 0,0 rechts unten
+dargestellt wurde. Das heißt, daß nur die Darstellung gespiegelt
+wurde.
+
+Die Karte
+*********
+
+Die Arena wird in der Voreinstellung in der Datei [1mPCRobots.RNA[0m
+definiert.
+
+Die Arena wird in Felder von 10x10 Pixel aufgeteilt, das sind also
+100x100 Quadrate für die ganze Arena. Der Inhalt jedes Quadrates wird
+als ein Zeichen in der Arenadatei repräsentiert.  Jede Zeile der Datei
+definiert eine Zeile der Arena und jedes Zeichen ein Quadrat in dieser
+Zeile.
+
+Im Idealfall besteht eine Arenadatei aus 100 Zeilen von 100 Zeichen.
+Jede Zeile, die kürzer als 100 Zeichen und jede Datei die kürzer als
+100 Zeilen ist, wird entsprechend mit freien Feldern aufgefüllt.
+
+Die Zeichen haben die folgende Bedeutung:
+
+   * [1m.[0m - Ein freies Feld
+
+     wird intern durch [1mARENA_FREE[0m in [1mPCRobots.h[0m deklariert.
+
+   * [1mX[0m - Eine Wand
+
+     hat den internen Wert [1mARENA_WALL[0m durch [1mPCRobots.h[0m.
+
+   * [1mD[0m - Ein Schadensfeld
+
+     hat den internen Wert [1mARENA_DAMAGE[0m.
+
+   * [1mR[0m - Ein Tankfeld
+
+     hat den internen Wert [1mARENA_REFUEL[0m (siehe Tankfelder).
+
+   * [1m0[0m-[1m9[0m - Die Vorwahlpositionen
+
+     für die Roboter 0 bis 9. Das entsprechende Feld ist natürlich
+     frei, hat also hat den internen Wert [1mARENA_FREE[0m.
+
+Der Scanner vom Roboter sieht durch Wände hindurch; also muß man um
+Kollisionen zu vermeiden periodisch die Funktion [1mget_local_map[0m (siehe
+get_local_map) aufrufen.  Diese gibt ein 9x9 Felder großes Gebiet um
+den Roboter herum zurück.  Der Aufruf ist relativ langsam, deshalb
+sollte man darauf achten ihn nicht häufiger als nötig zu benutzen.
+
+Kugeln können Wände nicht durchdringen, weshalb man einen Roboter
+hinter einer Wand zwar sehen, aber nicht treffen kann.  Um zu sehen, ob
+eine Kugel eine Wand getroffen hat, gibt es die
+[1mget_shell_status[0m-Funktion (siehe get_shell_status), die
+zurückmeldet, wie der Flug der letzten Kugel geendet hat.
+
+Die Batterien der Roboter
+*************************
+
+Die Roboter werden von elektrischen Batterien betrieben. Diese
+Batterien werden jede Spielrunde von einem Solargenerator aufgeladen
+und von den Robotermotoren entsprechend der Fahrgeschwindigkeit
+entladen.
+
+Bei Spielbeginn sind die Batterien auf 1000 Einheiten aufgeladen.  Jede
+Runde laden die Batterien sich normalerweise um 4 Punkte auf, was einem
+Batterieladewert von 40 entspricht.  Bei [1mPCRobots[0m entlädt sich die
+Batterie jede Runde um die momentane Geschwindigkeit durch 10, also
+linear. Unter [1mAmigaRobots[0m entlädt sich die Batterie quadratisch
+wachsend mit der Geschwindigkeit. Mit der -c Option kann man die alte
+[1mPCRobots[0m Berechnung wieder aktivieren.
+
+   * AmigaRobots
+
+     Quadratischer Energiezuwachs bei der Fahrgeschwindigkeit bedeutet,
+     daß ein Roboter für die selben Weg bei unterschiedlichen
+     Geschwindigkeiten nicht die selbe Menge Energie benötigt.  Fährt
+     ein Roboter mit 100, verbraucht er auch 10 Energieeinheiten
+     (100*100/1000=10).  Verdoppelt er seine Geschwindigkeit auf 200,
+     so verbraucht er 40 Energieeinheiten pro Runde (200*200/1000=40).
+     Das bedeutet, daß er für den selben Weg die doppelte Energie
+     benötigt.  Mit einer Geschwindigkeit von 63 schaffen die
+     Solargeneratoren es also gerade eben die verbrauchte Energie
+     wieder aufzuladen (63*63/1000=3.9).
+
+     Der quadratische Energiehaushalt kommt den wirklichen
+     Energieverbrauch bei unterschiedlichen Geschwindigkeiten näher.
+
+   * PCRobots
+
+     Die Batterien werden etwas genauer als bei [1mPCRobots[0m behandelt.
+     Dort konnte man nämlich mit 49 fahren, verbrauchte aber nur 4
+     Batterieeinheiten. Dieser Fehler wurde bei [1mAmigaRobots[0m behoben.
+     Fährt ein Roboter bei [1mAmigaRobots[0m mit 49, bei einem
+     Batterieladewert von 40, so verbraucht der Roboter 9 Runden lang 5
+     Einheiten und die zehnte Runde 4 Einheiten. Also ist seine
+     Batterie nach zehn Runden effektiv um 9 Einheiten gesunken.
+
+Die Batterie kann nicht über 1000 Einheiten aufgeladen werden.
+
+Wenn die Batterie verbraucht ist, kommt der Roboter zum Stillstand. Um
+wieder anzufahren, muß sich dei Batterie erholen und ein [1mmove[0m-Befehl
+benutzt werden.
+
+Das Beschleunigen eines Roboters kostet zusätzliche Energie, die beim
+Bremsen nicht wieder zurückgegeben wird. Es wird 1/5 des
+Beschleunigungswertes pro Runde von der Batterie abgezogen. So kostet
+das Beschleunigen von 0 auf 100 20 zusätzliche Energiepunkte. Das ist
+anders als bei [1mPCRobots[0m, verhindert aber ein Schummeln mit der
+Energie durch An- und Abschalten der Batterie. Da dieser Vorgang
+realistisch ist, wirkt er auf die Simulation belebend.
+
+Die Batterieenergie kann außer zum Fahren noch zum Kauf von Munition
+oder Panzerung verwendet werden. Andererseits kann man auch Panzerung
+gegen Batterieladung eintauschen.
+
+Der Roboter, dessen Treffer zum Ausscheiden eines anderen führte, wird
+mit dessen Restbatterieladung belohnt. Die erbeutete Ladung wird zu
+seiner eigenen addiert.
+
+Die Tankfelder
+**************
+
+Eine Arena kann bis zu 10 Tankfelder haben. Dort kann jeder Roboter
+seine Batterien schnell auffüllen. Diese Auffüllstationen sind selbst
+große, sich schnell aufladende Batterien. Sie laden sich jeden Zug um
+5 Einheiten auf, solange sie nicht von einem Roboter angezapft werden.
+Ihre Kapazität liegt bei 2000 Einheiten.
+
+Damit ein Roboter sich aufladen kann, muß er sich auf so einem Feld
+befinden und sichtbar sein. Jede Runde werden seine Batterien dann
+zusätzlich um 10 Punkte geladen, solange die Batterien der Ladestation
+nicht selbst erschöpft sind.
+
+Die Konfiguration der Roboter
+*****************************
+
+Roboter müssen sich bevor sie mitspielen können, ersteinmal mit den
+passenden Parametern konfigurieren. Anders als bei [1mPCRobots[0m ist dies
+nun bei [1mAmigaRobots[0m Pflicht.
+
+Der Konfigurationsbefehl [3mmuß[0m der erste ausgeführte Befehl sein.
+Ansonsten ist es dem Roboter nicht möglich, sich korrekt am Spiel
+anzumelden.
+
+Normale Roboter sollten bei allen Parametern den Wert 2 besitzen.
+
+     Wert                      0       1       2        3       4
+     Geschwindigkeit          50      75     100      150     200
+     Manövrierbarkeit         20%     35%     50%      75%    100%
+     Reichweite              300     500     700     1000    1500
+     Panzerung                50      75     100      150     200
+     Beschleunigung            5       7      10       15      20
+
+Man hat 10 Punkte, die man auf diese Eigenschaften verteilen kann, sind
+die 10 Punkte verbraucht, werden die übrigen Eigenschaften auf 0
+gesetzt. Es ist außerdem noch möglich eine Tarnvorrichtung zu kaufen.
+Wenn [1mPCRobots[0m-kompatibilität aktiviert wurde, kostet die
+Tarnvorrichtung 1/10 der mitgelieferten Munition. Hat man normalerweise
+1000 Kugeln, so startet man mit Tarngerät mit 900. Unter
+[1mAmigaRobots[0m kostet die Tarnvorrichtung die Hälfte der
+eingestellten Munition.  Voreingestellt sind ohne Tarnvorrichtung 40
+Schuß, was für 2000 Runden reicht. Mit Tarnvorrichtung hat man also
+noch 20 Schuß zu Verfügung. Die Beschleunigung gibt an, um wieviel
+Bewegungspunkte sich die Geschwindigkeit in einer Spielrunde ändern
+kann und die Manövrierbarkeit bezieht sich auf die maximal erreichbare
+Geschwindigkeit, z. B. Maximalgeschwindigkeit 150, Manövrierbarkeit
+75% bedeutet, daß der Roboter bis zu einer Geschwindigkeit von 112 mit
+[1mmove()[0m seine Richtung ändern kann.
+
+Unsichtbarkeit
+**************
+
+Die Tarnung ist ein reines Defensiv-System und ist nutzlos in einem
+dummen Roboter.
+
+Wenn der Roboter unsichtbar wird, kann er nicht mehr von Scannern
+ausgemacht werden, trotzdem wird er von Kugeln beschädigt, die in
+seiner Nähe explodieren.
+
+Während der Unsichtbarkeit gibt es einige funktionelle Beschränkungen
+des Roboters.
+
+   - Scannen ist nicht möglich
+
+   - Schießen ist nicht möglich
+
+   - Die Batterie lädt sich [3mnicht[0m auf
+
+Der Hauptnutzen der Tarnung ist wahrscheinlich das unbemerkte Entkommen
+eines beschossenen Roboters aus dem Gefahrenbereich und seine Rettung
+an einen sicheren Ort. Dort könnte er dann seine Batterien sich
+erholen lassen.
+
+Andererseits könnte ein Roboter unsichtbar bleiben, bis ihm ein
+Aufklärungsroboter die Zielkoordinaten eines gegenerischen Roboters
+sendet, um plötzlich aus dem Nichts aufzutauchen und diesen zu
+beschießen. Bevor der beschossene Roboter noch die Zeit gehabt hat,
+den Schützen genau zu orten, könnte der sich inzwischen wieder in
+getarnter Sicherheit wiegen.
+
+Wenn ein Roboter unsichtbar wird, taucht ein [1mI[0m hinter seinem Namen
+auf.
+
+Ein Roboter kann maximal für 100 Runden unsichtbar bleiben, danach
+wird er wieder automatisch sichtbar werden. Nachdem ein Roboter wieder
+sichtbar geworden ist, muß er dieselbe Zeit sichtbar bleiben, die er
+vorher unsichtbar war. War ein Roboter zum Beispiel gerade für 39
+Runden unsichtbar, dann muß er erst wieder mindestens 39 Runden
+abwarten, bevor er sich wieder unsichtbar machen kann.
+
+Siehe Konfiguration, configure, invisibility und isinvisible.
+
+Schadennehmen
+*************
+
+Wenn ein Roboter gegen eine Wand fährt oder getroffen wird, wird er
+dabei beschädigt. Jeder Schadenspunkt wird ihm von seiner vorhandenen
+Panzerung abgezogen. Sobald der Roboter keine Panzerung mehr hat,
+scheidet er aus. Der Schaden wird folgendermaßen berechnet:
+
+Kollision mit einer Wand
+     1 Punkt
+
+Explosion im 50er-Radius
+     2 Punkte
+
+Explosion im 25er-Radius
+     8 Punkte
+
+Explosion im  5er-Radius
+     25 Punkte
+
+Die Explosion wird als Kreis mit drei verschiedenfarbigen Radien
+dargestellt. Die Farbe des 50er Kreises ist rot, der 25er ist gelb und
+der 5er ist weiß.
+
+Siehe Batterien, shoot, damage und hit_from.
+
+Die Roboterprogramme
+********************
+
+Jedes Roboterprogramm ist ein einzelnes ausführbares Amiga-Programm.
+Zum optimalen Zusammenspiel mit [1mAmigaRobots[0m sowie zur
+Aufrechterhaltung der Kompatibilität zu [1mPCRobots[0m ist die Einhaltung
+einiger Regeln vonnöten.
+
+  1. Als erster Befehl muß [1mconfigure()[0m aufgerufen werden.
+
+  2. Man sollte die Datei [1mPCRobots.h[0m includen.
+
+  3. Es sollten keine Standard Ein/Ausgabefunktionen benutzt werden.
+     Während auf dem Amiga nur der flüssige Ablauf darunter zu leiden
+     hat, stürzt der PC in diesem Fall ab. Da die Roboterprogramme auf
+     dem Amiga wirklich selbstständig sind, wäre es denkbar, daß ein
+     Roboter die vorhandenen Arenen einfach nachlädt, was schließlich
+     nicht der Sinn der Sache sein kann. Ein solches Programm würde
+     sich selbst disqualifizieren. Andererseits ist durch absichtliches
+     Brechen mit dieser Regel und dem Nutzen von Amiga-Systemroutinen
+     die reizvolle Implementation eines human-gesteuerten Roboters mit
+     simuliertem Radarsystem denkbar.  Der Phantasie sind hier keine
+     Grenzen gesetzt.
+
+  4. Das Programm darf [3mniemals[0m enden. Das Hauptprogramm sollte aus
+     einer Endlosschleife bestehen [1m(while(1){}- Konstruktion)[0m.
+     [1mAmigaRobots[0m selbst sorgt für die Beendigung des Programmes.
+
+     Bei Beendigung wird automatisch Speicher, der mit [1mmalloc[0m oder
+     [1mcalloc[0m angefordert wurde, freigegeben. Achtung! Bei Nutzung von
+     [1mmalloc[0m oder [1mcalloc[0m geht selbstverständlich die
+     [1mPCRobots[0m-Kompatibilität flöten.
+
+     Der folgende Absatz ist nur für Freaks...
+
+     Um ein ordentliches Verlassen des Programmes zu Gewährleisten,
+     wird in [1mrobotlib.c[0m im Falle eines Spielendes die C-Funktion
+     [1mexit()[0m aufgerufen. Diese Funktion verläßt ein C-Programm
+     orgnungsgemäß mit dem Schließen aller offenen Dateien und dem
+     Freigeben von alloziiertem Speicher. Hat man zusätzliche
+     System-Resourcen mit Beschlag belegt, sollte man einen exittrap
+     mit [1matexit()[0m legen. In anderen Sprachen sollte an dieser Stelle
+     ein Pendant zu [1mexit()[0m benutzt werden.
+
+  5. Die Speicherbegrenzung von 64k von [1mPCRobots[0m entfällt. Trotzdem
+     sollte man das Roboterprogramm kurz halten.  Bei Überschreiten
+     dieser Grenze ist der Roboter nur noch auf dem Amiga ausführbar,
+     man sollte also nicht mit Speicher aasen.  Merke: es gibt immer
+     einen kürzeren Weg, als den, den Du gehst, und weniger ist
+     manchmal mehr.
+
+  6. Fließkommarechnungen sind nicht gern gesehen. Nicht nur, daß die
+     [1mPCRobots[0m-Kompatibilität flöten geht, sondern der Roboter
+     schluckt unnötig viel Rechenzeit, was die Simulation ermüdend
+     macht. [1mAmigaRobots[0m bietet eine ganze Stange prima
+     Integer-Berechnungen an, so daß Fließkommarechnung überflüssig
+     ist. Sollte jemand eine Fließkommaberechnung wirklich vermissen,
+     ist es kein Problem, [1mAmigaRobots[0m diese mal kurz, effektiv als
+     Integer beizubringen.
+
+  7. Warteschleifen müssen immer einen rechenzeitabgebenden Befehl
+     enthalten. (zu rechenzeitabgebenden Befehlen später mehr).
+
+     Zum Beispiel:
+          while(olddamage == damage())
+          {
+             swaptask();
+          }
+
+     Ansonsten kann [1mAmigaRobots[0m das Spiel nicht fortsetzen. Am besten
+     veranschaulichen läßt sich das Spiel als Brettspiel, wo jeder in
+     einer Runde einmal drankommt und dann solange am Zug ist, bis er
+     den Zug beendet hat und der nächste dran ist. Das Spielfeld
+     verändert sich erst am Ende der Runde.
+
+     Wenn [1mAmigaRobots[0m plötzlich `hängt', liegt das mit großer
+     Sicherheit an der Mißachtung dieser Regel. Es wartet dann
+     schlicht darauf, daß das fehlerhafte Programm endlich seinen Zug
+     macht.
+
+  8. Der Programmname muß in der Variablen char *_ProgramName
+     enthalten sein. Damit schlägt [1mAmigaRobots[0m zwei Fliegen mit
+     einer Klappe. Einerseits ist die Kompatibilität zu [1mPCRobots[0m
+     gewährleistet, andererseits erledigt der Startup-Code von einigen
+     Compilern, wie z.B. SAS-C® dieses automatisch, so daß man sich
+     nicht mehr darum kümmern muß. Auf Compilern, die dies nicht
+     automatisch erledigen ist es ein Klacks, dies per Hand zu machen,
+     z.B.
+
+          /* nop ist der einfachste Roboter, auf SAS-C® entfällt
+             die Programname-Zeile */
+          #ifndef __SASC
+          char *_ProgramName = "MeinBesterRoboter";
+          #endif
+          
+          #include <PCRobots.h>
+          
+          void main(void)
+          {
+             configure(2,2,2,2,2,0);
+             while(1)
+             {
+                swaptask();
+             }
+          }
+
+Siehe Funktionen, Pascal und Assembler.
+
+Die Funktionsimplementation
+***************************
+
+Die speziellen Funktionen von [1mAmigaRobots[0m werden durch
+Taskkommunikation und Messageports realisiert. Dazu werden die Felder
+der Nachricht mit den benötigten Parametern ausgefüllt.
+
+Das [1mcmds[0m-Feld wird mit den Funktionswerten ausgefüllt, die den
+Interruptaufrufen von [1mPCRobots[0m entsprechen ([1mAX[0m). [1mAmigaRobots[0m gibt
+die Rückgabewerte in der selben Nachricht im [1mret[0m-Feld zurück.
+Zusätzliche Parameter werden in vereinbarten Feldern zurückgegeben.
+Zum Beispiel beim scan-Befehl der Wert von Range.
+
+Um die Kommunikation zu ermöglichen, öffnet [1mAmigaRobots[0m zu Beginn
+einen Rendezvous-Port. Jeder Spieler, der teilnehmen möchte, sendet
+erst mit dem configure-Befehl seine Konfiguration an [1mAmigaRobots[0m.
+[1mAmigaRobots[0m öffnet nun für jeden Spieler einen speziellen
+Spielerport, dessen Adresse es in der Konfigurationsnachricht
+zurückreicht. Alle weiteren Befehle des Spielers gehen sodann an diesen
+Spielerport. Nur der Rendezvousport ist Public, sodaß niemand die
+Kommunikation der Prozesse stören kann. Bei Benutzung des Linkmoduls
+braucht man sich um all dies nicht zu kümmern.
+
+Funktionsaufrufe mit einem Kode kleiner als 16 geben die Initiative an
+den nächsten Roboter ab.
+
+Im Moment gibt es für AmigaRoboter ein komfortables
+Standard-Objektmodul, das man zu jedem Roboter binden muß. Jede
+Sprache die ein Standart-Objektmodul binden kann, kann also mit
+geringstem Aufwand zur Programmierung eines AmigaRobot-Roboters benutzt
+werden. Für die Sprache C ist alles fertig, andere Sprachen sind ohne
+großen Aufwand implementierbar.
+
+Der Sourcecode des Objektmodules ist als [1mrobotlib.c[0m und
+[1mar_comm.h[0m beigelegt.
+
+Wenn jemand [1mAmigaRobots[0m-Roboter in einer anderen Sprache schreibt,
+kann er diesen Code frei benutzen. Ich bitte um Zusendung der
+entsprechenden Module, damit ich sie auch für zukünftige Erweiterung
+nutzbar machen kann.
+
+Die Funktionen
+**************
+
+Zugbeendende Funktionen
+=======================
+
+Die folgenden Befehle beenden den Zug des Roboters
+
+[1mswaptask[0m
+--------
+
+ - C-Funktion: void swaptask (void);
+     => Nichts
+
+     Dieser Befehl beendet den Zug des Roboters und gibt die Kontrolle
+     zurück an [1mAmigaRobots[0m. Der Befehl kann gut benutzt werden, um
+     auf bestimmte Ereignisse zu warten.
+
+     Dieser Befehl beendet den Zug des Roboters.
+
+     Als Beispiel möge der Roboter [1mnop[0m herhalten, Roboterprogramme.
+
+
+[1mmovement[0m
+--------
+
+ - C-Funktion: void movement (int [3mGeschwindigkeit[0m, int [3mWinkel[0m);
+     => Nichts
+
+     Dieser  Befehl  veranlaßt  den  Roboter,  sich  in eine bestimmte
+     Richtung mit einer bestimmten Geschwindikeit zu bewegen.
+
+    [3mGeschwindigkeit[0m
+          = 0 - Maximalgeschwindigkeit des Roboters (<=200)
+
+    [3mWinkel[0m
+          = 0 - 359 Grad
+
+     Die Geschwindigkeit ändert sich mit der konfigurierten
+     Beschleunigungsrate. Wenn der Roboter außerhalb seiner
+     Manövrierbarkeit ist (siehe Konfiguration), muß er für eine
+     Richtungsänderung erst langsamer werden. Bei maximaler
+     Geschwindigkeit (sprich 200), kann ein Roboter bei genau
+     waagerechter oder senkrechter Fahrrichtung genau ein Feld in einer
+     Spielrunde zurücklegen. Deshalb braucht er bei
+     [3mGeschwindigkeit[0m=50 4 Spielrunden für ein Feld. Ein Feld hat
+     natürlich die Diagonallänge von Wurzel 2, somit ist natürlich
+     die kürzeste Verbindung zweier Punkte die Gerade.
+
+     Dieser Befehl beendet den Zug des Roboters.
+
+     Beispiel:
+          int tempo,angle;
+          tempo = 50;
+          angle = 0;
+          ...
+          while(1)
+          {
+             ...
+             movement(tempo,angle);
+             angle += 90;   /* 90 Grad addieren */
+             angel %= 360;  /* auf 360 Grad beschränken */
+             ...
+          }
+
+     Siehe speed.
+
+[1mscan[0m
+----
+
+ - C-Funktion: int scan (int [3mWinkel[0m, int [3mAuflösung[0m, int
+          *[3mWeite[0m);
+     => [3mID-Nummer[0m
+
+     Dieser  Befehl  scannt  nach  einem  Roboter  in  eine  bestimmte
+     Richtung mit gegebener Auflösung.
+
+    [3mWinkel[0m
+          = 0 - 359 Grad
+
+    [3mAuflösung[0m
+          = 0 - 45 Grad
+
+         [3mAuflösung[0m=10 heißt 10° nach rechts und 10° nach links,
+     also insgesamt 21° Scanwinkel; [3mAuflösung[0m=0 heißt 1°
+     Scanwinkel, was das genauest mögliche Scannen ist.
+
+     Zurückgegeben wird die ID-Nummer des nächsten Roboters oder -1
+     wenn keiner zu sehen war; die Roboter haben die ID-Nummern von 0
+     bis 32k.
+
+     Wenn  ein  Roboter  gefunden  wurde,  enthält  [3mWeite[0m  seine
+     Entfernung.  Wenn  kein  Roboter  gefunden wurde, hat [3mWeite[0m
+     keine Bedeutung. Damit [1mscan[0m [3mWeite[0m verändern kann, muß die
+     Adresse mit dem Adress-Operator [1m&[0m übergeben werden.
+
+     Dieser Befehl beendet den Zug des Roboters.
+
+     Beispiel:
+          int dir,res,range;
+          dir = 0;
+          res = 4; /* Auflösung 4+1+4=7 Grad */
+          ...
+          while(1)
+          {
+             ...
+             if(scan(dir,res,&range) != -1)
+             {
+                 shoot(dir,range);
+             }
+             dir += 8;   /* 8 Grad addieren */
+             dir %= 360;  /* auf 360 Grad beschränken */
+             ...
+          }
+
+     Siehe invisibility, Unsichtbarkeit, shoot.
+
+[1mshoot[0m
+-----
+
+ - C-Funktion: int shoot (int [3mangle[0m, int [3mrange[0m);
+     => [3mAbschuß erfolgt[0m
+
+     Dieser Befehl veranlaßt den Roboter, in eine Richtung auf eine
+     Entfernung zu schießen. Die Kugel zeigt erst an ihrem Zielpunkt
+     Wirkung, es sei denn sie ist vorher auf ein Hindernis getroffen
+     und zerstört.
+
+    [3mWinkel[0m
+          = 0 - 359 Grad
+
+    [3mWeite[0m
+          = 0 - Maximale Reichweite der Kanone
+
+     Wenn der Roboter imstande war, einen Schuß abzugeben, gibt die
+     Funktion eine 1 zurück, im anderen Falle eine 0.
+
+     Das Geschütz des Roboters ist unabhängig von seiner Fahrrichtung,
+     also kann in jede Richtung gefeuert werden, die Nachladedauer der
+     Kanone ist 50 Runden. Die Begrenzung von [1mPCRobots[0m auf
+     gleichzeitig höchstens 7 Schuß pro Roboter in der Luft wurde auf
+     14 erhöht, so daß effektiv keine Begrenzung mehr existiert.
+
+     Bei [1mPCRobots[0m bekommt jeder Roboter zu beginn 1000 Schuß.  Da
+     diese 1000 Schuß erst nach frühestens 50000 Runden verschossen
+     werden können, wurde diese Zahl voreinstellungsgemäß bei
+     [1mAmigaRobots[0m auf 40 Schuß gesenkt, was immerhin für 2000
+     Runden Munition sorgt. Ich empfehle bei der Programmierung den
+     Fall einer Munitionsknappheit zu berücksichtigen. Mit der
+     Funktion [1mbuy_shells[0m (siehe buy_shells) kann man Munition für
+     Batterieeinheiten kaufen.
+
+     Im Falle von konfigurierter Tarnfähigkeit werden bei
+     [1mPCRobots[0m nur 9/10 der üblichen Munition ausgeliefert, bei
+     [1mAmigaRobots[0m sogar nur noch die Hälfte (siehe -c Option).
+
+     Dieser Befehl beendet den Zug des Roboters.
+
+     Ein Beispiel für [1mshoot[0m ist in scan.
+
+     Siehe Schadennehmen.
+
+[1mgetxy[0m
+-----
+
+ - C-Funktion: void getxy (int *[3mx[0m,int *[3my[0m);
+     => [3mx/y-Position[0m in [3mx[0m,[3my[0m
+
+     Diese Funktion gibt die momentane Position des Roboters zurück.
+
+     Die x/y-Koordinaten werden in den [3mx[0m/[3my[0m-Variablen
+     zurückgegeben. Die Werte reichen von 0 - 999. Damit die Routine
+     die Variablen [3mx[0m und [3my[0m verändern kann, muß man mit dem
+     Adress-Operator [1m&[0m die Adressen der Variablen übergeben.
+
+     Beispiel:
+          int x,y;
+          ...
+          while(1)
+          {
+             ...
+             getxy(&x,&y);
+             if(x < 10 || x > 990 || y < 10 || y > 990)
+             {
+                [3mAchtung-Wände![0m
+             }
+             ...
+          }
+
+     Siehe Karte, Arenen.
+
+[1mtransmit[0m
+--------
+
+ - C-Funktion: int transmit (int [3mEmpfangsroboter-ID[0m, int
+          [3mDatenwort[0m);
+     => [3mErfolg[0m
+
+     Diese  Funktion  sendet  dem  Roboter mit der ID [3mtarget[0m das
+     32-Bit-Wort [3mdata[0m.
+
+    [3mEmpfangsroboter-ID[0m
+          = Roboter ID, wie in [1mscan[0m erhalten
+
+    [3mDatenwort[0m
+          = 32-Bit Wort
+
+     Wenn  erfolgreich  gesendet  werden konnte, gibt die Funktion den
+     Wert 1 zurück, im Falle eines Fehlers 0.
+
+     Roboter haben einen 20 Wort großen FIFO Puffer, wo hereinkommende
+     Wörter auf ihren Abruf warten. Wenn der Puffer voll ist, oder der
+     Zielroboter nicht (mehr) existiert, gibt die Funktion den Wert 0
+     zurück. Ein erfolgreiches Transmit heißt nicht, daß der
+     Empänger die Nachricht auch gelesen hat.
+
+     Das Senden einer Nachricht kostet eine Batterieeinheit.
+
+     Siehe receive.
+
+[1mreceive[0m
+-------
+
+ - C-Funktion: int receive (int *[3mSenderoboter-ID[0m, int *[3mDatenwort[0m);
+     => [3mErfolg[0m
+
+     Mit  dieser Funktion kann man Nachrichten lesen, die mit transmit
+     von einem Roboter gesendet wurden.
+
+     Wenn  mindesten  eine  Nachricht vorhanden war, gibt die Funktion
+     eine 1 zurück, im anderen Fall eine 0.
+
+     Wenn eine Nachricht vorhanden war, enthält [3mSenderoboter-ID[0m die
+     ID des Senderoboters und [3mDatenwort[0m die Nachricht. Im anderen
+     Fall sind die Werte ohne Belang. Da diese Funktion den Roboter
+     keinen Zug kostet, sollte sie periodisch von jedem Roboter
+     aufgerufen werden, um den Empfangspuffer frei zu halten, selbst
+     wenn er die Daten nicht benötigt.
+
+     Siehe transmit.
+
+[1mdamage[0m
+------
+
+ - C-Funktion: int damage (void);
+     => [3mSchadenszustand[0m
+
+     Diese Funktion holt den Schadensstatus des Roboters. Bei einem
+     heilen, durchschnittlich konfigurierten Roboter sind das 100
+     Punkte. Wenn der Roboter zerstört ist, sind es 0 Punkte. Je
+     niedriger der Rückgabewert der Funktion ist, desto zerstörter ist
+     der Roboter.
+
+          while(1)
+          {
+             ...
+             if(damage() < 10)    /* wenn stark beschädigt */
+             {
+                movement(200,90);  /* fliehen */
+             }
+             ...
+          }
+
+     Siehe Schadennehmen, Konfiguration, hit_from.
+
+[1mspeed[0m
+-----
+
+ - C-Funktion: int speed (void);
+     => [3mMomentan-Geschwindigkeit[0m
+
+     Diese  Funktion  gibt  die  momentane Geschwindikeit des Roboters
+     zurück.
+
+     Siehe movement.
+
+[1mbattery[0m
+-------
+
+ - C-Funktion: int battery (void);
+     => [3mBatterieladung[0m
+
+     Diese Funktion meldet den Status der Batterie. Maximal sind das
+     1000 Punkte. Wenn [1mbattery[0m eine 0 zurückliefert, hat der Roboter
+     keine Energie mehr und kann nicht mehr fahren, bis seine
+     Solargeneratoren wieder genug Energie gesammelt haben.
+
+     Siehe buy_shells, buy_armour, Batterien und Karte.
+
+[1mticks[0m
+-----
+
+ - C-Funktion: long ticks (void);
+     => [3mSpielrunden-seit-Beginn[0m
+
+     Diese Funktion meldet die Anzahl der gelaufenen Spielrunden seit
+     Spielbeginn. Es hat nichts zu tun mit der real verstrichenen Zeit,
+     sondern nur mit der Anzahl vollständig abgelaufener Runden.
+
+     Siehe Roboterprogramme.
+
+[1ml_sin[0m
+-----
+
+ - C-Funktion: long l_sin (int [3mWinkel[0m);
+     => [3mSinuswert[0m
+
+     Diese Funktion gibt den Sinuswert von [3mWinkel[0m, multipliziert mit
+     dem Faktor 100.000 zurück.
+
+    [3mWinkel[0m
+          = 0 - 359
+
+     Diese Funktion sollte benutzt werden um den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Siehe l_cos, l_acos, l_asin l_tan, l_atan und l_atan2.
+
+[1ml_asin[0m
+------
+
+ - C-Funktion: int l_asin (long [3mVerhältnis[0m);
+     => [3mWinkel[0m
+
+     Diese Funktion gibt den Arcussinus (inv sin) des Wertes
+     [3mVerhältnis[0m zurück. [3mVerhältnis[0m muß mit dem Faktor
+     100.000 skaliert werden.
+
+     Der Rückgabewert ist der Winkel von -90° bis +90°.
+
+     Diese Funktion sollte benutzt werden, um den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Diese Funktion ist erst ab [1mAmigaRobots[0m Version 1.3 verfügbar
+     und ist nicht [1mPCRobots[0m-kompatibel.
+
+     Siehe l_sin, l_cos, l_acos, l_tan, l_atan und l_atan2.
+
+
+[1ml_cos[0m
+-----
+
+ - C-Funktion: long l_cos (int [3mWinkel[0m);
+     => [3mCosinuswert[0m
+
+     Diese Funktion gibt den Cosinuswert von [3mWinkel[0m, multipliziert
+     mit dem Faktor 100.000 zurück.
+
+    [3mWinkel[0m
+          = 0 - 359
+
+     Diese Funktion sollte benutzt werden, um den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Siehe l_sin, l_tan, l_atan und l_atan2.
+
+[1ml_acos[0m
+------
+
+ - C-Funktion: int l_acos (long [3mVerhältnis[0m);
+     => [3mWinkel[0m
+
+     Diese Funktion gibt den Arcuscosinus (inv cos) des Wertes
+     [3mVerhältnis[0m zurück. [3mVerhältnis[0m muß mit dem Faktor
+     100.000 skaliert werden.
+
+     Der Rückgabewert ist der Winkel von 0° bis +180°.
+
+     Diese Funktion sollte benutzt werden, um den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Diese Funktion ist erst ab [1mAmigaRobots[0m Version 1.3 verfügbar
+     und ist nicht [1mPCRobots[0m-kompatibel.
+
+     Siehe l_sin, l_asin, l_cos, l_tan, l_atan und l_atan2.
+
+
+[1ml_tan[0m
+-----
+
+ - C-Funktion: long l_tan (int [3mWinkel[0m);
+     => [3mTangenswert[0m
+
+     Diese Funktion gibt den Tangenswert von [3mWinkel[0m, multipliziert
+     mit dem Faktor 100.000 zurück.
+
+    [3mWinkel[0m
+          = 0 - 359
+
+     Diese Funktion sollte benutzt werden um, den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Siehe l_sin, l_cos, l_atan und l_atan2.
+
+
+[1ml_atan[0m
+------
+
+ - C-Funktion: int l_atan (long [3mVerhältnis[0m);
+     => [3mTangenswert[0m
+
+     Diese Funktion gibt den Arcustangens (inv tan) des Wertes
+     [3mVerhältnis[0m zurück. [3mVerhältnis[0m muß mit dem Faktor
+     100.000 skaliert werden.
+
+     Der Rückgabewert ist der Winkel von -90° bis +90°.
+
+     Diese Funktion sollte benutzt werden, um den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Siehe l_sin, l_cos, l_tan und l_atan2.
+
+
+[1ml_sqrt[0m
+------
+
+ - C-Funktion: long l_sqrt (long [3mZahl[0m);
+     => [3mWurzelwert[0m
+
+     Diese Funktion gibt die Quadratwurzel von [3mZahl[0m zurück.
+
+     Diese Funktion sollte benutzt werden um, den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Beispiel:
+          /* Bestimmung der Distanz zwischen zwei Punkten */
+          /* nach Pythagoras */
+          int distanz(int x1,int y1, int x2, int y2)
+          {
+             x2 -= x1;
+             y2 -= y1;
+             return l_sqrt(x2*x2+y2*y2);
+          }
+
+[1mset_pattern[0m
+-----------
+
+ - C-Funktion: void set_pattern (const char *[3mPattern[0m);
+     => Nichts
+
+     Dieser Befehl definiert die Darstellung des Roboters in der Arena.
+     Das Pattern besteht dabei aus 5 Bytes. Die unteren 5 Bits jedes
+     Bytes werden dann als Bitmuster für die Darstellung des Ikons
+     benutzt.
+
+     In C könnte das so aussehen:
+
+          const char pattern[5] = {1, 3, 7, 0xf, 0};
+          ...
+             set_pattern(pattern);
+
+     Siehe Roboterdarstellung.
+
+[1mdebug_flag[0m
+----------
+
+ - C-Funktion: void debug_flag (int [3mFlaggen-Nummer[0m, int
+          [3mSetzen-Löschen[0m);
+     => Nichts
+
+     Dieser Befehl erlaubt das Setzen oder Löschen von Debug-Flaggen
+     im Anzeigefenster der Roboter.
+
+    [3mFlaggen-Nummer[0m
+          = 0 or 1
+
+    [3mSetzen-Löschen[0m
+          = 0 or 1
+
+     Diese beiden Flaggen können für jede beliebige Anzeige benutzt
+     werden, die der Programmierer sich wünscht. Normalerweise benutzt
+     man sie, um interne Zustände während des Ablaufes sichtbar zu
+     machen.
+
+     Siehe Roboterdarstellung.
+
+[1mbuy_armour[0m
+----------
+
+ - C-Funktion: void buy_armour (int [3mEinheiten[0m);
+     => Nichts
+
+     Mit diesem Befehl kann man Panzerung kaufen oder verkaufen.
+
+    [3mEinheiten[0m
+          = Anzahl der zu kaufenden Einheiten
+
+     Wenn [3munits[0m negativ ist, wird Panzerung verkauft.
+
+     Eine Panzerungseinheit entspricht momentan 50 Batterieeinheiten.
+     So kann ein schwer getroffener Roboter mit viel Restenergie die
+     Energie zu seiner Reperatur benutzen. Andererseits kann ein
+     flüchtender Roboter einige Panzerungseinheiten in
+     Batterieeinheiten wandeln, um schnell das Weite suchen zu können.
+
+     Weder kann die Panzerung über das konfigurierte Maß steigen, noch
+     die Batterie über 1000. Jede Überschreitung der Maximalwerte
+     führt zu Verschwendung und damit zu Verlust.
+
+     Bei Verkauf der gesamten Panzerung (Schilde) zerstört sich der
+     Roboter selbst.
+
+     Siehe battery, buy_shells und Batterien.
+
+
+[1mbuy_shells[0m
+----------
+
+ - C-Funktion: void buy_shells (unsigned int [3mEinheiten[0m);
+     => Nichts
+
+     Dieser Befehle ermöglicht den Kauf von Munition.
+
+    [3mEinheiten[0m
+          = Anzahl der zu kaufenden Munition.
+
+     Man  kann  Munition  nicht wieder verkaufen und Batterieeinheiten
+     bekommen.
+
+     Eine Kugel kostet 10 Batterieeinheiten.
+
+     Siehe battery, shells_left, buy_armour und Batterien.
+
+
+[1mshells_left[0m
+-----------
+
+ - C-Funktion: int shells_left (void);
+     => [3mAnzahl-der-verbliebenen-Munition[0m
+
+     Diese Funktion meldet die verbleibende Munition. Wenn keine
+     Munition mehr vorhanden ist, wird ein [1mshoot[0m-Befehl als Ergebnis
+     eine [1m0[0m zurückliefern und nicht schießen.
+
+     Siehe battery, buy_shells und shoot.
+
+[1mget_local_map[0m
+-------------
+
+ - C-Funktion: void get_local_map (char *[3mPuffer[0m);
+     => Nichts
+
+     Diese Funktion meldet dem Roboter das Aussehen der Arena in seiner
+     näheren Umgebung. Dazu füllt sie ein 9x9 Bytes großes Feld aus,
+     mit dem mittleren Feld als der momentanen Position des Roboters.
+     Im Absatz über die Karte sind die Werte besprochen, die die
+     einzelnen Felder erhalten.
+
+     Der Vektor muß mindesten 81 Bytes lang sein.
+
+     Siehe Karte, getxy, get_big_map.
+
+[1minvisibility[0m
+------------
+
+ - C-Funktion: void invisibility (int [3mFlagge[0m);
+     => Nichts
+
+     Der Befehl erlaubt dem Roboter, unsichtbar oder sichtbar zu werden.
+
+    [3mFlagge[0m
+          = 0 - Roboter ist sichtbar,
+          = 1 - Roboter ist unsichtbar.
+
+     Wenn der Roboter nicht unsichtbar werden konnte, tut dieser Befehl
+     nichts. Ob der Roboter unsichtbar ist, oder nicht, kann man mit
+     dem Befehl [1misinvisible[0m feststellen.
+
+     Siehe isinvisible, Unsichtbarkeit und Batterien.
+
+[1mget_shell_status[0m
+----------------
+
+ - C-Funktion: int get_shell_status (void);
+     => [3mStatus-der-letzten-Kugel[0m
+
+     Diese Funktion meldet dem Roboter, was mit der letzten
+     aufgetroffenen Kugel passierte.
+
+     Rückgabewert:
+    [1m0[0m
+          - Die Kugel traf nichts ([1mSHELL_MISSED[0m).
+
+    [1m1[0m
+          - Die Kugel traf eine Wand ([1mSHELL_HIT_WALL[0m).
+
+    [1m2[0m
+          - Die Kugel traf einen Roboter im 50er Radius
+          ([1mSHELL_CLOSE_BLAST[0m).
+
+    [1m3[0m
+          - Die Kugel traf einen Roboter im 25er Radius
+          ([1mSHELL_NEAR_MISS[0m).
+
+    [1m4[0m
+          - Die Kugel traf einen Roboter im 5er Radius
+          ([1mSHELL_DIRECT_HIT[0m).
+
+    [1m-1[0m
+          - Die Kugel traf einen Roboter im 50er Radius
+          ([1mSHELL_NOT_AVAIL[0m).
+
+     Diese Funktion kann zum Beispiel dazu benutzt werden, um
+     festzustellen, ob sich der beschossene Roboter hinter einer Wand
+     verschanzt.
+
+     Der Wert [1mSHELL_NOT_AVAIL[0m ist eine Erweiterung von
+     [1mAmigaRobots[0m gegenüber [1mPCRobots[0m. Wenn man die Funktion
+     [1mget_shell_status[0m aufruft, wird das Register auf diesen Wert
+     gesetzt. Damit ist eine Zeitsynchronisation möglich.  Das heißt
+     das der Status jedes Schußes kann nur genau einmal gelesen
+     werden. Hat seit dem letzten [1mget_shell_status[0m keine weitere
+     Kugel ihren Flug beendet, gibt die Funktion den Wert
+     [1mSHELL_NOT_AVAIL[0m zurück.
+
+     Siehe Karte, shoot und Schadennehmen.
+
+[1misinvisible[0m
+-----------
+
+ - C-Funktion: int isinvisible (void);
+     => [3mUnsichtbar[0m
+
+     Diese Funktion meldet, ob der Roboter gerade unsichtbar ist, oder
+     nicht.
+
+     Rückgabewert:
+    [1m0[0m
+          - Der Roboter ist sichtbar.
+
+    [1m1[0m
+          - Der Roboter ist unsichtbar.
+
+     Siehe invisibility, Unsichtbarkeit und Batterien.
+
+[1ml_atan2[0m
+-------
+
+ - C-Funktion: int l_atan2 (int [3my[0m, int [3mx[0m);
+     => [3mTangenswert[0m
+
+     Diese Funktion gibt den Wert des Arcustangens von [3my[0m/[3mx[0m zurück,
+     selbst wenn [3mx[0m gleich oder in der Nähe von 0 ist.
+
+     Wenn sowohl [3mx[0m als auch [3my[0m den Wert 0 haben, gibt diese Funktion
+     0 zurück.
+
+     Die Funktion verhält sich genauso wie das entsprechende C-Pendant.
+
+     Siehe l_sin, l_cos, l_tan und l_atan.
+
+[1mflying_shells[0m
+-------------
+
+ - C-Funktion: int flying_shells (void);
+     => [3mAnzahl_der_eigenen_fliegenden_Kugeln[0m
+
+     Diese Funktion zeigt an, wieviele der eigenen verschossenen Kugeln
+     noch am Fliegen sind.
+
+     Diese Funktion ist nicht bei [1mPCRobots[0m vorhanden. Sie ist erst
+     bei [1mAmigaRobots[0m Version 1.2 aufwärts verfügbar.
+
+     Siehe get_shell_status.
+
+[1mget_big_map[0m
+-----------
+
+ - C-Funktion: void get_big_map (char *[3mPuffer[0m);
+     => Nichts
+
+     Diese Funktion meldet dem Roboter das Aussehen der Arena in einer
+     etwas weiteren Umgebung als get_local_map. Dazu füllt sie ein 9x9
+     Bytes großes Feld aus, mit dem mittleren Feld als der momentanen
+     Position des Roboters. Im Gegensatz zu get_local_map werden hier
+     nicht die direkt angrenzenden 9x9 von 1000x1000 Feldern
+     zurückgegeben, sondern die angrenzenden 81 Zehnerblöcke. Man
+     bekommt also in den 81 Bytes des Feldes das Aussehen von 8100 von
+     1000x1000 Feldern zurück. Das ist möglich, weil in der Karte
+     immer ein 10x10-Felderblock von der gleichen Beschaffenheit sein
+     muß. Damit ist ein etwas weitsichtigeres Handeln für den Roboter
+     möglich.
+
+     Im Absatz über die Karte sind die Werte besprochen, die die
+     einzelnen Felder erhalten.
+
+     Der Vektor muß mindesten 81 Bytes lang sein.
+
+     Diese Funktion ist erst ab [1mAmigaRobots[0m Version 1.2 verfügbar
+     und ist nicht [1mPCRobots[0m-kompatibel.
+
+     Siehe Karte, getxy, get_local_map.
+
+[1mhit_from[0m
+--------
+
+ - C-Funktion: int hit_from (void);
+     => [3mRichtung_der_letzten_treffenden_Explosion[0m
+
+     Diese Funktion teilt dem Roboter mit, aus welcher Richtung er von
+     der letzten Explosion getroffen wurde. So könnte er
+     beispielsweise sofort in die Gegenrichtung fahren, um möglichst
+     schnell den Explosionsradius zu verlassen. Wurde der Roboter seit
+     dem letzten Abfragen dieser Funktion nicht mehr getroffen, erhält
+     man das Ergebnis [1mSHELL_NOT_AVAIL[0m. Ansonsten gibt diese Funktion
+     einen Winkel im Bereich von 0°-359° zurück. Zu beachten gilt,
+     daß dieser Wert veralten kann. Sinnvollerweise empfehle ich,
+     [1mhit_from()[0m nur aufzurufen, wenn man gerade getroffen wurde
+     (siehe damage()), weil der Wert dann aktuell ist.
+
+    [3mRichtung_der_letzten_treffenden_Explosion[0m
+          = 0 - 359 oder SHELL_NOT_AVAIL
+
+     Diese Funktion ist erst ab [1mAmigaRobots[0m Version 1.2 verfügbar
+     und ist nicht [1mPCRobots[0m-kompatibel.
+
+     Siehe Schadennehmen, get_shell_status, shoot.
+
+[1mhighest_player_id[0m
+-----------------
+
+ - C-Funktion: int highest_player_id (void);
+     => [3mHöchste_ID_eines_Spielers[0m
+
+     Diese Funktion gibt als Rückgabewert die höchste ID zu Beginn des
+     Spieles zurück. Man kann damit also nur abfragen, wieviele
+     Roboter zu Beginn am Spiel teilgenommen haben, nicht wieviele noch
+     im Spiel sind. Der Wert dieser Funktion konnte auch über Tricks
+     mit Messages erhalten werden, deshalb ist er eigentlich nicht
+     wirklich neu.
+
+    [3mHöchste_ID_eines_Spielers[0m
+          = Anzahl Spieler
+
+     Diese Funktion ist erst ab [1mAmigaRobots[0m Version 1.3 verfügbar
+     und ist nicht [1mPCRobots[0m-kompatibel.
+
+
+[1mmyid[0m
+----
+
+ - C-Funktion: int myid (void);
+     => [3meigene ID[0m
+
+     Der Rückgabewert dieser Funktion ist die eigene ID. Der Wert
+     dieser Funktion konnte auch über Tricks mit Messages erhalten
+     werden, deshalb ist er eigentlich nicht wirklich neu.
+
+     Diese Funktion ist erst ab [1mAmigaRobots[0m Version 1.3 verfügbar
+     und ist nicht [1mPCRobots[0m-kompatibel.
+
+
+[1mversion[0m
+-------
+
+ - C-Funktion: int version (void);
+     => [3mAmigaRobots Versionnummer[0m
+
+     Der Rückgabewert dieser Funktion ist die kodierte Versionsnummer
+     von [1mAmigaRobots[0m. Die Versionsnummer errechnet sich wie folgt:
+
+    [3mVersion[0m
+          = Version * 1000 + Revision * 100 + Release
+
+     Die Version 1.3.7ß ergäbe also den Wert 1307.
+
+     Diese Funktion ist erst ab [1mAmigaRobots[0m Version 1.3 verfügbar
+     und ist nicht [1mPCRobots[0m-kompatibel.
+
+
+[1mconfigure[0m
+---------
+
+ - C-Funktion: int configure (int [3mGeschwindigkeit[0m, int
+          [3mManövrierbarkeit[0m, int [3mReichweite[0m, int [3mPanzerung[0m,
+          int [3mBeschleunigung[0m, int [3mTarnfähigkeit[0m);
+     => [3mKonfiguration-Erfolgreich[0m
+
+     Dieser  Befehl erlaubt das Konfigurieren eines Roboters zu Beginn
+     des Spieles. Es [3mmuß[0m der erste ausgeführte Befehl sein.
+
+     Für die Bedeutung und Wirkung der Werte, Konfiguration.
+
+     Wenn die Konfiguration geklappt hat, gibt sie eine 1 zurück, im
+     Falle, daß sie nicht der erste Befehl ist, eine 0. Die
+     [3mReichweite[0m bezieht sich natürlich auf die der Kanone. Bei
+     konfigurierter Tarnvorrichtung ist 9/10 das erreichbare Maximum
+     der Munition.
+
+         [1mconfigure[0m() [3mmuß[0m als erster Befehl ausgeführt werden und
+     darf [3mkein[0m zweites Mal ausgeführt werden, beziehungsweise wird
+     jedes weitere Mal ignoriert.
+
+     Siehe Konfiguration, Batterien, Unsichtbarkeit und Schadennehmen.
+
+
+Aufruf von Assembler
+********************
+
+Wer die Roboter unbedingt in Assembler programmieren will, kann dies
+sehr einfach tun. Er bindet die [1mrobotlib.o[0m-Datei an seinen
+assemblierten Code, in dem er die obigen Befehle mit
+
+     bsr  _<Funktion>
+
+aufruft. Der Rückgabewert wird in [1mD0[0m zurückgegeben, die Parameter
+übergibt man auf dem Stack.
+
+        move.l   [3mpara1[0m,-(a7)
+        move.l   [3mpara2[0m,-(a7)
+        move.l   [3mpara3[0m,-(a7)
+
+Das Setzen der [1m__ProgramName[0m - Variablen nicht vergessen!
+
+Hoffe ich jedenfalls... Wenn ich hier beim Assembler so ad hoc einen
+Fehler gemacht haben sollte, möge man das verzeihen.
+
+Aufruf von Pascal
+*****************
+
+Habe ich noch nicht ausprobiert. Das Original [1mPC-Robots[0mfile habe ich
+beigelegt. Normalerweise müßte man einfach die [1mrobotlib.o[0m-Datei
+binden und dem Pascal die Syntax der Befehle verklickern. Das sollte
+eigentlich reichen.  Wenn jemand damit Erfolg haben sollte, wäre ich
+über das Zusenden sehr erfreut, damit ich es auch anderen
+Pascal-Fraggles zugänglich machen kann.
+
+Kompilieren eines Roboters in C
+*******************************
+
+Ich habe dem Archiv ein Beispiel-Makefile beigelegt, das einwandfrei
+mit SAS-C® funktioniert. Zur Herstellung eines Roboters einfach den
+Source in das Roboterverzeichnis legen, den Namen des Roboters mit der
+Extension [1m.rob[0m in der obersten Zeile eintragen und [1mmake[0m, bzw.
+[1msmake[0m oder wie sie alle heißen, aufrufen.
+
+Grundsätzlich muß folgendes getan werden:
+
+  1. Einen C-Source erstellen, der die Mindestanforderung eines
+     AmigaRoboters erfüllt, nämlich
+       a. das [3mincluden[0m von [1mPCRobots.h[0m mit [1m#include
+          <PCRobots.h>[0m,
+
+       b. dem Vorhandensein eines Einsprungpunktes (wie in jedem
+          C-Programm) [1mmain(){}[0m,
+
+       c. dem Aufruf der Funktion [1mconfigure(...);[0m,
+
+       d. einer endlosen Schleife, z.B. [1mwhile(1){...}[0m,
+
+       e. und in dieser Schleife mindestens einen rechenzeitabgebenden
+          Befehl, z.B. [1mswaptask();[0m aufrufen.
+
+
+  2. dem Vorhandensein und Setzen der Variablen [1m_ProgramName[0m, bei
+     SAS-C® im Startupcode, ansonsten durch den Befehl [1mchar
+     *_ProgramName = "Beispiel.rob";[0m zu Beginn des Programmes. Im
+     saubersten Falle in [1m#ifndef __SASC[0m und [1m#endif[0m eingeschlossen,
+     die auf Vorhandensein des eigenen Compilers prüfen.
+
+  3. das Programm im 68000er-Code kompilieren.
+
+  4. das Binden mit
+       a. dem Startup-code ([1mlib:c.o[0m),
+
+       b. dem Programm-Objektcode ([1m[3mProgrammname[0m.o[0m),
+
+       c. dem [1mAmigaRobots[0m-Objektcode ([1mrobotslib.o[0m) und
+
+       d. der Standard-C Library ([1mlib:c.lib[0m, oder bei SAS®
+          [1mlib:sc.lib[0m)
+
+
+Viel Spaß mit [1mAmigaRobots[0m!
+
+-- wünscht euch Hanno Behrens
+
+Meine Anschrift steht in Kontaktadresse und Registrierung.
+
+Dank
+****
+
+   * Colin Fox/Bruce Dawson
+
+     für ihre [1mreq.library[0m, ohne die ich das Programm nie so schön
+     hinbekommen hätte.
+
+   * Tom Poindexter, David Wright
+
+     für [1mCRobots[0m und die Amigaimplementation.
+
+   * P.D.Smith
+
+     für seine hervorragende Vorlage und Anleitung mit [1mPCRobots[0m. Ihm
+     zu Ehren werde ich seinen simple- und demo-Roboter diesem Paket
+     beilegen.
+
+   * Dirk Hackmann, Marco Pöhler, Sven Spreier, Florian Hinzmann und
+     Thomas Soeffing
+
+     für Ideen, Vorschläge, Beta-testen und Zeit für Tee.
+
+   * Oliver Clouth
+
+     für seine Icons
+
+   * China, Indien, Taiwan, u.a.
+
+     für den Tee.
+
+   * Eirin
+
+     für Liebe, Verständnis und Kochen von hervorragendem Tee.
+
+   * Isis, das pelzige Katzenvieh
+
+     für ihre konstruktiven Beiträge zwei Stunden vor der
+     Fütterungs-äöljuuuuttttttttssssss
+     sssssssssskml,mmmm.mmmmmmmmmmmmmzeit
+     Vieh!
+
+Fragen und Antworten
+********************
+
+Gnu-C++ und Dice-Probleme
+=========================
+
+Das [1mrobotlib.o[0m-File ist mit dem SAS-C compiliert worden. Es ist eine
+Linker-Objektdatei, keine Linker-Library. Das Format ist dieser
+Objektdatei ist [1mBLink[0m-kompatibel. Da die anderen Compiler teilweise
+mit merkwürdigen Linkern arbeiten, kennen sie natürlich einige
+Standard-Linkervariablen wie z.B.  [1m_LinkerDB[0m nicht.
+
+Dem abzuhelfen ist ganz einfach: compiliert das [1mrobotlib.o[0m-File
+einfach mit eurem Compiler neu. Ich habe die dazu nötigen
+Includedateien dem Paket beigelegt und in der Datei robots/makefile
+steht sagar die Anweisung für den SAS.  Also sowas ähnliches wie:
+
+     sc NOSTACKCHECK SAVEDS robotlib.c
+
+Im Verzeichnis müssen sich die Dateien [1mpcrobots.h[0m, [1mrobotlib.c[0m und
+[1mar_comm.h[0m befinden, oder dem Compiler mit einer entsprechenden
+Includepfadangabe der Aufenthaltsort mitgeteil werden (beim SAS-C ist
+das [1mIDIR=[3mPfadname[0m[0m).
+
+Dabei heißt [1mNOSTACKCHECK[0m, daß der Stack nicht auf Überlauf
+geprüft wird (hab' ich nur gemacht, damit der Code etwas schneller wird
+und andere Compiler weniger Probleme mit dem File haben). [1mSAVEDS[0m
+heißt, daß das Database-Register zu Beginn des Aufrufs jeder Routine
+neu geladen werden muß (hier wird auf [1m_LinkerDB[0m zurückgegriffen.
+Diese Flags sollte man bei dem entsprechen Compiler auch aktivieren.
+Vielleicht ist das auch nicht nötig, probiert es halt aus.
+
+Das [1m#include <proto/*.h>[0m bedeutet übrigens, daß die
+AmigaLibrary-Funktionen nicht über die [1mAmigalib.lib[0m gestartet
+werden, sondern durch Direktaufruf, außerdem werden dort die
+Prototypen der Funktionen deklariert.
+
+Wenn man das [1mmakefile[0m für den SAS-C nicht nutzen möchte, kann man
+einen Roboter sonst auch mit
+
+     SC LINK IDIR=[3mverzeichnis-mit-pcrobots.h[0m [3mRobotername[0m.c robotlib.o
+
+Ich habe die Includedateien auf diese Probleme hin noch einmal
+überarbeitet und [1m__SASC[0m-Switches eingebaut. Nun sollten die Teile
+aber wirklich einwandfrei compilierbar sein. Ich habe extra dafür den
+GCC bei mir installiert und die Files compiliert. Das ging einwandfrei
+mit:
+
+     gcc -c robotlib.c
+
+wobei der Krümel-Frontend den Pfad der Includedateien natürlich
+wissen muß. Einen Roboter kompiliert man mit dem Gnu-Compiler dann so:
+
+     gcc -lamy -o [3mRobotname[0m.rob [3mRobotname[0m.c robotlib.o
+
+wobei die [1mrobotlib.o[0m-Datei natürlich die für den Gnu-Compiler sein
+muß. Die Datei ist bereits fertig kompiliert in
+[1mrobots/gcc/robotlib.o[0m zu finden.
+
+Mit dem Dice-C-Compiler läßt sich die Gluedatei mit
+
+     DCC robotlib.c -orobotlib.o -c -mRR -proto -ms -mi
+     => liefert [1mrobotlib.o[0m
+
+Übrigens können hier Längenunterschiede auftreten, je nachdem, unter
+welchem Namen man [1mrobotlib.c[0m kompiliert.  Obengenannter Aufruf
+liefert eine Länge von 2316 Bytes für [1mrobotlib.o[0m. Roboter werden
+dann mit
+
+     DCC [3mRobotername[0m.c robotlib.o -o[3mRobotername[0m.rob -mRR -proto -ms -mi
+
+kompiliert. Unter OS1.3 sollten die [1m-mRR[0m- und [1m-proto[0m-Optionen
+weggelassen werden und auch die robotlib.o neu kompliliert werden.
+
+Farben und Interlacemodus
+=========================
+
+Wenn man keinen Flickerfixer sein Eigen nennt, kann man über den
+Farbrequester den Hintergrund dunkel wählen, womit das Flickern auf
+ein erträgliches Maß verringert wird.
+
+Wenn man OS2.0 sein Eigen nennt, kann man die neue [1m-i Option[0m (siehe
+-i Option) nutzen und eine andere Bildschirmauflösung wählen. Zu
+empfehlen ist Productivity 640x480 oder im Falle eines veralteten
+Chipsatzes vielleicht Pal-Hires. Durch Autoscrollen kann man sich dann
+den interessanten Teil der Arena herauspicken.
+
+Onlinehilfe im Editor
+=====================
+
+Wenn der benutzte Editor ARexx unterstützt, läßt sich sehr einfach
+eine Onlinehilfe herstellen. Dafür übergibt man AmigaGuide die Datei
+[1mAmigaRobots.guide[0m und das entsprechende Suchwort. Hier ein Beispiel
+für den Cygnus-Ed:
+
+     /*rx AmigaRobots_guide.ced*/
+     options results
+     
+     LF=d2c(10)
+     CR=d2c(13)
+     
+     status 55
+     line = result
+     status 46
+     pos = result+1
+     line = translate(line," ","()=?+-*#^!$%&/{}[]<>	"CR||LF)
+     begin = lastpos(" ",line,pos)
+     ende = pos(" ",line,pos)
+     suchwort  = substr(line,begin+1,ende-begin)
+     if ~show(p,amigarobots_rexx) then do
+       address command 'run >nil: <nil: amigaguide:amigaguide \
+          AmigaRobots:doks/amigarobots.guide port=amigarobots_rexx'
+     end
+     address command waitforport amigarobots_rexx
+     address amigarobots_rexx link suchwort
+
+PublicScreen-Tips
+=================
+
+Dadurch, daß [1mAmigaRobots[0m und OS2.0 auf einem public-Screen läuft,
+sind ein paar nette Ding möglich. So kann man den Editor, wenn der es
+erlaubt, auf den AmigaRobots-Screen umleiten, um seinen Roboter im
+Einzelschritt zu debuggen, und den Code simultan zu verfolgen. Ebenso
+kann der Roboter selbst ein eigenes Debugging-Fenster auf dem
+AmgigaRobots-Screen öffnen, um zusätzliche Informationen anzuzeigen.
+Mit einer Shell lassen sich direkt vom AmigaRobots-Screen Stapeldateien
+mit Roboterwettkämpfen ausführen. Die Möglichkeiten sind vielfältig.
+
+Siehe -i Option.
+
+Geschichte
+**********
+
+Programmentwicklung
+===================
+
+   * Betareleases vom 24.12.92 bis 29.1.93 unveröffentlicht, nur für
+     Beta-Tester
+
+   * Version 1.0.1 - 29.1.93 erste Version in der MAG Hamburg
+
+   * Version 1.0.11 - 1.2.93 geänderter   Infotext,  die
+     Zwischenversionen  sind  für  den Versuch  draufgegangen,  die
+     langsamen Explosionen nebenläufig zu programmieren.   Da  der
+     Spaß  nichts  bringt  und sowieso nicht wirklich  stabil  lief,
+     habe  ich es wieder normal programmiert.  Sven   wird   sich
+     sicherlich   ärgern...   Außerdem  ein  paar Schönheitsfehler
+     beseitigt,  die aber sicher niemandem außer mir auffallen werden.
+        - erste Veröffentlichung im Fras-Netz
+
+        - Veröffentlichung auf TIME 206
+
+   * Version 1.0.23 23-Jul-93
+        - Bug bei nicht vorhandener req.library beseitigt
+
+        - Alle Fonts sind auf Topaz80 festgenagelt.  Bei Nutzung eines
+          alternativen  Defaultfonts  unter  KS/WB  2.0 war die
+          Darstellung total  vermackelt.   Leider hatte ich noch keine
+          Zeit, einen frei wählbaren  Font  einzubauen.  Dafür
+          müßte ich die gesamte Grafik- und  Menüstruktur
+          neuschreiben,  da ich in einem Anflug von Wahn eine abartige
+          Menü/Grafiktoolbox benutzt habe.
+
+        - Update der Real- und Usenet-Anschrift (siehe Kontaktadresse
+          und Registrierung).
+
+        - die Kommandozeilenoption -f hat sich geändert auf -o, da in
+          Zukunft -f für den Font reserviert ist (siehe -o Option).
+
+        - Dokumentation vollständig umgestellt, Archiv beinhaltet
+          jetzt texi,dvi,dok und guide - Dokumentationen
+
+   * Version 1.1 Programm, Version 1.3 der Dokumentation
+        - alle robotlib-Includefiles kompatibler für andere Compiler
+          gemacht
+
+        - alle Roboter [1m_ProgramName[0m-Statements verpaßt und in
+          [1m#ifndef __SASC[0m eingeschlossen und den ganzen Kram neu
+          durchkompiliert.
+
+        - weitere Erweiterung und Verbesserung der Dokumentation, z.B.
+          Dice/Gnu-C++-Anhang und 1000 Kleinigkeiten (keine
+          Übertreibung) (siehe Fragen und Antworten).
+
+        - Schüsse werden nur noch von Wänden aufgehalten, anders als
+          bei PCRobots.  Dort werden Schüsse auch von den anderen
+          Hindernissen aufgehalten.  Das original PCRobots-Verhalten
+          kann man jetzt mit der neuen Option -c aktivieren (siehe -c
+          Option).
+
+        - Bug beseitigt, der manchmal zu falscher Parameterübergabe
+          bei shoot führte und dort seltsame Effekte erzeugte.
+
+        - Der Menüpunkt "Entfernen" ermöglicht das Entfernen von
+          schadhaften Robotern.
+
+        - Linkfiles für Dice und Gnu-C++ liegen bei
+
+        - Neue Option -t Zeitfaktor, WB-Tooltype TIMEFACTOR, gibt die
+          Schrittweite der Simulation an, so daß man die Simulation
+          beschleunigen kann. Da dadurch eine Ungenauigkeit entsteht,
+          ist diese Option als "Draftmodus" zu verstehen (siehe -t
+          Option).
+
+        - Das Konfigurationswindow wurde um das Zeitfaktorgadget
+          erweitert
+
+        - Das Statusfenster schaltet sich nun automatisch inaktiv,
+          damit die Menüs sofort weiter erreichbar sind.
+
+        - In der Icons-Directory liegen ein paar nette Icons für
+          AmigaRobots von Oliver Clouth. Ich konnte mich noch nicht
+          für eins entscheiden, weil die Dinger erst gestern angekommen
+          sind.
+
+        - 8.9.93 Veröffentlichung im FRAS-Netz
+
+   * Version 1.2
+        - 10.9.93 neue -i Option, neuer MONITORID-Tooltype.
+          Dokumentation dieser Features. Damit ist es nun möglich
+          AmigaRobots auf jedem beliebigen Bildschirmmodus zu starten.
+          Diese Option ist aber nur auf Kickstart 2.0 oder höher
+          aktiviert (siehe -i Option).
+
+        - PubName `AmigaRobots' unter 2.0. Der AmigaRobots-Bildschirm
+          ist public (Systemanforderungen und Fragen und Antworten).
+
+        - Ausbau der Fragen und Antworten, der Einleitung und Hinzunahme
+          des Geschichte-Anhangs, damit man direkt an die neuen Stellen
+          blättern kann.  Siehe Fragen und Antworten, Einleitung.
+
+        - 11.9.93 Entfernte Roboter werden durchgestrichen
+
+        - 8.11.93 Statusfenster zeigt x/y Postition an
+
+        - Die voreingestellte Schußzahl wurde auf 40 gesenkt und bei
+          Tarnvorrichtung nicht mehr 9/10 sondern 1/2 der Munition
+          einbehalten.
+
+          Siehe -m Option, -c Option, Konfiguration und shoot.
+
+        - flying_shells()-Funktion hinzugefügt
+
+          Diese Funktion ist nicht mehr PCRobots-kompatibel.
+
+          Siehe flying_shells.
+
+        - get_big_map()-Funktion hinzugefügt
+
+          Diese Funktion ist nicht mehr PCRobots-kompatibel.
+
+          Siehe get_big_map.
+
+        - hit_from()-Funktion hinzugefügt
+
+          Diese Funktion ist nicht mehr PCRobots-kompatibel.
+
+          Siehe hit_from.
+
+        - AmigaRobots_guide.ced-Script dem Archiv beigelegt
+
+          Mit diesem Script ist es möglich, vom CygnusED aus die
+          AmigaRobots-Guide-Datei als Onlinehilfe zu benutzen. Es wird
+          automatisch der Befehl aufgerufen, auf dem der Cursor steht.
+          Anpassungen der Pfade sind allerdings von Hand vorzunehmen.
+
+        - Quadratischer Energiehaushalt für die Geschwindigkeit
+
+          Der Energiebedarf für eine Strecke ist geringer bei kleinerer
+          Geschwindigkeit. Dadurch entsteht ein realistischer
+          Energiehaushalt. Ein Roboter mit einer Geschwindigkeit von 63
+          verbraucht jetzt soviel Energie, wie die Generatoren aufladen
+          können. Dadurch sind die Roboter insgesamt beweglicher
+          geworden und die Simulation komplexer.
+
+          Siehe Batterien, -c Option.
+
+        - Zusätzliche Energiekosten beim Beschleunigen
+
+          Dadurch werden Schummeleffekte mit der Energie/Lenkbarkeit
+          verhindert. Die einzige Lösung für das Problem war mehr
+          Realismus. Diese Funktion ist nicht abschaltbar.
+
+          Siehe Batterien.
+
+        - 23.12.93 korrekte Glue-Datei für DICE beigelegt Außerdem
+          wurde die Herstellungsanweisung korrigiert. Unter 1.3 müßte
+          die Datei dann aber trotzdem neu hergestellt werden.
+
+          Siehe Fragen und Antworten.
+
+   * Version 1.3
+        - 26.6.95 hinzufügen der Funktionen l_asin und l_acos Diese
+          beiden Funktionen wurden vermißt und deshalb nachträglich
+          implementiert. Diese Funktionen sind nicht PC-Robots
+          kompatibel.
+
+          Siehe l_asin, l_acos.
+
+        - 6.7.95 hinzufügen der Funktion highest_player_id(), myid()
+          und version(). Wechsel des rechtlichen Status von Giftware auf
+          Fairware. Ab sofort voller Support auch für nicht
+          registrierte Benutzer. Überweisungen von Geld werden
+          trotzdem gern gesehen. Im Paket liegt außerdem der Roboter
+          Nexus.rob bei, der nebenbei den ersten Platz abgesahnt hat.
+
+          Siehe highest_player_id, myid, version und Kontaktadresse und
+          Registrierung
+
+bekannte Bugs
+=============
+
+   - Kugeln am linken Rand verschwinden nicht.  Unerklärlich. Ich muß
+     darüber mit meinem Meditationsbrahmanen reden.
+
+   - Die Berta hat aufgehört zu schießen, obwohl noch ein Gegner
+     vorhanden war. Bug in Berta oder Robots?
+
+   - unerklärlich ist auch, warum auf außergewöhnlich schnellen (40
+     MHz) 68040-Amigas die Roboter manchmal "Spuren" hinterlassen.
+     Sollte eigentlich nicht passieren. Vielleicht ein Fehler in der
+     graphics.library?
+
+zu tun
+======
+
+   - vernünftige Statistikauswertung
+
+   - Arena-Editor
+
+   - Außergewöhnliches Icon, am besten in 8 "MagicWB"-Farben und
+     Hochauflösung, d. h. 1/1 Pixelverhältnis
+
+   - Fertigstellung meines neuesten Robterprojektes "Gänger"
+
+Hauptindex
+**********
+
+
+
+ -aArenadatei Option                    -a Option
+ -c Option PCRobots-Wand                -c Option
+ -d Option Debuggingmodus               -d Option
+ -iMonitorID,Schirm_Breite,Schirm_Hohe,Breite,Hohe Option-i Option
+ -lSpielrunden Option                   -l Option
+ -mAnzahl-Munition Option               -m Option
+ -oDateiname Option Ausgabedatei        -o Option
+ -p Option feste Position               -p Option
+ -q Option Quickmodus                   -q Option
+ -rBatterieladung Option                -r Option
+ -s Option Einzelschritt                -s Option
+ -tZeitfaktor Option                    -t Option
+ -v1/50-Sekunden Option pausieren       -v Option
+ -x Option langsame Explosion           -x Option
+ CLI                                    AmigaRobots vom CLI
+ AmigaRobots vom CLI                    AmigaRobots vom CLI
+ AmigaRobots von der Workbench          AmigaRobots von der Workbench
+ Arenen                                 Arenen
+ Assembler                              Assembler
+ Batterien                              Batterien
+ Bugs                                   Geschichte
+ C                                      Funktionen
+ Dank                                   Dank
+ Darstellung eines Roboters             Roboterdarstellung
+ Dice                                   Fragen und Antworten
+ Editor                                 Fragen und Antworten
+ Einleitung                             Einleitung
+ Entfernenmenü                         Entfernenmenü
+ Entstehungsgeschichte                  Entstehungsgeschichte
+ Farben                                 Fragen und Antworten
+ Fragen und Antworten                   Fragen und Antworten
+ Funktionen                             Funktionen
+ Funktionsimplementation                Funktionsimplementation
+ Geschichte                             Geschichte
+ Gnu-C++                                Fragen und Antworten
+ History                                Geschichte
+ Implementation                         Funktionsimplementation
+ Info-Einträge                         AmigaRobots von der Workbench
+ Interlace                              Fragen und Antworten
+ Karte                                  Karte
+ Kompilieren in C                       Kompilieren in C
+ Konfiguration                          Konfiguration
+ Kontaktadresse                         Kontaktadresse und Registrierung
+ Koordinatensystem                      Koordinatensystem
+ Menüfunktion                          Menüfunktion
+ Onlinehilfe                            Fragen und Antworten
+ Optionen                               AmigaRobots vom CLI
+ Pascal                                 Pascal
+ Positionsmenü                         Positionsmenü
+ Programmenü                           Programmenü
+ PublicScreen-Tips                      Fragen und Antworten
+ Registrierung                          Kontaktadresse und Registrierung
+ Roboterdarstellung                     Roboterdarstellung
+ Roboterprogramme                       Roboterprogramme
+ Schadennehmen                          Schadennehmen
+ Simulationsmenü                       Simulationsmenü
+ Statusmenü                            Statusmenü
+ Systemanforderungen                    Systemanforderungen
+ Tankfelder                             Tankfelder
+ Tooltypes                              AmigaRobots von der Workbench
+ Unsichtbarkeit                         Unsichtbarkeit
+ Workbenchaufruf                        -m Option
+
+Funktionsindex
+**************
+
+
+
+ `battery'                              battery
+ `buy_armour'                           buy_armour
+ `buy_shells'                           buy_shells
+ `configure'                            configure
+ `damage'                               damage
+ `debug_flag'                           debug_flag
+ `flying_shells'                        flying_shells
+ `getxy'                                getxy
+ `get_big_map'                          get_big_map
+ `get_local_map'                        get_local_map
+ `get_shell_status'                     get_shell_status
+ `highest_player_id'                    highest_player_id
+ `hit_from'                             hit_from
+ `invisibility'                         invisibility
+ `isinvisible'                          isinvisible
+ `l_acos'                               l_acos
+ `l_asin'                               l_asin
+ `l_atan'                               l_atan
+ `l_atan2'                              l_atan2
+ `l_cos'                                l_cos
+ `l_sin'                                l_sin
+ `l_sqrt'                               l_sqrt
+ `l_tan'                                l_tan
+ `movement'                             movement
+ `myid'                                 myid
+ `receive'                              receive
+ `scan'                                 scan
+ `set_pattern'                          set_pattern
+ `shells_left'                          shells_left
+ `shoot'                                shoot
+ `speed'                                speed
+ `swaptask'                             swaptask
+ `ticks'                                ticks
+ `transmit'                             transmit
+ `version'                              version
+

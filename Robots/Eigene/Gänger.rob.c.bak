@@ -1,0 +1,221 @@
+/*
+	Gänger.c
+
+	AmigaRobots-Roboter findet durch Labyrithe hindurch
+*/
+
+#ifndef __SASC
+char *_ProgramName="Gänger.rob";
+#endif
+
+#include "PCRobots.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#undef max
+#undef min
+#undef abs
+
+#define TRUE -1
+#define FALSE 0
+
+/**********************************************************************/
+/*                        Allgemeine Routinen                         */
+/**********************************************************************/
+
+/* towinkel projiziert eine Zahl in den Bereich 0-359 */
+int towinkel(int winkel)
+{
+   if(winkel < 0)
+      return 360+winkel%360;
+   else
+      return winkel%360;
+}
+
+/* distanz errechnet Abstand zweier Punkte */
+
+int distanz(int dx,int dy)
+{
+   return(l_sqrt(dx*dx+dy*dy));
+}
+
+/* Rechnet xy-Differenz in Winkel um */
+int winkel(int dx, int dy)
+{
+	return towinkel(180+l_atan2(dy,dx));
+}
+
+/**********************************************************************/
+/*                   Die Weg-finde-routinen                           */
+/* Es  wird  eine Karte verwaltet und ein Stack, damit der rekursive  */
+/*               Wegfindeprozess korrekt arbeiten kann                */
+/**********************************************************************/
+void clear_dest_stack(void);
+void map_clear(void);
+int map_update(void);
+int push_dest(int x, int y);
+int pop_dest(void);
+int pull_dest(int *x, int *y);
+void drive_to(int x, int y);
+
+#define DEST_STACK_SIZE 100
+static struct {
+	char far_map[100][100];
+	char near_map[81];
+	struct {int x,y;} dest_stack[DEST_STACK_SIZE],
+						last_pos;
+	int dest_stack_pointer;
+	int dest_stack_bottom;
+}gl_drive;
+
+/* 
+	clear_dest_stack
+	löscht den stack
+*/
+void clear_dest_stack(void)
+{
+	gl_drive.dest_stack_pointer = 0;
+	gl_drive.dest_stack_bottom = 0;
+}
+
+/* 
+	map_clear
+	löscht beide Maps
+*/
+void map_clear(void)
+{
+	int x,y;
+
+	for(x=0;x<100;x++)
+	{
+		for(y=0;y<100;y++)
+			gl_drive.far_map[x][y] = -1;
+	}
+	for(x=0;x<81;x++)
+		gl_drive.near_map[x]=-1;
+
+	gl_drive.last_pos.x = -1;
+	gl_drive.last_pos.y = -1;
+	clear_dest_stack();
+}
+
+/* 
+	Jede Runde muß die Map akualisiert werden
+	gibt eine 1 zurück, wenn ein neuer Quadrant entdeckt wurde
+*/
+int map_update(void)
+{
+	int x,y,res;
+
+	getxy(&x,&y);
+	gl_drive.last_pos.x = x;
+	gl_drive.last_pos.y = y;
+	get_local_map(gl_drive.near_map);
+	res = gl_drive.far_map[(x-4)/10][(y-4)/10]<ARENA_FREE||
+			gl_drive.far_map[(x+4)/10][(y-4)/10]<ARENA_FREE||
+			gl_drive.far_map[(x-4)/10][(y+4)/10]<ARENA_FREE||
+			gl_drive.far_map[(x+4)/10][(y+4)/10]<ARENA_FREE;
+
+	gl_drive.far_map[(x-4)/10][(y-4)/10]=gl_drive.near_map[0];
+	gl_drive.far_map[(x+4)/10][(y-4)/10]=gl_drive.near_map[8];
+	gl_drive.far_map[(x-4)/10][(y+4)/10]=gl_drive.near_map[71];
+	gl_drive.far_map[(x+4)/10][(y+4)/10]=gl_drive.near_map[80];
+	
+	return res;
+}
+
+/*
+	push_dest
+*/
+int push_dest(int x, int y)
+{
+	int res;
+
+	res = TRUE;		/* Wenn alles glattgeht */
+	gl_drive.dest_stack_pointer++; 
+	gl_drive.dest_stack_pointer %= DEST_STACK_SIZE;
+	if(gl_drive.dest_stack_pointer == gl_drive.dest_stack_bottom)	/* Stack Überlauf */
+	{
+		res = FALSE;					/* Stack voll */
+		gl_drive.dest_stack_bottom++;			/* ersten Eintrag vergessen */
+		gl_drive.dest_stack_bottom %= DEST_STACK_SIZE;
+	}
+	
+	gl_drive.dest_stack[gl_drive.dest_stack_pointer].x = x;
+	gl_drive.dest_stack[gl_drive.dest_stack_pointer].y = y;
+	return res;
+}
+
+/*
+	pop_dest
+	löscht die aktuellen x/y-Koordinaten vom Stack
+*/
+int pop_dest(void)
+{
+	if(gl_drive.dest_stack_pointer != gl_drive.dest_stack_bottom)
+	{
+		gl_drive.dest_stack_pointer += DEST_STACK_SIZE-1;
+		gl_drive.dest_stack_pointer %= DEST_STACK_SIZE;
+		return TRUE;
+	}
+	else
+		return FALSE;
+}
+
+/* 
+	pull_dest
+	holt die aktuellen x/y-Koordinaten vom Stack
+*/
+int pull_dest(int *x, int *y)
+{
+	if(gl_drive.dest_stack_pointer != gl_drive.dest_stack_bottom)
+	{
+		*x = gl_drive.dest_stack[gl_drive.dest_stack_pointer].x;
+		*y = gl_drive.dest_stack[gl_drive.dest_stack_pointer].y;
+		return TRUE;
+	}
+	else
+		return FALSE;
+}
+
+void find_way(int x1,int y1,int x2,int y2)
+{
+}
+
+void drive_to(int x, int y)
+{
+	int lx,ly;
+	
+	if(pull_dest(&lx,&ly))
+	{
+		/* Neues Ziel nur, wenn mehr als zwei Felder entfernt */
+		if(abs(lx-x)>2 || abs(ly-y)>2)
+		{
+			push_dest(x,y);
+		}
+	}
+	else
+	{
+		push_dest(x,y);
+	}
+	map_update();
+	getxy(&lx,&ly);
+	find_way(ly,ly,x,y);
+	pull_dest(&lx,&ly);
+	/* Richtung einschlagen */
+	movement(40,winkel(lx-x,ly-y));
+}
+
+
+/**********************************************************************/
+/*                     Ende der Wegfinderoutinen                      */
+/**********************************************************************/
+
+int main(void)
+{
+	while(1)
+	{
+	}
+}
+

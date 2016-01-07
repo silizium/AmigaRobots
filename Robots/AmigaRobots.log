@@ -1,0 +1,7 @@
+AmigaRobots V1.0.23 von Hanno Behrens © 24-Jul-93
+Arena: 
+Runden Stop Munition Aufladen Schnell Vorpositionen
+     0   an   1000        40    aus    aus
+ ID  Panzerung  Züge Treffer  Munition Name
+  1+  200/ 200   270      0V  894/ 900 dickeBerta.RoB
+  2-    0/ 100   269      1  1000/1000 nop.ROB

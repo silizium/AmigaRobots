@@ -1,0 +1,21 @@
+-------------------------------------------------------------------------------
+Brett        : H.BEHRENS
+Absender     : SETH@COCUNI.ZER
+Betreff      : Re^3:ARobots und DICE Prob
+Nachricht vom: 31.07.93 - 19:31
+-------------------------------------------------------------------------------
+...
+Auf jeden Fall wird robotlib.o so ohne Fehler und Warnung erzeugt :-)
+
+Der Aufruf heißt dann ganz einfach:
+DCC robotlib.c -c -orobotlib.o -mRR -proto   ==> liefert 'robotlib.o'
+  Übrigens können hier Längenunterschiede auftreten !
+  Je nachdem, unter welchem Namen man robotlib.c kompiliert.
+  Obengenannter Aufruf liefert eine Länge von 2316 Byte für robotlib.o
+  (ich hatte es als 'test.c' kompiliert, darum um 4 Byte kürzer -
+   nur kurz erwähnt, damit da keine Unklarheiten auftauchen :-) )
+
+Roboter werden dann per:
+DCC ROBOTER.c robotlib.o -oROBOTER.rob -mRR -proto
+kompiliert.
+...

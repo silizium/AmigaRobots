@@ -1,0 +1,92 @@
+\chapentry {Kontaktadresse und Registrierung}{1}{1}
+\chapentry {Einleitung}{2}{2}
+\chapentry {Die Entstehungsgeschichte}{3}{5}
+\chapentry {Systemanforderungen}{4}{6}
+\chapentry {AmigaRobots vom {\smallcaps cli}}{5}{7}
+\secentry {\code {-d} Option Debuggingmodus}{5}{1}{7}
+\secentry {\code {-l\var {Spielrunden}} Option}{5}{2}{7}
+\secentry {\code {-o\var {Dateiname}} Option Ausgabedatei}{5}{3}{8}
+\secentry {\code {-s} Option Einzelschritt}{5}{4}{8}
+\secentry {\code {-q} Option Quickmodus}{5}{5}{8}
+\secentry {\code {-a\var {Arenadatei}} Option}{5}{6}{8}
+\secentry {\code {-p} Option feste Position}{5}{7}{8}
+\secentry {\code {-x} Option langsame Explosion}{5}{8}{9}
+\secentry {\code {-v\var {1/50-Sekunden}} Option pausieren}{5}{9}{9}
+\secentry {\code {-r\var {Batterieladung}} Option}{5}{10}{9}
+\secentry {\code {-m\var {Anzahl-Munition}} Option}{5}{11}{9}
+\secentry {\code {-c} Option PCRobots-Wand}{5}{12}{9}
+\secentry {\code {-t\var {Zeitfaktor}} Option}{5}{13}{10}
+\secentry {\code {-i\var {MonitorID},\var {Schirm\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}Breite},\var {Schirm\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}Hohe},\var {Breite},\var {Hohe}} Option}{5}{14}{10}
+\chapentry {AmigaRobots von der Workbench}{6}{12}
+\chapentry {Menufunktion}{7}{13}
+\secentry {Das Programmenu}{7}{1}{13}
+\secentry {Das Simulationsmenu}{7}{2}{13}
+\secentry {Das Positionsmenu}{7}{3}{14}
+\secentry {Das Statusmenu}{7}{4}{14}
+\secentry {Das Entfernenmenu}{7}{5}{14}
+\chapentry {Die AmigaRobots Arena}{8}{15}
+\chapentry {Die Darstellung eines Roboters}{9}{16}
+\chapentry {Das Koordinatensystem}{10}{17}
+\chapentry {Die Karte}{11}{18}
+\chapentry {Die Batterien der Roboter}{12}{19}
+\chapentry {Die Tankfelder}{13}{21}
+\chapentry {Die Konfiguration der Roboter}{14}{22}
+\chapentry {Unsichtbarkeit}{15}{23}
+\chapentry {Schadennehmen}{16}{24}
+\chapentry {Die Roboterprogramme}{17}{25}
+\chapentry {Die Funktionsimplementation}{18}{27}
+\chapentry {Die Funktionen}{19}{28}
+\secentry {Zugbeendende Funktionen}{19}{1}{28}
+\subsecentry {\code {swaptask}}{19}{1}{1}{28}
+\subsecentry {\code {movement}}{19}{1}{2}{28}
+\subsecentry {\code {scan}}{19}{1}{3}{29}
+\subsecentry {\code {shoot}}{19}{1}{4}{30}
+\secentry {Nicht zugbeendende Funtionen}{19}{2}{31}
+\subsecentry {\code {getxy}}{19}{2}{1}{31}
+\subsecentry {\code {transmit}}{19}{2}{2}{32}
+\subsecentry {\code {receive}}{19}{2}{3}{32}
+\subsecentry {\code {damage}}{19}{2}{4}{33}
+\subsecentry {\code {speed}}{19}{2}{5}{33}
+\subsecentry {\code {battery}}{19}{2}{6}{34}
+\subsecentry {\code {ticks}}{19}{2}{7}{34}
+\subsecentry {\code {l\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}sin}}{19}{2}{8}{34}
+\subsecentry {\code {l\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}asin}}{19}{2}{9}{35}
+\subsecentry {\code {l\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}cos}}{19}{2}{10}{35}
+\subsecentry {\code {l\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}acos}}{19}{2}{11}{36}
+\subsecentry {\code {l\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}tan}}{19}{2}{12}{36}
+\subsecentry {\code {l\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}atan}}{19}{2}{13}{37}
+\subsecentry {\code {l\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}sqrt}}{19}{2}{14}{37}
+\subsecentry {\code {set\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}pattern}}{19}{2}{15}{38}
+\subsecentry {\code {debug\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}flag}}{19}{2}{16}{38}
+\subsecentry {\code {buy\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}armour}}{19}{2}{17}{38}
+\subsecentry {\code {buy\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}shells}}{19}{2}{18}{39}
+\subsecentry {\code {shells\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}left}}{19}{2}{19}{40}
+\subsecentry {\code {get\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}local\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}map}}{19}{2}{20}{40}
+\subsecentry {\code {invisibility}}{19}{2}{21}{40}
+\subsecentry {\code {get\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}shell\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}status}}{19}{2}{22}{41}
+\subsecentry {\code {isinvisible}}{19}{2}{23}{42}
+\subsecentry {\code {l\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}atan2}}{19}{2}{24}{42}
+\secentry {Nicht PCRobots-kompatible Funktionen}{19}{3}{42}
+\subsecentry {\code {flying\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}shells}}{19}{3}{1}{43}
+\subsecentry {\code {get\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}big\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}map}}{19}{3}{2}{43}
+\subsecentry {\code {hit\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}from}}{19}{3}{3}{44}
+\subsecentry {\code {highest\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}player\vbox to 0pt{}\kern .06em \vbox {\hrule width.3em height.1ex}id}}{19}{3}{4}{44}
+\subsecentry {\code {myid}}{19}{3}{5}{45}
+\subsecentry {\code {version}}{19}{3}{6}{45}
+\secentry {Funktionen mit Sonderstatus}{19}{4}{45}
+\subsecentry {\code {configure}}{19}{4}{1}{45}
+\chapentry {Aufruf von Assembler}{20}{47}
+\chapentry {Aufruf von Pascal}{21}{48}
+\chapentry {Kompilieren eines Roboters in C}{22}{49}
+\chapentry {Dank}{23}{50}
+\chapentry {Fragen und Antworten}{Anhang \char65}{51}
+\secentry {Gnu-C{\tt\char43}{\tt\char43} und Dice-Probleme}{\char65}{1}{51}
+\secentry {Farben und Interlacemodus}{\char65}{2}{52}
+\secentry {Onlinehilfe im Editor}{\char65}{3}{52}
+\secentry {PublicScreen-Tips}{\char65}{4}{53}
+\chapentry {Geschichte}{Anhang \char66}{54}
+\secentry {Programmentwicklung}{\char66}{1}{54}
+\secentry {bekannte Bugs}{\char66}{2}{56}
+\secentry {zu tun}{\char66}{3}{57}
+\unnumbchapentry {Hauptindex}{58}
+\unnumbchapentry {Funktionsindex}{60}

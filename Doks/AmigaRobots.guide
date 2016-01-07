@@ -1,0 +1,3275 @@
+@database AmigaRobots.guide
+
+@Master AmigaRobots.texi
+
+@Width 72
+
+
+This is the AmigaGuide® file AmigaRobots.guide, produced by Makeinfo-1.55 from 
+the input file AmigaRobots.texi.
+
+
+@Node Main "AmigaRobots.guide"
+@Next "Kopierrecht"
+
+
+
+@{b}AmigaRobots@{ub} V1.3 von Hanno Behrens (C) 1993
+*******************************************
+
+(Internet/Z-Netz: H.Behrens@amtrash.comlink.de)
+
+Dieses Dokument dokumentiert das Programm @{b}AmigaRobots@{ub}, Version 1.3 und
+später.
+
+
+ @{" Kopier- und Nutzungsrechte " Link "Kopierrecht"}            
+    Unter welchen Umständen darf ich AmigaRobots benutzen?
+ @{" Kontaktadresse und Registrierung " Link "Kontaktadresse und Registrierung"} 
+    Wie ihr mich erreichen könnt und meine Kontonummer.
+ @{" Einleitung " Link "Einleitung"} 
+    Was ist @{b}AmigaRobots@{ub} für ein Programm?
+ @{" Entstehungsgeschichte " Link "Entstehungsgeschichte"} 
+    Wie kam es zu @{b}AmigaRobots@{ub}?
+ @{" Systemanforderungen " Link "Systemanforderungen"} 
+    Was braucht man, um @{b}AmigaRobots@{ub} zu starten?
+ @{" AmigaRobots vom CLI " Link "AmigaRobots vom CLI"}                    
+    Wie startet man @{b}AmigaRobots@{ub} von der Shell?
+ @{" AmigaRobots von der Workbench " Link "AmigaRobots von der Workbench"}                              
+    Wie startet man @{b}AmigaRobots@{ub} von der Workbench?
+ @{" Menüfunktion " Link "Menüfunktion"} 
+    Welche Bedeutung haben die Menüpunkte von @{b}AmigaRobots@{ub}?
+ @{" Arenen " Link "Arenen"} 
+    Was ist eine @{b}AmigaRobots@{ub}-Arena?
+ @{" Die Roboterdarstellung " Link "Roboterdarstellung"}                   
+    Wie wird ein Roboter dargestellt?
+ @{" Das Koordinatensystem " Link "Koordinatensystem"}                  
+    Wie wird die Arena verwaltet?
+ @{" Die Karte " Link "Karte"}      
+    Welchen Aufbau hat die Karte, beziehungsweise die Kartendatei?
+ @{" Die Batterien " Link "Batterien"}          
+    Welche Funktion haben die Batterien eines Roboters?
+ @{" Die Tankfelder " Link "Tankfelder"}           
+    Was bewirken die Tankfelder?
+ @{" Die Konfiguration " Link "Konfiguration"}              
+    Wie kann man einen Roboter konfigurieren?
+ @{" Unsichtbarkeit " Link "Unsichtbarkeit"} 
+    Was für Auswirkungen hat die Unsichtbarkeit?
+ @{" Schadennehmen " Link "Schadennehmen"} 
+    Wobei nimmt ein Roboter Schaden?
+ @{" Die Roboterprogramme " Link "Roboterprogramme"}                 
+    Wie ist ein Roboterprogramm aufgebaut?
+ @{" Die Funktionsimplementation " Link "Funktionsimplementation"}                        
+    Wie wurden die Befehle und Funktionen realisiert?
+ @{" Die Funktionen " Link "Funktionen"}           
+    Welche Befehle stehen den Robotern zur Verfügung?
+ @{" Assembler " Link "Assembler"} 
+    Aufruf der Funktionen nur für Freaks.
+ @{" Pascal " Link "Pascal"} 
+    Wer ist hier Freak?
+ @{" Kompilieren in C " Link "Kompilieren in C"} 
+    Wie stellt man eine ausführbare @{b}*.rob@{ub}-Datei her?
+ @{" Dank " Link "Dank"} 
+    Die unabwendbaren Danksagungen.
+ @{" Fragen und Antworten " Link "Fragen und Antworten"} 
+    Welche Probleme treten auf?
+ @{" Geschichte " Link "Geschichte"} 
+    Was ist neu an dieser AmigaRobots-Version?
+ @{" Hauptindex " Link "Hauptindex"} 
+    Der Konzeptionelle Index.
+ @{" Funktionsindex " Link "Funktionsindex"} 
+    Die Befehle von @{b}AmigaRobots@{ub}.
+
+
+@EndNode
+
+@Node "Kopierrecht" "AmigaRobots.guide/Kopierrecht"
+@Next "Kontaktadresse und Registrierung"
+@Prev "Main"
+@Toc "Main"
+
+Copyright (C) 1993 von Hanno Behrens
+
+Dieses Programmpaket ist Giftware.
+
+Das Copyright bezieht sich auf das Paket, alle Kopien des Paketes und
+alle dem Paket enthaltenen Dateien.
+
+Es ist erlaubt und sogar ausdrücklich erwünscht, dieses Programmpaket
+weiterzukopieren und zu benutzen, solange weder am Paket noch an
+irgendeinem der enthaltenen Dateien Veränderungen vorgenommen werden.
+
+Es ist erlaubt, diese Anleitung bei Bedarf zu verändern, zu erweitern
+oder zu übersetzen, wenn die Veränderung, Erweiterung oder
+Übersetzung mir mitgeteilt wird, ich eine Kopie dieser veränderten
+Version erhalte und dieser Copyright-Vermerk darin unverändert
+erhalten bleibt.
+
+Jede militärische oder kommerzielle Nutzung ist untersagt, ebenso
+Gebührenerhebungen, die den Preis einer Diskette um 5.- DM
+überschreiten. Für Hinweise auf Zuwiderhandlung bin ich dankbar.
+
+Es wird keinerlei Gewährleistungspflicht für die vollständige
+Funktionsfähigkeit des (der) in diesem Dokument beschriebenen
+Programmes (Programme) übernommen. Sie nutzen diese Software auf
+eigenes Risiko.
+
+
+@EndNode
+
+@Node "Kontaktadresse und Registrierung" "AmigaRobots.guide/Kontaktadresse und Registrierung"
+@Next "Einleitung"
+@Prev "Kopierrecht"
+@Toc "Main"
+
+Kontaktadresse und Registrierung
+********************************
+
+Nochmals: Dieses Programm ist nicht public domain, sondern Fairware.
+Das bedeutet, daß man das Programm zwar frei benutzen darf, daß ich
+es aber fair fände, wenn man an den Programmierer denkt und mir eine
+kleine Aufmerksamkeit irgendeiner Art, am liebsten 15.- DM zukommen
+läßt. Die paar Mark sollte doch jeder übrig haben. Wenn man momentan
+nichts bezahlen kann, was niemand besser versteht als ich, aber sich
+trotzdem über das Programm freut oder ärgert oder sonst einen
+Kommentar dazu abgeben will, kann er es gern tun, ich habe noch
+niemanden gefressen (urps).
+
+Auch nicht registrierte Benutzer bekommen von mir vollen Support!
+
+Die Adresse:
+Real
+     Hanno Behrens, D-22159 Hamburg, Overland 9
+
+Z-Netz/Internet
+     H.Behrens@amtrash.comlink.de
+
+lokale Box
+     M.A.G Hamburg, Username behrens
+
+Kontonr.
+     BLZ 200 505 50  KONTO 1284 / 453 105
+
+
+@EndNode
+
+@Node "Einleitung" "AmigaRobots.guide/Einleitung"
+@Next "Entstehungsgeschichte"
+@Prev "Kontaktadresse und Registrierung"
+@Toc "Main"
+
+Einleitung
+**********
+
+@{b}AmigaRobots@{ub} ist eine weiterentwickelte Implementation von @{b}PCRobots@{ub} auf
+MS-DOS von P.D.Smith (psmithb@CIX) vom August 1992. Jenes Programm war
+seinerseits eine Weiterentwicklung von @{b}CRobots@{ub} von Tom Poindexter.
+
+Grundsätzlich ist die Spielidee die selbe wie von @{b}CRobots@{ub}, von dem es
+auch eine Implementation auf dem Amiga von David Wright (1990) gab.
+Gegeben sind Roboter, die sich in einer Arena befinden und sich im
+Wettkampf miteinander messen. Der Wettkampf besteht darin, die anderen
+Roboter schnell und genau zu orten und durch Beschuß funktionsunfähig
+zu machen. Der Spieler programmiert für seinen Roboter dazu das nötige
+Steuerungsprogramm.
+
+@{b}AmigaRobots@{ub} ist dabei nicht auf eine spezielle Sprache festgelegt.
+Grundsätzlich kann der Roboter in jeder Sprache geschrieben werden,
+die Taskkommunikation auf dem Amiga direkt oder durch Einbinden eines
+Objektfiles ermöglicht.
+
+Die Roboterprogramme werden dabei als normale Programme compiliert und
+gestartet. Durch dieses Konzept entfällt die Beschränkung der
+Rechenzeit, die bei @{b}CRobots@{ub} zur Bestrafung jedes intelligenten Roboters
+führte. Beliebig komplexer Berechnung und Planung sind dadurch Tür
+und Tor geöffnet. Anders als bei @{b}PCRobots@{ub} gibt es weder eine 64k
+Beschränkung, noch gibt es einen zwingenden Grund, Standardein und
+-ausgabe nicht zu benutzen. Auch die Beschränkung auf
+Integerarithmetik und die fehlende Speicherverwaltung entfällt.  Man
+sollte allerdings zum einen aus Zeitgründen trotzdem auf
+Fließkommaarithmetik verzichten, zum anderen aus
+PC-Kompatibilitätsgründen Standartein und -ausgabe sowie
+Speicherverwaltungsfunktionen vermeiden. Der Verlust der
+Fließkommaarithmetik ist nicht weiter schmerzhaft, weil @{b}AmigaRobots@{ub} ein
+weitreichendes Spektrum von Integerfunktionen anbietet, die soweit
+möglich, aus Tabellen ausgelesen werden. Wer auf die Speicherverwaltung
+nicht verzichten will, verzichtet eben nicht auf die Speicherverwaltung
+und ist nicht mehr @{b}PCRobots@{ub}-kompatibel. Na und?
+
+Vorbereitet ist ein Linkfile für C (siehe @{"C" Link "Funktionen"}), die Programmierung in
+Pasal (siehe @{"Pascal" Link "Pascal"}), Modula, Oberon, Basic oder Assembler (siehe
+@{"Assembler" Link "Assembler"}) sollte kein Problem darstellen, denn die Sourcen für das
+Linkfile liegen bei.
+
+Ein weiteres Limit sind die gleichzeitig am Spiel teilnehmenden
+Roboter. Es liegt leider nicht wesentlich höher als 32000,
+vorausgesetzt der Hauptspeicher reicht - nur knapp über dem Limit von
+@{b}PCRobots@{ub} von 7-8.
+
+Die Roboter sind konfigurierbar, das heißt wenn ein Programm einen
+schnellen wendigen Roboter braucht, der keine weitreichende Kanone
+nötig hat, ist dies ebenso machbar wie ein träger Kampfkoloß mit viel
+Panzerung und großem Geschütz.
+
+Eine weitere Erweiterung der Spielidee von @{b}CRobots@{ub} ist die Arena. Diese
+ist nicht mehr unbedingt ein freies Feld, sondern kann den Robotern
+durch Wände, Tankstellen oder Schadensfelder eine anspruchsvollere
+Umwelt simulieren.
+
+Der Knüller von @{b}AmigaRobots@{ub} sowie von @{b}PCRobots@{ub} ist die Möglichkeit,
+die Roboter untereinander kommunizieren zu lassen. Dadurch sind
+Mannschaftswettkämpfe und Teamwork möglich.
+
+Am Schuß möchte ich noch ein paar Gedanken zur Gesinnung dieses
+Spieles fallenlassen. Es hat den Anschein, daß @{b}AmigaRobots@{ub} ein
+kriegerisches, militärisches Spiel sei. Sicherlich kann man
+@{b}AmigaRobots@{ub} in diesem Sinne mißbrauchen. Tatsächlich hängt alles
+von der Einstellung der Benutzer ab. @{b}AmigaRobots@{ub} ist nicht destruktiv,
+es geht nicht darum, die Arbeit oder Leistung anderer abzuwerten oder
+zu vernichten. Jeder, der schon einmal versucht hat, einen Roboter zu
+programmieren, sieht in den anderen vielmehr ein Beispiel und einen
+Rahmen, eine Herausforderung im sportlichen Sinne. An diesem Maßstab
+kann er seine eigenen Fähigkeiten messen und abschätzen lernen, ebenso
+wie er seine Grenzen erkennen kann und versuchen wird, diese weiter zu
+stecken. Dabei werden seine Programmierfähigkeiten, sowie seine
+Phantasie gefördert. Phantasie ist nötig, denn die Erfahrung zeigt,
+daß eine gute Idee immer über brachialen Code, brachiale Gewalt
+gewinnt.
+
+Wettstreit ist natürlich, ist gesundes Verhalten. Fressen und
+gefressen werden, Jagd und Verstecken, Sieg und Niederlage sind unserer
+Existenz inhärent. Sie zu verleugnen hat keinen Sinn, wenn man sich
+nicht plötzlich vor der Frage wiederfinden will, ob Existenz
+eigentlich moralisch sei. Selbst wenn jemand diese Bedürfnisse mit
+@{b}AmigaRobots@{ub} auslebt, ist das nicht verwerflich, weil niemand dabei zu
+Schaden kommt, im Gegenteil ich halte es für besser, als diese
+Gefühle solange zu unterdrücken, bis diese sich destruktiv in Gewalt
+Luft machen.  Aber zurück zur Kernaussage: @{b}AmigaRobots@{ub} ist keine
+Therapie, sondern vor allem ein Spiel. Spiel ist immer, oder sollte es
+zumindest, ein Miteinander.
+
+Was mich persönlich an Computern stört, ist, daß man selten eine
+Chance bekommt, seinen Horizont über den von Systemtabellen zu
+erweitern. Wie kompliziert und schwer zu erfassen die wirkliche Welt
+ist, daß deutet @{b}AmigaRobots@{ub} an. Schon bei einfachen Problemen trifft
+man schnell auf Herausforderungen wie Differenzialgleichungen, die sich
+ganz natürlich präsentieren und nicht, wie sonst, im erzwungenen
+mathematisch-theoretischen Rahmen. Damit will ich nicht sagen, daß man
+sich diesen Herausforderungen unbedingt stellen muß. Es gibt fast
+immer einen einfachen Weg, der mit kleinen Einschränkungen oder einem
+guten Trick zum Ziel führt.
+
+Die Herausforderung Künstliche Intelligenz wartet hinter den ersten
+Zeilen eines @{b}AmigaRobots@{ub}-Roboters. Es stellen sich Fragen über das
+Umgehen von Hindernissen, dem Abschätzen von Bewegungen, dem
+Koordinieren von Teams und der Notwendigkeit an Flexibilität.
+
+Das Spielziel ist durchaus flexibel. Das gegenseitige Messen im Kampf
+ist nur die einfachste Form eines Miteinander. Mir schweben Labyrinthe
+vor, in denen ein Roboter als Ziel hingestellt wird und wer als erstes
+dieses Ziel erreicht, gewinnt. Oder das gemeinsame Erkunden einer
+unbekannten Umgebung, ein Mannschaftswettlauf sind denkbar. Man kann
+Roboter verschieden konfigurieren und so unterschiedliche Eigenschaften
+sich ergänzen lassen. Bei diesen Problemen wird Kommunikation immer
+wichtiger sein als, sagen wir mal, reine Muskelkraft.
+
+@{b}AmigaRobots@{ub} soll vor allen Dingen Spaß machen, es ist eine
+Herausforderung für jeden, der es satt hat, immer nur Daten zu
+verwalten und zu zählen. Man kann @{i}sehen@{ui}, wie sich das eigene Programm
+verhält, man lernt klarer zu erkennen und besser zu verstehen. Der
+Computer ist ein phantatisches Medium und kein stupider Rechenknecht,
+ein Medium, das es erlaubt mit Realitäten zu spielen, die anders nicht
+denkbar oder finanzierbar sind, eine Traummaschine.
+
+
+@EndNode
+
+@Node "Entstehungsgeschichte" "AmigaRobots.guide/Entstehungsgeschichte"
+@Next "Systemanforderungen"
+@Prev "Einleitung"
+@Toc "Main"
+
+Die Entstehungsgeschichte
+*************************
+
+@{b}AmigaRobots@{ub} entstand aus einem unbeendeten Projekt, dessen Ziele weit
+über die von @{b}AmigaRobots@{ub} hinausgingen. Ich griff die Idee wieder auf,
+als ich gegen Ende des Jahres 1992 @{b}PCRobots@{ub} in die Finger bekam. Das
+Programm schrie regelrecht nach einer Implementation auf einem
+Multitasking-Grafikrechner wie dem Amiga. Sofort setzte ich mich daran,
+nur die Spielbeschreibung und den flüchtigen Eindruck eines einzigen
+Spieles vor Augen, das Programm in C zu schreiben.  Die eigentliche
+Simulation war innerhalb von wenigen Tagen beendet, wenn man von
+wenigen Bugs absieht; aber der Kleinkram erstreckte sich auf weitere
+Wochen. Heute steht das Programm vor mir, wie ich es mir vorgestellt
+hatte. Die Beschränkungen von @{b}CRobots@{ub} und @{b}PCRobots@{ub} sind beseitigt, und
+die Benutzerführung ist grafisch. Leider hat eine
+Prüfungsvorbereitung darunter sehr gelitten und meine Kasse ist leer.
+Wenn jemand das Programm benutzt und für gut befindet, würde ich mich
+sehr zu einer kleinen Aufmerksamkeit von 15.- DM freuen, oder wer es
+sich leisten kann, darf auch mehr bezahlen. Dies ist kein Zwang, denn
+ich habe mich entschlossen, das Programm als Giftware herauszugeben.
+Die weitere Entwicklung von AmigaRobots hängt natürlich von der
+Kritik, dem Zuspruch und der Unterstützung der Spieler ab, ebenso wie
+die Vielfalt an Robotern, Arenen und damit dem Spielspaß. AmigaRobots
+ist ein lebendiges Spiel, das durch das Miteinander an Reiz gewinnt.
+
+Natürlich soll das ganze nicht völlig umsonst sein. Ich freue mich
+über jede Art von Kritik, und wer sich registrieren läßt, der kann
+bei dem @{b}AmigaRobots@{ub}-Wettbewerb teilnehmen. Dazu schickt ihr mir per
+Post oder E-Mail euren Roboter auf 68000-Code kompiliert und den
+Source. Ihr bekommt daraufhin alle bisher eingetroffenen Roboter.
+Natürlich ist ein kleiner Haken an der Sache: ihr bekommt nur den
+Source von Robotern, die Ihr besiegen konntet, die besseren werden ohne
+Source geliefert. Gleichzeitig werde ich eine Highscoreliste verwalten
+und für den Besten werde ich mir etwas besonderes ausdenken.
+
+
+@EndNode
+
+@Node "Systemanforderungen" "AmigaRobots.guide/Systemanforderungen"
+@Next "AmigaRobots vom CLI"
+@Prev "Entstehungsgeschichte"
+@Toc "Main"
+
+Systemanforderungen
+*******************
+
+@{b}AmigaRobots@{ub} läuft nach meiner Erfahrung auf jedem Amiga, auf jedem
+Betriebssystem ab Kickstart 1.2 und jedem Prozessor ab 68000 aufwärts.
+Ist Kickstart 2.0 oder höher vorhanden, dann öffnet AmigaRobots die
+3D-look-Oberfläche. Mit den gängigen PD-Patches wie @{b}ReqPatch@{ub} und
+@{b}MagicMenu@{ub} z.B. sieht @{b}AmigaRobots@{ub} noch besser aus.
+
+An externen Libraries benötigt @{b}AmigaRobots@{ub}
+
+   @{b}*@{ub}     @{b}req.library@{ub} von Colin Fox und Bruce Dawson, ich benutze die
+     Version 2.7, sicherlich gehen auch niedrigere Versionen.
+
+   @{b}*@{ub}     @{b}mathieeedoubbas.library@{ub} ist eine Systemlibrary des Amiga.
+
+   @{b}*@{ub}     @{b}mathieeedoubtrans.library@{ub} ist eine Systemlibrary des Amiga.
+
+   @{b}*@{ub}     @{b}icon.library@{ub} ist eine Systemlibrary des Amiga.
+
+Leider mußte ich @{b}AmigaRobots@{ub} auf einem Interlace-Schirm schreiben, da
+sonst die Grafik keine ausreichende Auflösung mehr gehabt hätte. Die
+einzige sinnvolle Darstellung der 1000x1000-Felder Arena ist ein
+500x500-Feld. Ich empfehle daher die Nutzung einer Antiflickerkarte
+oder eines Monitors mit langer Nachleuchtdauer. So sorry, aber da man
+ja nicht an dem Schirm arbeiten muß, denke ich, ist es erträglich.
+
+Ab der Version 1.2 von @{b}AmigaRobots@{ub} ist die @{b}-i Option@{ub} (siehe @{"-i Option" Link "-i Option"}),
+beziehungweise das @{b}MONITORID@{ub}-Tooltype (siehe
+@{"AmigaRobots von der Workbench" Link "AmigaRobots von der Workbench"}) hinzugekommen. Damit kann der Benutzer
+jeden beliebigen Bildschirmmodus wählen. Leider ermöglicht das
+Betriebssystem so etwas erst ab der Version 2.0.
+
+
+@EndNode
+
+@Node "AmigaRobots vom CLI" "AmigaRobots.guide/AmigaRobots vom CLI"
+@Next "-d Option"
+@Prev "Systemanforderungen"
+@Toc "Main"
+
+AmigaRobots vom CLI
+*******************
+
+@{b}AmigaRobots@{ub} kann man einfach von CLI starten, indem man
+
+     @{b}A m i g a R o b o t s RETURN@{ub}
+
+eintippt. Man hat die Shell frei, wenn man
+
+     @{b}run AmigaRobots@{ub}
+
+eingibt, was ich empfehlen würde. Wenn man Roboter starten will, dann
+gibt man diese entweder
+
+     @{b}AmigaRobots @{i}robot1@{ui} @{i}robot2@{ui} @{i}robot3@{ui} ...@{ub}
+
+ein oder startet die Roboter nachträglich mit
+
+     @{b}run@{ub} @{i}robot1@{ui}
+     @{b}run@{ub} @{i}robot2@{ui}
+     @{b}run@{ub} @{i}robot3@{ui}
+
+Zusätzlich kann man @{b}AmigaRobots@{ub} noch optionale Parameter mitgeben.
+Diese Parameter sind ebenso wie der Rest des Programmes weitgehend
+PC-kompatibel. Jedenfalls abwärtskompatibel.
+
+Die   Optionen   können  an  jeder  beliebigen  Position  in  der
+Kommandozeile plaziert werden.
+
+Die Optionen sind
+
+
+ @{" -d Option " Link "-d Option"}  Debug
+ @{" -l Option " Link "-l Option"}  Spielrunden
+ @{" -o Option " Link "-o Option"}  Ausgabedatei
+ @{" -s Option " Link "-s Option"}  Einzelschritt
+ @{" -q Option " Link "-q Option"}  Quickmodus
+ @{" -a Option " Link "-a Option"}  Arenadatei
+ @{" -p Option " Link "-p Option"}  Positionierung
+ @{" -x Option " Link "-x Option"}  Langsame Explosion
+ @{" -v Option " Link "-v Option"}  Verzögerung
+ @{" -r Option " Link "-r Option"}  Aufladung
+ @{" -m Option " Link "-m Option"}  Munition
+ @{" -c Option " Link "-c Option"}  @{b}PCRobots@{ub}-Wände
+ @{" -t Option " Link "-t Option"}  Zeitfaktor
+ @{" -i Option " Link "-i Option"}  MonitorID wählen
+
+
+@EndNode
+
+@Node "-d Option" "AmigaRobots.guide/-d Option"
+@Next "-l Option"
+@Prev "AmigaRobots vom CLI"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-d@{ub} Option Debuggingmodus
+========================
+
+Der sogenannte Debuggingmodus wird aktiviert, das heißt, daß
+@{b}AmigaRobots@{ub} nicht automatisch stoppt, wenn nur noch ein Roboter im
+Spiel ist. Dies ist nützlich um, ungestört das Verhalten eines
+Roboters auf einem leeren Spielfeld zu studieren.
+
+
+@EndNode
+
+@Node "-l Option" "AmigaRobots.guide/-l Option"
+@Next "-o Option"
+@Prev "-d Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-l@{i}Spielrunden@{ui}@{ub} Option
+====================
+
+Mit dieser Option kann man die maximale Anzahl von Spielrunden
+begrenzen. Der voreingestellte Wert 0 bedeutet keine Zeitbegrenzung.
+Zum Beispiel würde die Option @{b}-l5000@{ub} das Spiel in jedem Fall bei 5000
+Ticks abbrechen.
+
+
+@EndNode
+
+@Node "-o Option" "AmigaRobots.guide/-o Option"
+@Next "-s Option"
+@Prev "-l Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-o@{i}Dateiname@{ui}@{ub} Option Ausgabedatei
+===============================
+
+Die Ausgabe von @{b}AmigaRobots@{ub} wird dem File @{i}name@{ui} angehängt, statt
+einfach auf die Standardausgabe gedruckt zu werden. Zum Beispiel würde
+mit @{b}-ot:spiele.log@{ub} in die Datei @{b}t:spiele.log@{ub} gespeichert werden.
+
+
+@EndNode
+
+@Node "-s Option" "AmigaRobots.guide/-s Option"
+@Next "-q Option"
+@Prev "-o Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-s@{ub} Option Einzelschritt
+=======================
+
+Der Einzelschrittmodus wird aktiviert. Weiterschalten kann man mit
+jeder beliebigen Taste.
+
+
+@EndNode
+
+@Node "-q Option" "AmigaRobots.guide/-q Option"
+@Next "-a Option"
+@Prev "-s Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-q@{ub} Option Quickmodus
+====================
+
+Im Quickmodus werden die Menüs deaktiviert, die Explosionen nicht mehr
+dargestellt und das Programm nach einem Durchlauf beendet.  Damit sind
+nächtliche Stapeldateien mit langwierigen Wettkämpfen möglich. Das
+Programm kann selbstverständlich trotzdem noch mit ESC abgebrochen
+werden. Ich empfehle bei Nutzung dieser Option gleichzeitig eine
+Spielbeschränkung auf höchstens 10000 Runden durch die Option @{b}-l@{ub}.
+
+Zusätzliche Amigaoptionen
+=========================
+
+(nicht bei @{b}PCRobots@{ub} vorhandene Optionen)
+
+
+@EndNode
+
+@Node "-a Option" "AmigaRobots.guide/-a Option"
+@Next "-p Option"
+@Prev "-q Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-a@{i}Arenadatei@{ui}@{ub} Option
+===================
+
+Gibt die zu ladende Arenadatei an. Normalerweise wird wie bei @{b}PCRobots@{ub}
+die Datei @{b}PCRobots.rna@{ub} geladen. Für eigene Arenen empfehlen ich das
+spezielle Verzeichnis zu nutzen, da dies der Übersichtlichkeit
+zuträglich ist.
+
+
+@EndNode
+
+@Node "-p Option" "AmigaRobots.guide/-p Option"
+@Next "-x Option"
+@Prev "-a Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-p@{ub} Option feste Position
+========================
+
+Bei @{b}AmigaRobots@{ub} hat man die Möglichkeit, in der Arena die Roboter
+nicht an zufälligen, sondern an festen, definierten Positionen den
+Wettkampf beginnen zu lassen. Diese Option aktiviert diese
+Möglichkeit. Siehe @{"Arenen" Link "Arenen"}.
+
+
+@EndNode
+
+@Node "-x Option" "AmigaRobots.guide/-x Option"
+@Next "-v Option"
+@Prev "-p Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-x@{ub} Option langsame Explosion
+============================
+
+Es gibt eine schnelle und eine langsame Methode, die Explosionen
+darzustellen. Mit @{b}-x@{ub} wählt man die langsame Methode, die allerdings
+hübscher anzusehen ist.
+
+
+@EndNode
+
+@Node "-v Option" "AmigaRobots.guide/-v Option"
+@Next "-r Option"
+@Prev "-x Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-v@{i}1/50-Sekunden@{ui}@{ub} Option pausieren
+================================
+
+Verzögerung bei schneller Darstellung in 1/50 sec.
+
+
+@EndNode
+
+@Node "-r Option" "AmigaRobots.guide/-r Option"
+@Next "-m Option"
+@Prev "-v Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-r@{i}Batterieladung@{ui}@{ub} Option
+=======================
+
+Die Batterien der Roboter werden normalerweise jede Runde um 4 Punkte
+geladen, das entspricht der Option @{b}-r40@{ub}. Wenn man möchte, daß die
+Batterien schneller geladen werden, gibt man den Wert hier mit zehn
+multipliziert ein. Dadurch sind auch Zwischenwerte möglich.
+
+
+@EndNode
+
+@Node "-m Option" "AmigaRobots.guide/-m Option"
+@Next "-c Option"
+@Prev "-r Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-m@{i}Anzahl-Munition@{ui}@{ub} Option
+========================
+
+Unter @{b}PCRobots@{ub} werden jedem Roboter zu Beginn des Spieles 1000 Schuß
+Munition mitgegeben, was eine blödsinnig hohe Zahl ist (siehe
+@{"-c Option" Link "-c Option"}). Auch der Preis für die Tarnvorrichtung (1/10 Munition) ist
+zu niedrig. Unter @{b}AmigaRobots@{ub} werden Voreinstellungsgemäß 40 Schuß
+mitgegeben und der Preis für die Tarnung ist die Hälfte der Munition.
+Mit @{b}-m50@{ub} würde man dem normalen Roboter 50 Schuß mitgeben, dem
+Roboter mit Tarnvorrichtung nur 1/2 davon, also 25.
+
+
+@EndNode
+
+@Node "-c Option" "AmigaRobots.guide/-c Option"
+@Next "-t Option"
+@Prev "-m Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-c@{ub} Option PCRobots-Wand
+=======================
+
+Diese Option schaltet die @{b}PCRobots@{ub}-kompatiblen Wände ein.
+Normalerweise werden Schüsse ausschließlich von Wänden aufgehalten,
+nicht jedoch von Schadensfeldern oder Tankfeldern. Wird diese Option
+aktiviert, werden Schüsse von allem anderen als von einem freien Feld
+aufgehalten. Außerdem wird der Preis für die Tarnvorrichtung auf 9/10
+der Munition herabgesetzt. Normalerweise beträgt dieses Verhältnis
+bei @{b}AmigaRobots@{ub} 1/2.
+
+Der Energiehaushalt wird durch Aktivierung dieser Option wieder linear.
+@{b}AmigaRobots@{ub} simuliert ein quadratisches Anwachsen des Energiebedarfs
+bei steigender Geschwindigkeit (siehe @{"Batterien" Link "Batterien"}).
+
+Siehe @{"Arenen" Link "Arenen"}, @{"Karte" Link "Karte"}, @{"-m Option" Link "-m Option"}.
+
+
+@EndNode
+
+@Node "-t Option" "AmigaRobots.guide/-t Option"
+@Next "-i Option"
+@Prev "-c Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-t@{i}Zeitfaktor@{ui}@{ub} Option
+===================
+
+Mit dieser Option kann man die Simulation von AmigaRobots
+beschleunigen. Dabei simuliert AmigaRobots @{i}Zeitfaktor@{ui} Spielrunden auf
+einmal. Dadurch wird die Simulation ungenauer und einige Roboter kommen
+damit überhaupt nicht klar, von allem, wenn sie einen festen
+Zeitablauf voraussetzen. Diese Option ist sozusagen der @{i}Draft@{ui}-Modus
+für die Entwicklung eines Roboters, wenn man nur mal eben sehen will,
+ob es klappt. Der endgültige Test sollte in jedem Fall unter der
+Bedingung Zeitfaktor 1 stattfinden.
+
+Wenn man den Zeitfaktor während einer Simulation ändert, dann gelten
+die geänderten Geschwindigkeiten nur für Objekte, die ihre
+Geschwindigkeit oder Richtung nach der Zeitfaktorumstellung geändert
+haben. Das heißt, daß sich die Wirkung der Umstellung ein wenig
+verzögern kann. Die bereits in der Luft befindlichen Geschosse bleiben
+unveränderter Geschwindigkeit.
+
+Dadurch, daß die Simulation einige Schritte überstringt, kann es dazu
+kommen, daß Geschosse oder Roboter vorhandene Wände ignorieren und
+sich einfach durch sie hindurchbewegen.
+
+
+@EndNode
+
+@Node "-i Option" "AmigaRobots.guide/-i Option"
+@Next "AmigaRobots von der Workbench"
+@Prev "-t Option"
+@Toc "AmigaRobots vom CLI"
+
+@{b}-i@{i}MonitorID@{ui},@{i}Schirm_Breite@{ui},@{i}Schirm_Hohe@{ui},@{i}Breite@{ui},@{i}Hohe@{ui}@{ub} Option
+========================================================
+
+Diese Option ist erst ab Version der @{b}intuition.library@{ub} 37 oder
+aufwärts verfügbar, also erst ab Kickstart 2.0. In tieferen Versionen
+wird diese Option einfach ignoriert.
+
+Unter 2.0 gibt es verschiedene Monitortreiber. Man findet diese Treiber
+normalerweise in der @{b}devs:monitors@{ub}-Schublade.  Jeder dieser Treiber
+stellt verschiedene Bildschirmmodi zur Verfügung. Dieser Modus bekommt
+vom Betriebssystem einen bestimmten Code. Gibt man der Variablen
+@{i}MonitorID@{ui} diesen Code in Hexadezimal an, so öffnet AmigaRobots unter
+diesem Bildschirmmodus. Es ist dabei egal, ob man dem Code ein @{b}0x@{ub}
+voranstellt, es dient allerdings als Erinnerungshilfe, daß es sich um
+eine Hexadezimalzahl handelt. Die Größe des gewählten Bildschirms
+muß in @{i}Schirm_Breite@{ui} und @{i}Schirm_Höhe@{ui}, jeweils durch ein Komma
+getrennt, angegeben werden. Danach wird in @{i}Breite@{ui} und @{i}Hohe@{ui} noch die
+Größe des sichbaren Ausschnitts angegeben. Die maximale Größe dieses
+Ausschnitts hängt vom gewählten Bildschirmmodus ab. Ist der sichtbare
+Bereich kleiner als der Bildschirm, dann scrollt der
+AmigaRobots-Bildschirm automatisch, sobald die Maus den Bildschirmrand
+erreicht. Der Bildschirm kann nicht kleiner als 640x512 werden und der
+sichtbare Bereich nicht größer als der Schirm.
+
+@{i}MonitorID@{ui} wird Hexadezimal, die @{i}Breite@{ui} und @{i}Höhe@{ui}-Werte dezimal
+angegeben. Man beachte, daß die gewählten Teiber vorher aktiviert
+wurden, sonst startet AmigaRobots nicht. Die Treiber lassen sich durch
+Doppelklick aktivieren oder durch Legen in die Schublade @{b}devs:monitors@{ub}
+und anschließendem Booten.
+
+Ein paar Beispiele:
+     AmigaRobots -i0x29004,640,512,640,512
+       Öffnet einen PAL-HiresInterlaced-Schirm. Dies ist die
+       Voreinstellung
+     AmigaRobots -i0x29000,640,512,640,256
+       Öffnet einen PAL-Hires-Schirm.
+     AmigaRobots -i19004,800,512,640,400
+       Öffnet einen NTSC-HiresInterlaced-Schirm, rechts mit Platz für
+       einen Editor
+     AmigaRobots -i0x19000,640,512,640,200
+       Öffnet einen NTSC-Hires-Schirm.
+     AmigaRobots -i0x11000,640,512,320,200
+       Öffnet einen NTSC-Lores-Schirm.
+     AmigaRobots -i0x39024,640,512,640,480
+       Öffnet einen Productivity-Schirm.
+
+Die übrigen Standard-ID's findet man in der System-Includedatei
+@{b}graphics/displayinfo.h@{ub}.
+
+Ich konnte AmigaRobots sogar dazu bewegen auf der
+DOMINO-Truecolor-Grafikkarte zu laufen. Die entsprechende MonitorID
+kann man über die gespeicherte Preference herausbekommen. Man wähle
+den gewünschten Bildschirmmodus für die Workbench und klickt
+@{b}benutzen@{ub}. Im @{b}env:sys/screenmode.prefs@{ub} steht dann an der Stelle 0x33
+@{b}0F 10 12@{ub}. Das ist die Monitor-ID für 800x600. Also gibt man zum
+Beispiel im Icon @{b}MONITORID=0x0f1012,800,600,800,600@{ub} an. Der 640x480
+DOMINO-Modus funktioniert nur mit einer Breite von 800 statt vermuteten
+640, also @{b}MONITORID=0x0f1011,800,512,800,480@{ub}.  Dieser Modus kann aber
+leider nicht scrollen. Die Moral von der Geschicht: wenn's auf Anhieb
+nicht klappt, ein wenig probieren.  Es geht auf jeden Fall.
+
+
+@EndNode
+
+@Node "AmigaRobots von der Workbench" "AmigaRobots.guide/AmigaRobots von der Workbench"
+@Next "Menüfunktion"
+@Prev "-i Option"
+@Toc "Main"
+
+AmigaRobots von der Workbench
+*****************************
+
+Roboter können mit aufgerufen werden, wenn man nach dem Anklicken von
+@{b}AmigaRobots@{ub} die Shift-Taste hält und die gewünschten Roboter mit
+anklickt. Bei einem Doppelklick beim letzten Roboter wird die
+Simulation mit den angeklickten Robotern gestartet. Wenn man dabei auch
+ein Arenafile anklickt, wird auch dieses geladen, wenn in dessen
+Infodatei @{b}FILETYPE=ARENA@{ub} ist.
+
+In  der  Infodatei  von  @{b}AmigaRobots@{ub} selbst haben folgende Tooltypes
+eine Bedeutung.
+
+   @{b}*@{ub} DEBUG=OFF / ON
+
+     Siehe @{"-d Option" Link "-d Option"}.
+
+   @{b}*@{ub} TICKS=@{i}Spielrundenanzahl@{ui}
+
+     Siehe @{"-l Option" Link "-l Option"}.
+
+   @{b}*@{ub} FILE=@{i}Ausgabe-Dateiname@{ui}
+
+     Siehe @{"-o Option" Link "-o Option"}.
+
+   @{b}*@{ub} ARENA=@{i}Arena-Dateiname@{ui}
+
+     Siehe @{"-a Option" Link "-a Option"}.
+
+   @{b}*@{ub} SINGLESTEP=OFF / ON
+
+     Siehe @{"-s Option" Link "-s Option"}.
+
+   @{b}*@{ub} QUICKMODE=OFF / ON
+
+     Siehe @{"-q Option" Link "-q Option"}.
+
+   @{b}*@{ub} PREPOS=OFF / ON
+
+     Siehe @{"-p Option" Link "-p Option"}.
+
+   @{b}*@{ub} FASTEXPLOSION=ON / OFF
+
+     Siehe @{"-x Option" Link "-x Option"}.
+
+   @{b}*@{ub} EXP_TICKS=@{i}Verzögerung-in-fünfzigstel-Sekunden@{ui}
+
+     Siehe @{"-v Option" Link "-v Option"}.
+
+   @{b}*@{ub} RELOAD=@{i}Batterieladung-pro-Runde@{ui}
+
+     Siehe @{"-r Option" Link "-r Option"}.
+
+   @{b}*@{ub} SHELLS=@{i}Maximale-und-anfängliche-Munition@{ui}
+
+     Siehe @{"-m Option" Link "-m Option"}.
+
+   @{b}*@{ub} PCROBOTWALLS=OFF / ON
+
+     Siehe @{"-c Option" Link "-c Option"}.
+
+   @{b}*@{ub} TIMEFACTOR=@{i}Simulationsschritte pro Runde@{ui}
+
+     Siehe @{"-t Option" Link "-t Option"}.
+
+   @{b}*@{ub} MONITORID=@{i}MonitoID@{ui},@{i}Breite@{ui},@{i}Höhe@{ui}
+
+     Siehe @{"-i Option" Link "-i Option"}.
+
+
+@EndNode
+
+@Node "Menüfunktion" "AmigaRobots.guide/Menüfunktion"
+@Next "Programmenü"
+@Prev "AmigaRobots von der Workbench"
+@Toc "Main"
+
+Menufunktion
+************
+
+
+ @{" Programmenü " Link "Programmenü"}      Die Erklärung des Programmenüs.
+ @{" Simulationsmenü " Link "Simulationsmenü"}  Die Erklärung des Simulationsmenüs.
+ @{" Positionsmenü " Link "Positionsmenü"}    Wie man die Postion eines Roboters verändert.
+ @{" Statusmenü " Link "Statusmenü"}       Wie man den Zustand eines Roboters anzeigt.
+ @{" Entfernenmenü " Link "Entfernenmenü"}    Wie und wann man einen Roboter entfernt.
+
+
+@EndNode
+
+@Node "Programmenü" "AmigaRobots.guide/Programmenü"
+@Next "Simulationsmenü"
+@Prev "Menüfunktion"
+@Toc "Menüfunktion"
+
+Das Programmenu
+===============
+
+Es finden sich folgenden Menüpunkte im Programmenü:
+
+   @{b}*@{ub} Informationen (I)
+
+     ruft einen Requester mit Informationen über das Programm auf.
+
+   @{b}*@{ub} Roboter laden (L)
+
+     öffnet einen Filerequester, mit dem man die zu startenden Roboter
+     auswählen kann. Dazu muß sich der @{b}RUN@{ub}-Befehl in der @{b}C:@{ub}-Directory
+     oder sonstwie im @{i}Pfad@{ui} befinden. Mehrere Roboter lassen sich durch
+     Drücken der SHIFT-Taste anwählen.  Es werden nur Files mit der
+     Endung @{b}*.rob@{ub} angezeigt. Die Roboter sollten aus Gründen der
+     Übersichtlichkeit diese Endung haben. Wenn ein Spiel läuft, wird
+     dieser Menüpunkt deaktiviert.
+
+   @{b}*@{ub} Arena laden (A)
+
+     öffnet einen Filerequester für das Laden einer Arena. Es werden
+     nur Files mit der Endung @{b}*.rna@{ub} angezeigt. Wenn ein Spiel läuft,
+     wird dieser Menüpunkt deaktiviert.
+
+   @{b}*@{ub} Konfiguration (K)
+
+     Hier kann man ein paar Werte verstellen, wie schon oben beim CLI-
+     und WB-Aufruf erklärt. Das sind die Spielrunden, die
+     Ladegeschwindigkeit der Batterien, die mitgegebene Munition und
+     ein Verzögerungswert für zukünftige Superrechner. Die
+     Verzögerung beträgt @{i}Eintrag@{ui} * 1/50 sec. Der Zeitfaktor ist schon
+     bei den Optionen erklärt worden (siehe @{"-t Option" Link "-t Option"}).  Bei Anklicken
+     von Übernehmen oder Drücken von RETURN werden die Werte
+     übernommen, bei Drücken von ESC oder KLICKEN von @{b}Verwerfen@{ub},
+     werden die Werte verworfen.
+
+   @{b}*@{ub} Farbwahl (F)
+
+     öffnet einen Farbwahlrequester. Die Farben werden im aktuellen
+     Verzeichnis in der Datei @{b}AmigaRobots.colors@{ub} abgelegt und beim
+     nächsten Start geladen. Ist die Datei nicht vorhanden setzt das
+     Programm beim Start seine voreingestellten Farben.
+
+   @{b}*@{ub} Programmende (Q)
+
+     Wenn gerade ein Spiel läuft, kommt vorher noch eine
+     Sicherheitsabfrage.
+
+
+@EndNode
+
+@Node "Simulationsmenü" "AmigaRobots.guide/Simulationsmenü"
+@Next "Positionsmenü"
+@Prev "Programmenü"
+@Toc "Menüfunktion"
+
+Das Simulationsmenu
+===================
+
+Das Simulationsmenü hat folgende Untermenüs:
+
+   @{b}*@{ub} Start Simulation (S)
+
+     startet ein Spiel. Wenn der Menüpunkt @{b}Halt bei einem@{ub} aktiv ist,
+     ist dieser Menüpunkt bei weniger als zwei Robotern deaktiviert.
+     Wenn man diesen Punkt während eines laufenden Spieles anklickt,
+     taucht der Spielenderequester auf. Bei anklicken von @{b}Weiter@{ub} wird
+     das Spiel fortgesetzt, bei @{b}Abbruch@{ub} beendet.
+
+   @{b}*@{ub} Einzelschritt (E)
+
+     Nach jeder Runde wartet @{b}AmigaRobots@{ub} auf eine Taste oder einen
+     Mausklick.
+
+   @{b}*@{ub} Halt bei einem (H)
+
+     Bei einem Überlebenden stoppt das Programm automatisch und bringt
+     den Spielausgangs-Requester hervor.
+
+   @{b}*@{ub} Feste Postitionen (P)
+
+     Die Startposition der Roboter wird nicht mehr zufällig gewählt,
+     sondern jeder Roboter, der sich neu anmeldet, bekommt den Platz
+     zugewiesen, den ihm die Arenadatei vorschreibt. Siehe @{"Arenen" Link "Arenen"}.
+
+
+@EndNode
+
+@Node "Positionsmenü" "AmigaRobots.guide/Positionsmenü"
+@Next "Statusmenü"
+@Prev "Simulationsmenü"
+@Toc "Menüfunktion"
+
+Das Positionsmenu
+=================
+
+Nach  Anwahl  eines  Roboters  im  Menü  kann  man  ihn mit einem
+Mausklick  an einem beliebigen Platz in der Arena platzieren. Zum
+Rückgängigmachen einfach noch einmal ins Menü klicken.
+
+
+@EndNode
+
+@Node "Statusmenü" "AmigaRobots.guide/Statusmenü"
+@Next "Entfernenmenü"
+@Prev "Positionsmenü"
+@Toc "Menüfunktion"
+
+Das Statusmenu
+==============
+
+Der angewählte Roboter wird ausführlich im Statusfenster angezeigt.
+Um das Statusfenster zu schließen, einfach das Schließgadget
+anklicken.
+
+
+@EndNode
+
+@Node "Entfernenmenü" "AmigaRobots.guide/Entfernenmenü"
+@Next "Arenen"
+@Prev "Statusmenü"
+@Toc "Menüfunktion"
+
+Das Entfernenmenu
+=================
+
+Der angewählte Roboter soll entfernt werden.  Nach einer
+Sicherheitabfrage wird dem Roboter mitgeteilt, daß er sich beenden
+soll. Wenn der Roboter sich zwei Sekunden nach Anruf noch nicht
+gemeldet hat, dann bedeutet das, daß er momentan keine
+@{b}AmigaRobots@{ub}-befehle aufruft. Sollte das der Fall sein, öffnet
+@{b}AmigaRobots@{ub} eine zweite Sicherheitsabfrage, denn nun läßt sich der
+Roboter nur noch mit der Betriebsystemfunktion @{b}RemTask()@{ub} entfernen. Das
+kann zur Folge haben, daß alloziierte Resourcen nicht freigegeben
+werden und eventuell die Shell, von der gestartet wurde, weiterhin
+belegt bleibt. Man sollte deshalb einen Robter von der Shell nie direkt
+aufrufen, sondern immer mit @{b}run @{i}Robotername@{ui}.rob@{ub} starten.
+
+Diese Funktion sollte nur in äußersten Notfällen aufgerufen werden,
+da AmigaRobots im Normalfall selbst für das Entfernen der Roboter
+sorgt.
+
+
+@EndNode
+
+@Node "Arenen" "AmigaRobots.guide/Arenen"
+@Next "Roboterdarstellung"
+@Prev "Entfernenmenü"
+@Toc "Main"
+
+Die AmigaRobots Arena
+*********************
+
+Die Arena ist ein großes Gebiet von 1000x1000 Feldern. Jeder Roboter
+kann jede Runde maximal ein Feld vorwärtskommen. Dies ist anders als
+bei @{b}CRobots@{ub}, wo sich ein Roboter bis zu 100 Felder pro Zug bewegen
+konnte.
+
+Die Arena ist durch das linke Fenster von 500x500 Pixeln
+repräsentiert. In diesem Window kann man verschiedene Hindernisse
+sehen, wenn diese in der aktuellen Arenadatei verzeichnet sind.  Jedes
+Hindernis ist weiß umrahmt, die Farbkodes im Inneren haben dabei
+folgende Bedeutung:
+
+   @{b}*@{ub} Weiß - Eine Wand
+
+     Die Roboter können zwar durch die Wände sehen, sprich scannen,
+     aber weder durchfahren noch durchschießen. Wenn ein Roboter gegen
+     eine Wand fährt, verliert er ein Punkt der Panzerung. Die Wände
+     schützen den Roboter zwar vor direktem Beschuß, aber die
+     Druckwelle eines in der Nähe explodierenden Geschosses trifft ihn
+     trotzdem (siehe @{"Karte" Link "Karte"}).
+
+     Ist die @{b}-c@{ub} Option eingeschaltet, kann der Roboter auch nicht mehr
+     durch Schadens- oder Tankfelder schießen, siehe auch @{"-c Option" Link "-c Option"}.
+
+   @{b}*@{ub} Rot - Ein Schadensfeld
+
+     Jede Runde, in der sich ein Roboter auf diesem Feld befindet,
+     verliert er einen Punkt seiner Panzerung (siehe @{"Schadennehmen" Link "Schadennehmen"}).
+
+   @{b}*@{ub} Grün - Ein Tankfeld
+
+     Ein Roboter auf diesem Feld bekommt zusätzliche Energie für seine
+     Batterien. Es gibt in einer Arena höchstens 10 solcher Felder
+     (siehe @{"Tankfelder" Link "Tankfelder"}).
+
+Später noch mehr zu den Feldern (siehe @{"Karte" Link "Karte"}).
+
+
+@EndNode
+
+@Node "Roboterdarstellung" "AmigaRobots.guide/Roboterdarstellung"
+@Next "Koordinatensystem"
+@Prev "Arenen"
+@Toc "Main"
+
+Die Darstellung eines Roboters
+******************************
+
+Die Roboter werden in der Arena als 5x5 Pixel großes Ikon einer
+bestimmten Farbe repräsentiert. Die Form kann im Roboterprogramm
+definiert werden, ansonsten wird ein Roboter als Kreis mit einem Punkt
+in der Mitte dargestellt.
+
+Im umrandeten Fenster am rechten Bildrand sieht man eine Liste der
+Roboter. Hinter dem Roboternamen taucht ein @{b}I@{ub} auf, wenn dieser
+unsichtbar ist, dahinter werden die Debugflags @{b}1@{ub} und @{b}2@{ub} angezeigt. In
+der Zeile unter dem Roboternamen wird hinter dem @{b}B@{ub} die momentane
+Batteriefüllung, hinter dem @{b}P@{ub} der Zustand der Panzerung dargestellt.
+Wenn die Panzerung auf Null fällt, scheidet der Roboter aus dem Spiel
+aus und sein Ikon wird in der Arena durch ein Kreuz ersetzt. Ein
+schnell fahrender Roboter wird seine Batterien schnell verbrauchen und
+mit leeren Batterien schließlich bewegungslos auf das Wiederaufladen
+harren müssen.
+
+Wenn ein Roboter eine Kugel abgefeuert hat, wird diese als ein kleiner
+Punkt dargestellt, der sich von dem Roboter entfernt.  Eine Kugel ist
+doppelt so schnell wie der schnellste Roboter, also viermal schneller
+als ein normaler Roboter mit der Geschwindigkeit 100.
+
+
+@EndNode
+
+@Node "Koordinatensystem" "AmigaRobots.guide/Koordinatensystem"
+@Next "Karte"
+@Prev "Roboterdarstellung"
+@Toc "Main"
+
+Das Koordinatensystem
+*********************
+
+Die Arena ist definiert mit dem Feld der Koordinaten 0,0 in der linken
+oberen Ecke und dem Feld mit den Koordinaten 999,999 in der rechten
+unteren Ecke des Fensters.
+
+Die Richtung 0° zeigt geradewegs nach rechts, und die Winkel steigen
+im Uhrzeigersinn, so daß 90° gerade nach unten, 180° nach links und
+270° nach oben zeigen. Damit kann man original @{b}CRobots@{ub}-Programme
+benutzen, nur daß dort der Koordinatenpunkt 0,0 rechts unten
+dargestellt wurde. Das heißt, daß nur die Darstellung gespiegelt
+wurde.
+
+
+@EndNode
+
+@Node "Karte" "AmigaRobots.guide/Karte"
+@Next "Batterien"
+@Prev "Koordinatensystem"
+@Toc "Main"
+
+Die Karte
+*********
+
+Die Arena wird in der Voreinstellung in der Datei @{b}PCRobots.RNA@{ub}
+definiert.
+
+Die Arena wird in Felder von 10x10 Pixel aufgeteilt, das sind also
+100x100 Quadrate für die ganze Arena. Der Inhalt jedes Quadrates wird
+als ein Zeichen in der Arenadatei repräsentiert.  Jede Zeile der Datei
+definiert eine Zeile der Arena und jedes Zeichen ein Quadrat in dieser
+Zeile.
+
+Im Idealfall besteht eine Arenadatei aus 100 Zeilen von 100 Zeichen.
+Jede Zeile, die kürzer als 100 Zeichen und jede Datei die kürzer als
+100 Zeilen ist, wird entsprechend mit freien Feldern aufgefüllt.
+
+Die Zeichen haben die folgende Bedeutung:
+
+   @{b}*@{ub}     @{b}.@{ub} - Ein freies Feld
+
+     wird intern durch @{b}ARENA_FREE@{ub} in @{b}PCRobots.h@{ub} deklariert.
+
+   @{b}*@{ub}     @{b}X@{ub} - Eine Wand
+
+     hat den internen Wert @{b}ARENA_WALL@{ub} durch @{b}PCRobots.h@{ub}.
+
+   @{b}*@{ub}     @{b}D@{ub} - Ein Schadensfeld
+
+     hat den internen Wert @{b}ARENA_DAMAGE@{ub}.
+
+   @{b}*@{ub}     @{b}R@{ub} - Ein Tankfeld
+
+     hat den internen Wert @{b}ARENA_REFUEL@{ub} (siehe @{"Tankfelder" Link "Tankfelder"}).
+
+   @{b}*@{ub}     @{b}0@{ub}-@{b}9@{ub} - Die Vorwahlpositionen
+
+     für die Roboter 0 bis 9. Das entsprechende Feld ist natürlich
+     frei, hat also hat den internen Wert @{b}ARENA_FREE@{ub}.
+
+Der Scanner vom Roboter sieht durch Wände hindurch; also muß man um
+Kollisionen zu vermeiden periodisch die Funktion @{b}get_local_map@{ub} (siehe
+@{"get_local_map" Link "get_local_map"}) aufrufen.  Diese gibt ein 9x9 Felder großes Gebiet um
+den Roboter herum zurück.  Der Aufruf ist relativ langsam, deshalb
+sollte man darauf achten ihn nicht häufiger als nötig zu benutzen.
+
+Kugeln können Wände nicht durchdringen, weshalb man einen Roboter
+hinter einer Wand zwar sehen, aber nicht treffen kann.  Um zu sehen, ob
+eine Kugel eine Wand getroffen hat, gibt es die
+@{b}get_shell_status@{ub}-Funktion (siehe @{"get_shell_status" Link "get_shell_status"}), die
+zurückmeldet, wie der Flug der letzten Kugel geendet hat.
+
+
+@EndNode
+
+@Node "Batterien" "AmigaRobots.guide/Batterien"
+@Next "Tankfelder"
+@Prev "Karte"
+@Toc "Main"
+
+Die Batterien der Roboter
+*************************
+
+Die Roboter werden von elektrischen Batterien betrieben. Diese
+Batterien werden jede Spielrunde von einem Solargenerator aufgeladen
+und von den Robotermotoren entsprechend der Fahrgeschwindigkeit
+entladen.
+
+Bei Spielbeginn sind die Batterien auf 1000 Einheiten aufgeladen.  Jede
+Runde laden die Batterien sich normalerweise um 4 Punkte auf, was einem
+Batterieladewert von 40 entspricht.  Bei @{b}PCRobots@{ub} entlädt sich die
+Batterie jede Runde um die momentane Geschwindigkeit durch 10, also
+linear. Unter @{b}AmigaRobots@{ub} entlädt sich die Batterie quadratisch
+wachsend mit der Geschwindigkeit. Mit der @{"-c Option" Link "-c Option"} kann man die alte
+@{b}PCRobots@{ub} Berechnung wieder aktivieren.
+
+   @{b}*@{ub} AmigaRobots
+
+     Quadratischer Energiezuwachs bei der Fahrgeschwindigkeit bedeutet,
+     daß ein Roboter für die selben Weg bei unterschiedlichen
+     Geschwindigkeiten nicht die selbe Menge Energie benötigt.  Fährt
+     ein Roboter mit 100, verbraucht er auch 10 Energieeinheiten
+     (100*100/1000=10).  Verdoppelt er seine Geschwindigkeit auf 200,
+     so verbraucht er 40 Energieeinheiten pro Runde (200*200/1000=40).
+     Das bedeutet, daß er für den selben Weg die doppelte Energie
+     benötigt.  Mit einer Geschwindigkeit von 63 schaffen die
+     Solargeneratoren es also gerade eben die verbrauchte Energie
+     wieder aufzuladen (63*63/1000=3.9).
+
+     Der quadratische Energiehaushalt kommt den wirklichen
+     Energieverbrauch bei unterschiedlichen Geschwindigkeiten näher.
+
+   @{b}*@{ub} PCRobots
+
+     Die Batterien werden etwas genauer als bei @{b}PCRobots@{ub} behandelt.
+     Dort konnte man nämlich mit 49 fahren, verbrauchte aber nur 4
+     Batterieeinheiten. Dieser Fehler wurde bei @{b}AmigaRobots@{ub} behoben.
+     Fährt ein Roboter bei @{b}AmigaRobots@{ub} mit 49, bei einem
+     Batterieladewert von 40, so verbraucht der Roboter 9 Runden lang 5
+     Einheiten und die zehnte Runde 4 Einheiten. Also ist seine
+     Batterie nach zehn Runden effektiv um 9 Einheiten gesunken.
+
+Die Batterie kann nicht über 1000 Einheiten aufgeladen werden.
+
+Wenn die Batterie verbraucht ist, kommt der Roboter zum Stillstand. Um
+wieder anzufahren, muß sich dei Batterie erholen und ein @{b}move@{ub}-Befehl
+benutzt werden.
+
+Das Beschleunigen eines Roboters kostet zusätzliche Energie, die beim
+Bremsen nicht wieder zurückgegeben wird. Es wird 1/5 des
+Beschleunigungswertes pro Runde von der Batterie abgezogen. So kostet
+das Beschleunigen von 0 auf 100 20 zusätzliche Energiepunkte. Das ist
+anders als bei @{b}PCRobots@{ub}, verhindert aber ein Schummeln mit der Energie
+durch An- und Abschalten der Batterie. Da dieser Vorgang realistisch
+ist, wirkt er auf die Simulation belebend.
+
+Die Batterieenergie kann außer zum Fahren noch zum Kauf von Munition
+oder Panzerung verwendet werden. Andererseits kann man auch Panzerung
+gegen Batterieladung eintauschen.
+
+Der Roboter, dessen Treffer zum Ausscheiden eines anderen führte, wird
+mit dessen Restbatterieladung belohnt. Die erbeutete Ladung wird zu
+seiner eigenen addiert.
+
+
+@EndNode
+
+@Node "Tankfelder" "AmigaRobots.guide/Tankfelder"
+@Next "Konfiguration"
+@Prev "Batterien"
+@Toc "Main"
+
+Die Tankfelder
+**************
+
+Eine Arena kann bis zu 10 Tankfelder haben. Dort kann jeder Roboter
+seine Batterien schnell auffüllen. Diese Auffüllstationen sind selbst
+große, sich schnell aufladende Batterien. Sie laden sich jeden Zug um
+5 Einheiten auf, solange sie nicht von einem Roboter angezapft werden.
+Ihre Kapazität liegt bei 2000 Einheiten.
+
+Damit ein Roboter sich aufladen kann, muß er sich auf so einem Feld
+befinden und sichtbar sein. Jede Runde werden seine Batterien dann
+zusätzlich um 10 Punkte geladen, solange die Batterien der Ladestation
+nicht selbst erschöpft sind.
+
+
+@EndNode
+
+@Node "Konfiguration" "AmigaRobots.guide/Konfiguration"
+@Next "Unsichtbarkeit"
+@Prev "Tankfelder"
+@Toc "Main"
+
+Die Konfiguration der Roboter
+*****************************
+
+Roboter müssen sich bevor sie mitspielen können, ersteinmal mit den
+passenden Parametern konfigurieren. Anders als bei @{b}PCRobots@{ub} ist dies
+nun bei @{b}AmigaRobots@{ub} Pflicht.
+
+Der Konfigurationsbefehl @{i}muß@{ui} der erste ausgeführte Befehl sein.
+Ansonsten ist es dem Roboter nicht möglich, sich korrekt am Spiel
+anzumelden.
+
+Normale Roboter sollten bei allen Parametern den Wert 2 besitzen.
+
+     Wert                      0       1       2        3       4
+     Geschwindigkeit          50      75     100      150     200
+     Manövrierbarkeit         20%     35%     50%      75%    100%
+     Reichweite              300     500     700     1000    1500
+     Panzerung                50      75     100      150     200
+     Beschleunigung            5       7      10       15      20
+
+Man hat 10 Punkte, die man auf diese Eigenschaften verteilen kann, sind
+die 10 Punkte verbraucht, werden die übrigen Eigenschaften auf 0
+gesetzt. Es ist außerdem noch möglich eine Tarnvorrichtung zu kaufen.
+Wenn @{b}PCRobots@{ub}-kompatibilität aktiviert wurde, kostet die
+Tarnvorrichtung 1/10 der mitgelieferten Munition. Hat man normalerweise
+1000 Kugeln, so startet man mit Tarngerät mit 900. Unter @{b}AmigaRobots@{ub}
+kostet die Tarnvorrichtung die Hälfte der eingestellten Munition.
+Voreingestellt sind ohne Tarnvorrichtung 40 Schuß, was für 2000
+Runden reicht. Mit Tarnvorrichtung hat man also noch 20 Schuß zu
+Verfügung. Die Beschleunigung gibt an, um wieviel Bewegungspunkte sich
+die Geschwindigkeit in einer Spielrunde ändern kann und die
+Manövrierbarkeit bezieht sich auf die maximal erreichbare
+Geschwindigkeit, z. B. Maximalgeschwindigkeit 150, Manövrierbarkeit
+75% bedeutet, daß der Roboter bis zu einer Geschwindigkeit von 112 mit
+@{b}move()@{ub} seine Richtung ändern kann.
+
+
+@EndNode
+
+@Node "Unsichtbarkeit" "AmigaRobots.guide/Unsichtbarkeit"
+@Next "Schadennehmen"
+@Prev "Konfiguration"
+@Toc "Main"
+
+Unsichtbarkeit
+**************
+
+Die Tarnung ist ein reines Defensiv-System und ist nutzlos in einem
+dummen Roboter.
+
+Wenn der Roboter unsichtbar wird, kann er nicht mehr von Scannern
+ausgemacht werden, trotzdem wird er von Kugeln beschädigt, die in
+seiner Nähe explodieren.
+
+Während der Unsichtbarkeit gibt es einige funktionelle Beschränkungen
+des Roboters.
+
+   - Scannen ist nicht möglich
+
+   - Schießen ist nicht möglich
+
+   - Die Batterie lädt sich @{i}nicht@{ui} auf
+
+Der Hauptnutzen der Tarnung ist wahrscheinlich das unbemerkte Entkommen
+eines beschossenen Roboters aus dem Gefahrenbereich und seine Rettung
+an einen sicheren Ort. Dort könnte er dann seine Batterien sich
+erholen lassen.
+
+Andererseits könnte ein Roboter unsichtbar bleiben, bis ihm ein
+Aufklärungsroboter die Zielkoordinaten eines gegenerischen Roboters
+sendet, um plötzlich aus dem Nichts aufzutauchen und diesen zu
+beschießen. Bevor der beschossene Roboter noch die Zeit gehabt hat,
+den Schützen genau zu orten, könnte der sich inzwischen wieder in
+getarnter Sicherheit wiegen.
+
+Wenn ein Roboter unsichtbar wird, taucht ein @{b}I@{ub} hinter seinem Namen auf.
+
+Ein Roboter kann maximal für 100 Runden unsichtbar bleiben, danach
+wird er wieder automatisch sichtbar werden. Nachdem ein Roboter wieder
+sichtbar geworden ist, muß er dieselbe Zeit sichtbar bleiben, die er
+vorher unsichtbar war. War ein Roboter zum Beispiel gerade für 39
+Runden unsichtbar, dann muß er erst wieder mindestens 39 Runden
+abwarten, bevor er sich wieder unsichtbar machen kann.
+
+Siehe @{"Konfiguration" Link "Konfiguration"}, @{"configure" Link "configure"}, @{"invisibility" Link "invisibility"} und @{"isinvisible" Link "isinvisible"}.
+
+
+@EndNode
+
+@Node "Schadennehmen" "AmigaRobots.guide/Schadennehmen"
+@Next "Roboterprogramme"
+@Prev "Unsichtbarkeit"
+@Toc "Main"
+
+Schadennehmen
+*************
+
+Wenn ein Roboter gegen eine Wand fährt oder getroffen wird, wird er
+dabei beschädigt. Jeder Schadenspunkt wird ihm von seiner vorhandenen
+Panzerung abgezogen. Sobald der Roboter keine Panzerung mehr hat,
+scheidet er aus. Der Schaden wird folgendermaßen berechnet:
+
+Kollision mit einer Wand
+     1 Punkt
+
+Explosion im 50er-Radius
+     2 Punkte
+
+Explosion im 25er-Radius
+     8 Punkte
+
+Explosion im  5er-Radius
+     25 Punkte
+
+Die Explosion wird als Kreis mit drei verschiedenfarbigen Radien
+dargestellt. Die Farbe des 50er Kreises ist rot, der 25er ist gelb und
+der 5er ist weiß.
+
+Siehe @{"Batterien" Link "Batterien"}, @{"shoot" Link "shoot"}, @{"damage" Link "damage"} und @{"hit_from" Link "hit_from"}.
+
+
+@EndNode
+
+@Node "Roboterprogramme" "AmigaRobots.guide/Roboterprogramme"
+@Next "Funktionsimplementation"
+@Prev "Schadennehmen"
+@Toc "Main"
+
+Die Roboterprogramme
+********************
+
+Jedes Roboterprogramm ist ein einzelnes ausführbares Amiga-Programm.
+Zum optimalen Zusammenspiel mit @{b}AmigaRobots@{ub} sowie zur Aufrechterhaltung
+der Kompatibilität zu @{b}PCRobots@{ub} ist die Einhaltung einiger Regeln
+vonnöten.
+
+  1. Als erster Befehl muß @{b}configure()@{ub} aufgerufen werden.
+
+  2. Man sollte die Datei @{b}PCRobots.h@{ub} includen.
+
+  3. Es sollten keine Standard Ein/Ausgabefunktionen benutzt werden.
+     Während auf dem Amiga nur der flüssige Ablauf darunter zu leiden
+     hat, stürzt der PC in diesem Fall ab. Da die Roboterprogramme auf
+     dem Amiga wirklich selbstständig sind, wäre es denkbar, daß ein
+     Roboter die vorhandenen Arenen einfach nachlädt, was schließlich
+     nicht der Sinn der Sache sein kann. Ein solches Programm würde
+     sich selbst disqualifizieren. Andererseits ist durch absichtliches
+     Brechen mit dieser Regel und dem Nutzen von Amiga-Systemroutinen
+     die reizvolle Implementation eines human-gesteuerten Roboters mit
+     simuliertem Radarsystem denkbar.  Der Phantasie sind hier keine
+     Grenzen gesetzt.
+
+  4. Das Programm darf @{i}niemals@{ui} enden. Das Hauptprogramm sollte aus
+     einer Endlosschleife bestehen @{b}(while(1){}- Konstruktion)@{ub}.
+     @{b}AmigaRobots@{ub} selbst sorgt für die Beendigung des Programmes.
+
+     Bei Beendigung wird automatisch Speicher, der mit @{b}malloc@{ub} oder
+     @{b}calloc@{ub} angefordert wurde, freigegeben. Achtung! Bei Nutzung von
+     @{b}malloc@{ub} oder @{b}calloc@{ub} geht selbstverständlich die
+     @{b}PCRobots@{ub}-Kompatibilität flöten.
+
+     Der folgende Absatz ist nur für Freaks...
+
+     Um ein ordentliches Verlassen des Programmes zu Gewährleisten,
+     wird in @{b}robotlib.c@{ub} im Falle eines Spielendes die C-Funktion @{b}exit()@{ub}
+     aufgerufen. Diese Funktion verläßt ein C-Programm
+     orgnungsgemäß mit dem Schließen aller offenen Dateien und dem
+     Freigeben von alloziiertem Speicher. Hat man zusätzliche
+     System-Resourcen mit Beschlag belegt, sollte man einen exittrap
+     mit @{b}atexit()@{ub} legen. In anderen Sprachen sollte an dieser Stelle
+     ein Pendant zu @{b}exit()@{ub} benutzt werden.
+
+  5. Die Speicherbegrenzung von 64k von @{b}PCRobots@{ub} entfällt. Trotzdem
+     sollte man das Roboterprogramm kurz halten.  Bei Überschreiten
+     dieser Grenze ist der Roboter nur noch auf dem Amiga ausführbar,
+     man sollte also nicht mit Speicher aasen.  Merke: es gibt immer
+     einen kürzeren Weg, als den, den Du gehst, und weniger ist
+     manchmal mehr.
+
+  6. Fließkommarechnungen sind nicht gern gesehen. Nicht nur, daß die
+     @{b}PCRobots@{ub}-Kompatibilität flöten geht, sondern der Roboter
+     schluckt unnötig viel Rechenzeit, was die Simulation ermüdend
+     macht. @{b}AmigaRobots@{ub} bietet eine ganze Stange prima
+     Integer-Berechnungen an, so daß Fließkommarechnung überflüssig
+     ist. Sollte jemand eine Fließkommaberechnung wirklich vermissen,
+     ist es kein Problem, @{b}AmigaRobots@{ub} diese mal kurz, effektiv als
+     Integer beizubringen.
+
+  7. Warteschleifen müssen immer einen rechenzeitabgebenden Befehl
+     enthalten. (zu rechenzeitabgebenden Befehlen später mehr).
+
+     Zum Beispiel:
+          while(olddamage == damage())
+          {
+             swaptask();
+          }
+
+     Ansonsten kann @{b}AmigaRobots@{ub} das Spiel nicht fortsetzen. Am besten
+     veranschaulichen läßt sich das Spiel als Brettspiel, wo jeder in
+     einer Runde einmal drankommt und dann solange am Zug ist, bis er
+     den Zug beendet hat und der nächste dran ist. Das Spielfeld
+     verändert sich erst am Ende der Runde.
+
+     Wenn @{b}AmigaRobots@{ub} plötzlich `hängt', liegt das mit großer
+     Sicherheit an der Mißachtung dieser Regel. Es wartet dann
+     schlicht darauf, daß das fehlerhafte Programm endlich seinen Zug
+     macht.
+
+  8. Der Programmname muß in der Variablen char *_ProgramName
+     enthalten sein. Damit schlägt @{b}AmigaRobots@{ub} zwei Fliegen mit einer
+     Klappe. Einerseits ist die Kompatibilität zu @{b}PCRobots@{ub}
+     gewährleistet, andererseits erledigt der Startup-Code von einigen
+     Compilern, wie z.B. SAS-C® dieses automatisch, so daß man sich
+     nicht mehr darum kümmern muß. Auf Compilern, die dies nicht
+     automatisch erledigen ist es ein Klacks, dies per Hand zu machen,
+     z.B.
+
+          /* nop ist der einfachste Roboter, auf SAS-C® entfällt
+             die Programname-Zeile */
+          #ifndef __SASC
+          char *_ProgramName = "MeinBesterRoboter";
+          #endif
+          
+          #include <PCRobots.h>
+          
+          void main(void)
+          {
+             configure(2,2,2,2,2,0);
+             while(1)
+             {
+                swaptask();
+             }
+          }
+
+Siehe @{"C" Link "Funktionen"}, @{"Pascal" Link "Pascal"} und @{"Assembler" Link "Assembler"}.
+
+
+@EndNode
+
+@Node "Funktionsimplementation" "AmigaRobots.guide/Funktionsimplementation"
+@Next "Funktionen"
+@Prev "Roboterprogramme"
+@Toc "Main"
+
+Die Funktionsimplementation
+***************************
+
+Die speziellen Funktionen von @{b}AmigaRobots@{ub} werden durch
+Taskkommunikation und Messageports realisiert. Dazu werden die Felder
+der Nachricht mit den benötigten Parametern ausgefüllt.
+
+Das @{b}cmds@{ub}-Feld wird mit den Funktionswerten ausgefüllt, die den
+Interruptaufrufen von @{b}PCRobots@{ub} entsprechen (@{b}AX@{ub}). @{b}AmigaRobots@{ub} gibt die
+Rückgabewerte in der selben Nachricht im @{b}ret@{ub}-Feld zurück.
+Zusätzliche Parameter werden in vereinbarten Feldern zurückgegeben.
+Zum Beispiel beim scan-Befehl der Wert von Range.
+
+Um die Kommunikation zu ermöglichen, öffnet @{b}AmigaRobots@{ub} zu Beginn
+einen Rendezvous-Port. Jeder Spieler, der teilnehmen möchte, sendet
+erst mit dem configure-Befehl seine Konfiguration an @{b}AmigaRobots@{ub}.
+@{b}AmigaRobots@{ub} öffnet nun für jeden Spieler einen speziellen
+Spielerport, dessen Adresse es in der Konfigurationsnachricht
+zurückreicht. Alle weiteren Befehle des Spielers gehen sodann an diesen
+Spielerport. Nur der Rendezvousport ist Public, sodaß niemand die
+Kommunikation der Prozesse stören kann. Bei Benutzung des Linkmoduls
+braucht man sich um all dies nicht zu kümmern.
+
+Funktionsaufrufe mit einem Kode kleiner als 16 geben die Initiative an
+den nächsten Roboter ab.
+
+Im Moment gibt es für AmigaRoboter ein komfortables
+Standard-Objektmodul, das man zu jedem Roboter binden muß. Jede
+Sprache die ein Standart-Objektmodul binden kann, kann also mit
+geringstem Aufwand zur Programmierung eines AmigaRobot-Roboters benutzt
+werden. Für die Sprache C ist alles fertig, andere Sprachen sind ohne
+großen Aufwand implementierbar.
+
+Der Sourcecode des Objektmodules ist als @{b}robotlib.c@{ub} und @{b}ar_comm.h@{ub}
+beigelegt.
+
+Wenn jemand @{b}AmigaRobots@{ub}-Roboter in einer anderen Sprache schreibt, kann
+er diesen Code frei benutzen. Ich bitte um Zusendung der entsprechenden
+Module, damit ich sie auch für zukünftige Erweiterung nutzbar machen
+kann.
+
+
+@EndNode
+
+@Node "Funktionen" "AmigaRobots.guide/Funktionen"
+@Next "swaptask"
+@Prev "Funktionsimplementation"
+@Toc "Main"
+
+Die Funktionen
+**************
+
+
+ @{" swaptask " Link "swaptask"}          Zug beenden
+ @{" movement " Link "movement"}          Bewegung ändern
+ @{" scan " Link "scan"}              Nach anderen Robotern sehen
+ @{" shoot " Link "shoot"}             In eine Richtung schießen
+ @{" getxy " Link "getxy"}             Eigene Postition ermitteln
+ @{" transmit " Link "transmit"}          Nachricht senden
+ @{" receive " Link "receive"}           Nachricht empfangen
+ @{" damage " Link "damage"}            Schadensstatus
+ @{" speed " Link "speed"}             Momentane Geschwindigkeit
+ @{" battery " Link "battery"}           Batteriezustand
+ @{" ticks " Link "ticks"}             Spielrunden
+ @{" l_sin " Link "l_sin"}             Sinus berechnen
+ @{" l_asin " Link "l_asin"}            Arcussinus berechnen
+ @{" l_cos " Link "l_cos"}             Cosinus berechnen
+ @{" l_acos " Link "l_acos"}            Arcuscosinus berechnen
+ @{" l_tan " Link "l_tan"}             Tangens berechnen
+ @{" l_atan " Link "l_atan"}            Arcustangens berechnen
+ @{" l_sqrt " Link "l_sqrt"}            Wurzel ziehen
+ @{" set_pattern " Link "set_pattern"}       Darstellungsmuster bestimmen
+ @{" debug_flag " Link "debug_flag"}        Inneren Zustand anzeigen
+ @{" buy_armour " Link "buy_armour"}        Schilde gegen Energie tauschen
+ @{" buy_shells " Link "buy_shells"}        Munition gegen Energie tauschen
+ @{" shells_left " Link "shells_left"}       Munitionsstatus
+ @{" get_local_map " Link "get_local_map"}     Landkartenausschnitt holen
+ @{" invisibility " Link "invisibility"}      Sichtbarkeitszustand ändern
+ @{" get_shell_status " Link "get_shell_status"}  Nachsehen, ob man getroffen hat
+ @{" isinvisible " Link "isinvisible"}       Sichtbarkeitszustand überprüfen
+ @{" l_atan2 " Link "l_atan2"}           Arcustangens berechen
+ @{" flying_shells " Link "flying_shells"}     Anzahl der eigenen fliegenden Kugeln
+ @{" get_big_map " Link "get_big_map"}       Größeren Landkartenausschnitt holen
+ @{" hit_from " Link "hit_from"}          Richtung der letzten, Schaden anrichtenden Explosion
+ @{" highest_player_id " Link "highest_player_id"} Höchste ID eines Roboters zu Beginn des Spieles
+ @{" myid " Link "myid"}              Eigene ID ermitteln
+ @{" version " Link "version"}           AmigaRobots Version ermitteln
+ @{" configure " Link "configure"}         Konfigurieren
+
+Zugbeendende Funktionen
+=======================
+
+Die folgenden Befehle beenden den Zug des Roboters
+
+
+@EndNode
+
+@Node "swaptask" "AmigaRobots.guide/swaptask"
+@Next "movement"
+@Prev "Funktionen"
+@Toc "Funktionen"
+
+@{b}swaptask@{ub}
+--------
+
+ - C-Funktion: void swaptask (void);
+     => Nichts
+
+     Dieser Befehl beendet den Zug des Roboters und gibt die Kontrolle
+     zurück an @{b}AmigaRobots@{ub}. Der Befehl kann gut benutzt werden, um auf
+     bestimmte Ereignisse zu warten.
+
+     Dieser Befehl beendet den Zug des Roboters.
+
+     Als Beispiel möge der Roboter @{b}nop@{ub} herhalten, @{"Roboterprogramme" Link "Roboterprogramme"}.
+
+
+
+@EndNode
+
+@Node "movement" "AmigaRobots.guide/movement"
+@Next "scan"
+@Prev "swaptask"
+@Toc "Funktionen"
+
+@{b}movement@{ub}
+--------
+
+ - C-Funktion: void movement (int @{i}Geschwindigkeit@{ui} , int @{i}Winkel@{ui} );
+     => Nichts
+
+     Dieser  Befehl  veranlaßt  den  Roboter,  sich  in eine bestimmte
+     Richtung mit einer bestimmten Geschwindikeit zu bewegen.
+
+    @{i}Geschwindigkeit@{ui}
+          = 0 - Maximalgeschwindigkeit des Roboters (<=200)
+
+    @{i}Winkel@{ui}
+          = 0 - 359 Grad
+
+     Die Geschwindigkeit ändert sich mit der konfigurierten
+     Beschleunigungsrate. Wenn der Roboter außerhalb seiner
+     Manövrierbarkeit ist (siehe @{"Konfiguration" Link "Konfiguration"}), muß er für eine
+     Richtungsänderung erst langsamer werden. Bei maximaler
+     Geschwindigkeit (sprich 200), kann ein Roboter bei genau
+     waagerechter oder senkrechter Fahrrichtung genau ein Feld in einer
+     Spielrunde zurücklegen. Deshalb braucht er bei @{i}Geschwindigkeit@{ui}=50
+     4 Spielrunden für ein Feld. Ein Feld hat natürlich die
+     Diagonallänge von Wurzel 2, somit ist natürlich die kürzeste
+     Verbindung zweier Punkte die Gerade.
+
+     Dieser Befehl beendet den Zug des Roboters.
+
+     Beispiel:
+          int tempo,angle;
+          tempo = 50;
+          angle = 0;
+          ...
+          while(1)
+          {
+             ...
+             movement(tempo,angle);
+             angle += 90;   /* 90 Grad addieren */
+             angel %= 360;  /* auf 360 Grad beschränken */
+             ...
+          }
+
+     Siehe @{"speed" Link "speed"}.
+
+
+@EndNode
+
+@Node "scan" "AmigaRobots.guide/scan"
+@Next "shoot"
+@Prev "movement"
+@Toc "Funktionen"
+
+@{b}scan@{ub}
+----
+
+ - C-Funktion: int scan (int @{i}Winkel@{ui} , int @{i}Auflösung@{ui} , int *@{i}Weite@{ui} );
+     => @{i}ID-Nummer@{ui}
+
+     Dieser  Befehl  scannt  nach  einem  Roboter  in  eine  bestimmte
+     Richtung mit gegebener Auflösung.
+
+    @{i}Winkel@{ui}
+          = 0 - 359 Grad
+
+    @{i}Auflösung@{ui}
+          = 0 - 45 Grad
+
+     @{i}Auflösung@{ui}=10 heißt 10° nach rechts und 10° nach links, also
+     insgesamt 21° Scanwinkel; @{i}Auflösung@{ui}=0 heißt 1° Scanwinkel, was
+     das genauest mögliche Scannen ist.
+
+     Zurückgegeben wird die ID-Nummer des nächsten Roboters oder -1
+     wenn keiner zu sehen war; die Roboter haben die ID-Nummern von 0
+     bis 32k.
+
+     Wenn  ein  Roboter  gefunden  wurde,  enthält  @{i}Weite@{ui}  seine
+     Entfernung.  Wenn  kein  Roboter  gefunden wurde, hat @{i}Weite@{ui} keine
+     Bedeutung. Damit @{b}scan@{ub} @{i}Weite@{ui} verändern kann, muß die Adresse mit
+     dem Adress-Operator @{b}&@{ub} übergeben werden.
+
+     Dieser Befehl beendet den Zug des Roboters.
+
+     Beispiel:
+          int dir,res,range;
+          dir = 0;
+          res = 4; /* Auflösung 4+1+4=7 Grad */
+          ...
+          while(1)
+          {
+             ...
+             if(scan(dir,res,&range) != -1)
+             {
+                 shoot(dir,range);
+             }
+             dir += 8;   /* 8 Grad addieren */
+             dir %= 360;  /* auf 360 Grad beschränken */
+             ...
+          }
+
+     Siehe @{"invisibility" Link "invisibility"}, @{"Unsichtbarkeit" Link "Unsichtbarkeit"}, @{"shoot" Link "shoot"}.
+
+
+@EndNode
+
+@Node "shoot" "AmigaRobots.guide/shoot"
+@Next "getxy"
+@Prev "scan"
+@Toc "Funktionen"
+
+@{b}shoot@{ub}
+-----
+
+ - C-Funktion: int shoot (int @{i}angle@{ui} , int @{i}range@{ui} );
+     => @{i}Abschuß erfolgt@{ui}
+
+     Dieser Befehl veranlaßt den Roboter, in eine Richtung auf eine
+     Entfernung zu schießen. Die Kugel zeigt erst an ihrem Zielpunkt
+     Wirkung, es sei denn sie ist vorher auf ein Hindernis getroffen
+     und zerstört.
+
+    @{i}Winkel@{ui}
+          = 0 - 359 Grad
+
+    @{i}Weite@{ui}
+          = 0 - Maximale Reichweite der Kanone
+
+     Wenn der Roboter imstande war, einen Schuß abzugeben, gibt die
+     Funktion eine 1 zurück, im anderen Falle eine 0.
+
+     Das Geschütz des Roboters ist unabhängig von seiner Fahrrichtung,
+     also kann in jede Richtung gefeuert werden, die Nachladedauer der
+     Kanone ist 50 Runden. Die Begrenzung von @{b}PCRobots@{ub} auf gleichzeitig
+     höchstens 7 Schuß pro Roboter in der Luft wurde auf 14 erhöht,
+     so daß effektiv keine Begrenzung mehr existiert.
+
+     Bei @{b}PCRobots@{ub} bekommt jeder Roboter zu beginn 1000 Schuß.  Da
+     diese 1000 Schuß erst nach frühestens 50000 Runden verschossen
+     werden können, wurde diese Zahl voreinstellungsgemäß bei
+     @{b}AmigaRobots@{ub} auf 40 Schuß gesenkt, was immerhin für 2000 Runden
+     Munition sorgt. Ich empfehle bei der Programmierung den Fall einer
+     Munitionsknappheit zu berücksichtigen. Mit der Funktion
+     @{b}buy_shells@{ub} (siehe @{"buy_shells" Link "buy_shells"}) kann man Munition für
+     Batterieeinheiten kaufen.
+
+     Im Falle von konfigurierter Tarnfähigkeit werden bei @{b}PCRobots@{ub} nur
+     9/10 der üblichen Munition ausgeliefert, bei @{b}AmigaRobots@{ub} sogar
+     nur noch die Hälfte (siehe @{"-c Option" Link "-c Option"}).
+
+     Dieser Befehl beendet den Zug des Roboters.
+
+     Ein Beispiel für @{b}shoot@{ub} ist in @{"scan" Link "scan"}.
+
+     Siehe @{"Schadennehmen" Link "Schadennehmen"}.
+
+
+@EndNode
+
+@Node "getxy" "AmigaRobots.guide/getxy"
+@Next "transmit"
+@Prev "shoot"
+@Toc "Funktionen"
+
+@{b}getxy@{ub}
+-----
+
+ - C-Funktion: void getxy (int *@{i}x@{ui} ,int *@{i}y@{ui} );
+     => @{i}x/y-Position@{ui} in @{i}x@{ui},@{i}y@{ui}
+
+     Diese Funktion gibt die momentane Position des Roboters zurück.
+
+     Die x/y-Koordinaten werden in den @{i}x@{ui}/@{i}y@{ui}-Variablen zurückgegeben.
+     Die Werte reichen von 0 - 999. Damit die Routine die Variablen @{i}x@{ui}
+     und @{i}y@{ui} verändern kann, muß man mit dem Adress-Operator @{b}&@{ub} die
+     Adressen der Variablen übergeben.
+
+     Beispiel:
+          int x,y;
+          ...
+          while(1)
+          {
+             ...
+             getxy(&x,&y);
+             if(x < 10 || x > 990 || y < 10 || y > 990)
+             {
+                @{i}Achtung-Wände!@{ui}
+             }
+             ...
+          }
+
+     Siehe @{"Karte" Link "Karte"}, @{"Arenen" Link "Arenen"}.
+
+
+@EndNode
+
+@Node "transmit" "AmigaRobots.guide/transmit"
+@Next "receive"
+@Prev "getxy"
+@Toc "Funktionen"
+
+@{b}transmit@{ub}
+--------
+
+ - C-Funktion: int transmit (int @{i}Empfangsroboter-ID@{ui} , int @{i}Datenwort@{ui} );
+     => @{i}Erfolg@{ui}
+
+     Diese  Funktion  sendet  dem  Roboter mit der ID @{i}target@{ui} das
+     32-Bit-Wort @{i}data@{ui}.
+
+    @{i}Empfangsroboter-ID@{ui}
+          = Roboter ID, wie in @{b}scan@{ub} erhalten
+
+    @{i}Datenwort@{ui}
+          = 32-Bit Wort
+
+     Wenn  erfolgreich  gesendet  werden konnte, gibt die Funktion den
+     Wert 1 zurück, im Falle eines Fehlers 0.
+
+     Roboter haben einen 20 Wort großen FIFO Puffer, wo hereinkommende
+     Wörter auf ihren Abruf warten. Wenn der Puffer voll ist, oder der
+     Zielroboter nicht (mehr) existiert, gibt die Funktion den Wert 0
+     zurück. Ein erfolgreiches Transmit heißt nicht, daß der
+     Empänger die Nachricht auch gelesen hat.
+
+     Das Senden einer Nachricht kostet eine Batterieeinheit.
+
+     Siehe @{"receive" Link "receive"}.
+
+
+@EndNode
+
+@Node "receive" "AmigaRobots.guide/receive"
+@Next "damage"
+@Prev "transmit"
+@Toc "Funktionen"
+
+@{b}receive@{ub}
+-------
+
+ - C-Funktion: int receive (int *@{i}Senderoboter-ID@{ui} , int *@{i}Datenwort@{ui} );
+     => @{i}Erfolg@{ui}
+
+     Mit  dieser Funktion kann man Nachrichten lesen, die mit transmit
+     von einem Roboter gesendet wurden.
+
+     Wenn  mindesten  eine  Nachricht vorhanden war, gibt die Funktion
+     eine 1 zurück, im anderen Fall eine 0.
+
+     Wenn eine Nachricht vorhanden war, enthält @{i}Senderoboter-ID@{ui} die ID
+     des Senderoboters und @{i}Datenwort@{ui} die Nachricht. Im anderen Fall
+     sind die Werte ohne Belang. Da diese Funktion den Roboter keinen
+     Zug kostet, sollte sie periodisch von jedem Roboter aufgerufen
+     werden, um den Empfangspuffer frei zu halten, selbst wenn er die
+     Daten nicht benötigt.
+
+     Siehe @{"transmit" Link "transmit"}.
+
+
+@EndNode
+
+@Node "damage" "AmigaRobots.guide/damage"
+@Next "speed"
+@Prev "receive"
+@Toc "Funktionen"
+
+@{b}damage@{ub}
+------
+
+ - C-Funktion: int damage (void);
+     => @{i}Schadenszustand@{ui}
+
+     Diese Funktion holt den Schadensstatus des Roboters. Bei einem
+     heilen, durchschnittlich konfigurierten Roboter sind das 100
+     Punkte. Wenn der Roboter zerstört ist, sind es 0 Punkte. Je
+     niedriger der Rückgabewert der Funktion ist, desto zerstörter ist
+     der Roboter.
+
+          while(1)
+          {
+             ...
+             if(damage() < 10)    /* wenn stark beschädigt */
+             {
+                movement(200,90);  /* fliehen */
+             }
+             ...
+          }
+
+     Siehe @{"Schadennehmen" Link "Schadennehmen"}, @{"Konfiguration" Link "Konfiguration"}, @{"hit_from" Link "hit_from"}.
+
+
+@EndNode
+
+@Node "speed" "AmigaRobots.guide/speed"
+@Next "battery"
+@Prev "damage"
+@Toc "Funktionen"
+
+@{b}speed@{ub}
+-----
+
+ - C-Funktion: int speed (void);
+     => @{i}Momentan-Geschwindigkeit@{ui}
+
+     Diese  Funktion  gibt  die  momentane Geschwindikeit des Roboters
+     zurück.
+
+     Siehe @{"movement" Link "movement"}.
+
+
+@EndNode
+
+@Node "battery" "AmigaRobots.guide/battery"
+@Next "ticks"
+@Prev "speed"
+@Toc "Funktionen"
+
+@{b}battery@{ub}
+-------
+
+ - C-Funktion: int battery (void);
+     => @{i}Batterieladung@{ui}
+
+     Diese Funktion meldet den Status der Batterie. Maximal sind das
+     1000 Punkte. Wenn @{b}battery@{ub} eine 0 zurückliefert, hat der Roboter
+     keine Energie mehr und kann nicht mehr fahren, bis seine
+     Solargeneratoren wieder genug Energie gesammelt haben.
+
+     Siehe @{"buy_shells" Link "buy_shells"}, @{"buy_armour" Link "buy_armour"}, @{"Batterien" Link "Batterien"} und @{"Karte" Link "Karte"}.
+
+
+@EndNode
+
+@Node "ticks" "AmigaRobots.guide/ticks"
+@Next "l_sin"
+@Prev "battery"
+@Toc "Funktionen"
+
+@{b}ticks@{ub}
+-----
+
+ - C-Funktion: long ticks (void);
+     => @{i}Spielrunden-seit-Beginn@{ui}
+
+     Diese Funktion meldet die Anzahl der gelaufenen Spielrunden seit
+     Spielbeginn. Es hat nichts zu tun mit der real verstrichenen Zeit,
+     sondern nur mit der Anzahl vollständig abgelaufener Runden.
+
+     Siehe @{"Roboterprogramme" Link "Roboterprogramme"}.
+
+
+@EndNode
+
+@Node "l_sin" "AmigaRobots.guide/l_sin"
+@Next "l_asin"
+@Prev "ticks"
+@Toc "Funktionen"
+
+@{b}l_sin@{ub}
+-----
+
+ - C-Funktion: long l_sin (int @{i}Winkel@{ui} );
+     => @{i}Sinuswert@{ui}
+
+     Diese Funktion gibt den Sinuswert von @{i}Winkel@{ui}, multipliziert mit
+     dem Faktor 100.000 zurück.
+
+    @{i}Winkel@{ui}
+          = 0 - 359
+
+     Diese Funktion sollte benutzt werden um den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Siehe @{"l_cos" Link "l_cos"}, @{"l_acos" Link "l_acos"}, @{"l_asin" Link "l_asin"} @{"l_tan" Link "l_tan"}, @{"l_atan" Link "l_atan"} und @{"l_atan2" Link "l_atan2"}.
+
+
+@EndNode
+
+@Node "l_asin" "AmigaRobots.guide/l_asin"
+@Next "l_cos"
+@Prev "l_sin"
+@Toc "Funktionen"
+
+@{b}l_asin@{ub}
+------
+
+ - C-Funktion: int l_asin (long @{i}Verhältnis@{ui} );
+     => @{i}Winkel@{ui}
+
+     Diese Funktion gibt den Arcussinus (inv sin) des Wertes
+     @{i}Verhältnis@{ui} zurück. @{i}Verhältnis@{ui} muß mit dem Faktor 100.000
+     skaliert werden.
+
+     Der Rückgabewert ist der Winkel von -90° bis +90°.
+
+     Diese Funktion sollte benutzt werden, um den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Diese Funktion ist erst ab @{b}AmigaRobots@{ub} Version 1.3 verfügbar und
+     ist nicht @{b}PCRobots@{ub}-kompatibel.
+
+     Siehe @{"l_sin" Link "l_sin"}, @{"l_cos" Link "l_cos"}, @{"l_acos" Link "l_acos"}, @{"l_tan" Link "l_tan"}, @{"l_atan" Link "l_atan"} und @{"l_atan2" Link "l_atan2"}.
+
+
+
+@EndNode
+
+@Node "l_cos" "AmigaRobots.guide/l_cos"
+@Next "l_acos"
+@Prev "l_asin"
+@Toc "Funktionen"
+
+@{b}l_cos@{ub}
+-----
+
+ - C-Funktion: long l_cos (int @{i}Winkel@{ui} );
+     => @{i}Cosinuswert@{ui}
+
+     Diese Funktion gibt den Cosinuswert von @{i}Winkel@{ui}, multipliziert mit
+     dem Faktor 100.000 zurück.
+
+    @{i}Winkel@{ui}
+          = 0 - 359
+
+     Diese Funktion sollte benutzt werden, um den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Siehe @{"l_sin" Link "l_sin"}, @{"l_tan" Link "l_tan"}, @{"l_atan" Link "l_atan"} und @{"l_atan2" Link "l_atan2"}.
+
+
+@EndNode
+
+@Node "l_acos" "AmigaRobots.guide/l_acos"
+@Next "l_tan"
+@Prev "l_cos"
+@Toc "Funktionen"
+
+@{b}l_acos@{ub}
+------
+
+ - C-Funktion: int l_acos (long @{i}Verhältnis@{ui} );
+     => @{i}Winkel@{ui}
+
+     Diese Funktion gibt den Arcuscosinus (inv cos) des Wertes
+     @{i}Verhältnis@{ui} zurück. @{i}Verhältnis@{ui} muß mit dem Faktor 100.000
+     skaliert werden.
+
+     Der Rückgabewert ist der Winkel von 0° bis +180°.
+
+     Diese Funktion sollte benutzt werden, um den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Diese Funktion ist erst ab @{b}AmigaRobots@{ub} Version 1.3 verfügbar und
+     ist nicht @{b}PCRobots@{ub}-kompatibel.
+
+     Siehe @{"l_sin" Link "l_sin"}, @{"l_asin" Link "l_asin"}, @{"l_cos" Link "l_cos"}, @{"l_tan" Link "l_tan"}, @{"l_atan" Link "l_atan"} und @{"l_atan2" Link "l_atan2"}.
+
+
+
+@EndNode
+
+@Node "l_tan" "AmigaRobots.guide/l_tan"
+@Next "l_atan"
+@Prev "l_acos"
+@Toc "Funktionen"
+
+@{b}l_tan@{ub}
+-----
+
+ - C-Funktion: long l_tan (int @{i}Winkel@{ui} );
+     => @{i}Tangenswert@{ui}
+
+     Diese Funktion gibt den Tangenswert von @{i}Winkel@{ui}, multipliziert mit
+     dem Faktor 100.000 zurück.
+
+    @{i}Winkel@{ui}
+          = 0 - 359
+
+     Diese Funktion sollte benutzt werden um, den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Siehe @{"l_sin" Link "l_sin"}, @{"l_cos" Link "l_cos"}, @{"l_atan" Link "l_atan"} und @{"l_atan2" Link "l_atan2"}.
+
+
+
+@EndNode
+
+@Node "l_atan" "AmigaRobots.guide/l_atan"
+@Next "l_sqrt"
+@Prev "l_tan"
+@Toc "Funktionen"
+
+@{b}l_atan@{ub}
+------
+
+ - C-Funktion: int l_atan (long @{i}Verhältnis@{ui} );
+     => @{i}Tangenswert@{ui}
+
+     Diese Funktion gibt den Arcustangens (inv tan) des Wertes
+     @{i}Verhältnis@{ui} zurück. @{i}Verhältnis@{ui} muß mit dem Faktor 100.000
+     skaliert werden.
+
+     Der Rückgabewert ist der Winkel von -90° bis +90°.
+
+     Diese Funktion sollte benutzt werden, um den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Siehe @{"l_sin" Link "l_sin"}, @{"l_cos" Link "l_cos"}, @{"l_tan" Link "l_tan"} und @{"l_atan2" Link "l_atan2"}.
+
+
+
+@EndNode
+
+@Node "l_sqrt" "AmigaRobots.guide/l_sqrt"
+@Next "set_pattern"
+@Prev "l_atan"
+@Toc "Funktionen"
+
+@{b}l_sqrt@{ub}
+------
+
+ - C-Funktion: long l_sqrt (long @{i}Zahl@{ui} );
+     => @{i}Wurzelwert@{ui}
+
+     Diese Funktion gibt die Quadratwurzel von @{i}Zahl@{ui} zurück.
+
+     Diese Funktion sollte benutzt werden um, den Gebrauch von
+     Fließkommazahlen in Programmen zu vermeiden. Integerzahlen sind
+     schneller und völlig ausreichend.
+
+     Beispiel:
+          /* Bestimmung der Distanz zwischen zwei Punkten */
+          /* nach Pythagoras */
+          int distanz(int x1,int y1, int x2, int y2)
+          {
+             x2 -= x1;
+             y2 -= y1;
+             return l_sqrt(x2*x2+y2*y2);
+          }
+
+
+@EndNode
+
+@Node "set_pattern" "AmigaRobots.guide/set_pattern"
+@Next "debug_flag"
+@Prev "l_sqrt"
+@Toc "Funktionen"
+
+@{b}set_pattern@{ub}
+-----------
+
+ - C-Funktion: void set_pattern (const char *@{i}Pattern@{ui} );
+     => Nichts
+
+     Dieser Befehl definiert die Darstellung des Roboters in der Arena.
+     Das Pattern besteht dabei aus 5 Bytes. Die unteren 5 Bits jedes
+     Bytes werden dann als Bitmuster für die Darstellung des Ikons
+     benutzt.
+
+     In C könnte das so aussehen:
+
+          const char pattern[5] = {1, 3, 7, 0xf, 0};
+          ...
+             set_pattern(pattern);
+
+     Siehe @{"Roboterdarstellung" Link "Roboterdarstellung"}.
+
+
+@EndNode
+
+@Node "debug_flag" "AmigaRobots.guide/debug_flag"
+@Next "buy_armour"
+@Prev "set_pattern"
+@Toc "Funktionen"
+
+@{b}debug_flag@{ub}
+----------
+
+ - C-Funktion: void debug_flag (int @{i}Flaggen-Nummer@{ui} , int
+          @{i}Setzen-Löschen@{ui} );
+     => Nichts
+
+     Dieser Befehl erlaubt das Setzen oder Löschen von Debug-Flaggen
+     im Anzeigefenster der Roboter.
+
+    @{i}Flaggen-Nummer@{ui}
+          = 0 or 1
+
+    @{i}Setzen-Löschen@{ui}
+          = 0 or 1
+
+     Diese beiden Flaggen können für jede beliebige Anzeige benutzt
+     werden, die der Programmierer sich wünscht. Normalerweise benutzt
+     man sie, um interne Zustände während des Ablaufes sichtbar zu
+     machen.
+
+     Siehe @{"Roboterdarstellung" Link "Roboterdarstellung"}.
+
+
+@EndNode
+
+@Node "buy_armour" "AmigaRobots.guide/buy_armour"
+@Next "buy_shells"
+@Prev "debug_flag"
+@Toc "Funktionen"
+
+@{b}buy_armour@{ub}
+----------
+
+ - C-Funktion: void buy_armour (int @{i}Einheiten@{ui} );
+     => Nichts
+
+     Mit diesem Befehl kann man Panzerung kaufen oder verkaufen.
+
+    @{i}Einheiten@{ui}
+          = Anzahl der zu kaufenden Einheiten
+
+     Wenn @{i}units@{ui} negativ ist, wird Panzerung verkauft.
+
+     Eine Panzerungseinheit entspricht momentan 50 Batterieeinheiten.
+     So kann ein schwer getroffener Roboter mit viel Restenergie die
+     Energie zu seiner Reperatur benutzen. Andererseits kann ein
+     flüchtender Roboter einige Panzerungseinheiten in
+     Batterieeinheiten wandeln, um schnell das Weite suchen zu können.
+
+     Weder kann die Panzerung über das konfigurierte Maß steigen, noch
+     die Batterie über 1000. Jede Überschreitung der Maximalwerte
+     führt zu Verschwendung und damit zu Verlust.
+
+     Bei Verkauf der gesamten Panzerung (Schilde) zerstört sich der
+     Roboter selbst.
+
+     Siehe @{"battery" Link "battery"}, @{"buy_shells" Link "buy_shells"} und @{"Batterien" Link "Batterien"}.
+
+
+
+@EndNode
+
+@Node "buy_shells" "AmigaRobots.guide/buy_shells"
+@Next "shells_left"
+@Prev "buy_armour"
+@Toc "Funktionen"
+
+@{b}buy_shells@{ub}
+----------
+
+ - C-Funktion: void buy_shells (unsigned int @{i}Einheiten@{ui} );
+     => Nichts
+
+     Dieser Befehle ermöglicht den Kauf von Munition.
+
+    @{i}Einheiten@{ui}
+          = Anzahl der zu kaufenden Munition.
+
+     Man  kann  Munition  nicht wieder verkaufen und Batterieeinheiten
+     bekommen.
+
+     Eine Kugel kostet 10 Batterieeinheiten.
+
+     Siehe @{"battery" Link "battery"}, @{"shells_left" Link "shells_left"}, @{"buy_armour" Link "buy_armour"} und @{"Batterien" Link "Batterien"}.
+
+
+
+@EndNode
+
+@Node "shells_left" "AmigaRobots.guide/shells_left"
+@Next "get_local_map"
+@Prev "buy_shells"
+@Toc "Funktionen"
+
+@{b}shells_left@{ub}
+-----------
+
+ - C-Funktion: int shells_left (void);
+     => @{i}Anzahl-der-verbliebenen-Munition@{ui}
+
+     Diese Funktion meldet die verbleibende Munition. Wenn keine
+     Munition mehr vorhanden ist, wird ein @{b}shoot@{ub}-Befehl als Ergebnis
+     eine @{b}0@{ub} zurückliefern und nicht schießen.
+
+     Siehe @{"battery" Link "battery"}, @{"buy_shells" Link "buy_shells"} und @{"shoot" Link "shoot"}.
+
+
+@EndNode
+
+@Node "get_local_map" "AmigaRobots.guide/get_local_map"
+@Next "invisibility"
+@Prev "shells_left"
+@Toc "Funktionen"
+
+@{b}get_local_map@{ub}
+-------------
+
+ - C-Funktion: void get_local_map (char *@{i}Puffer@{ui} );
+     => Nichts
+
+     Diese Funktion meldet dem Roboter das Aussehen der Arena in seiner
+     näheren Umgebung. Dazu füllt sie ein 9x9 Bytes großes Feld aus,
+     mit dem mittleren Feld als der momentanen Position des Roboters.
+     Im Absatz über die Karte sind die Werte besprochen, die die
+     einzelnen Felder erhalten.
+
+     Der Vektor muß mindesten 81 Bytes lang sein.
+
+     Siehe @{"Karte" Link "Karte"}, @{"getxy" Link "getxy"}, @{"get_big_map" Link "get_big_map"}.
+
+
+@EndNode
+
+@Node "invisibility" "AmigaRobots.guide/invisibility"
+@Next "get_shell_status"
+@Prev "get_local_map"
+@Toc "Funktionen"
+
+@{b}invisibility@{ub}
+------------
+
+ - C-Funktion: void invisibility (int @{i}Flagge@{ui} );
+     => Nichts
+
+     Der Befehl erlaubt dem Roboter, unsichtbar oder sichtbar zu werden.
+
+    @{i}Flagge@{ui}
+          = 0 - Roboter ist sichtbar,
+          = 1 - Roboter ist unsichtbar.
+
+     Wenn der Roboter nicht unsichtbar werden konnte, tut dieser Befehl
+     nichts. Ob der Roboter unsichtbar ist, oder nicht, kann man mit
+     dem Befehl @{b}isinvisible@{ub} feststellen.
+
+     Siehe @{"isinvisible" Link "isinvisible"}, @{"Unsichtbarkeit" Link "Unsichtbarkeit"} und @{"Batterien" Link "Batterien"}.
+
+
+@EndNode
+
+@Node "get_shell_status" "AmigaRobots.guide/get_shell_status"
+@Next "isinvisible"
+@Prev "invisibility"
+@Toc "Funktionen"
+
+@{b}get_shell_status@{ub}
+----------------
+
+ - C-Funktion: int get_shell_status (void);
+     => @{i}Status-der-letzten-Kugel@{ui}
+
+     Diese Funktion meldet dem Roboter, was mit der letzten
+     aufgetroffenen Kugel passierte.
+
+     Rückgabewert:
+    @{b}0@{ub}
+          - Die Kugel traf nichts (@{b}SHELL_MISSED@{ub}).
+
+    @{b}1@{ub}
+          - Die Kugel traf eine Wand (@{b}SHELL_HIT_WALL@{ub}).
+
+    @{b}2@{ub}
+          - Die Kugel traf einen Roboter im 50er Radius
+          (@{b}SHELL_CLOSE_BLAST@{ub}).
+
+    @{b}3@{ub}
+          - Die Kugel traf einen Roboter im 25er Radius
+          (@{b}SHELL_NEAR_MISS@{ub}).
+
+    @{b}4@{ub}
+          - Die Kugel traf einen Roboter im 5er Radius
+          (@{b}SHELL_DIRECT_HIT@{ub}).
+
+    @{b}-1@{ub}
+          - Die Kugel traf einen Roboter im 50er Radius
+          (@{b}SHELL_NOT_AVAIL@{ub}).
+
+     Diese Funktion kann zum Beispiel dazu benutzt werden, um
+     festzustellen, ob sich der beschossene Roboter hinter einer Wand
+     verschanzt.
+
+     Der Wert @{b}SHELL_NOT_AVAIL@{ub} ist eine Erweiterung von @{b}AmigaRobots@{ub}
+     gegenüber @{b}PCRobots@{ub}. Wenn man die Funktion @{b}get_shell_status@{ub}
+     aufruft, wird das Register auf diesen Wert gesetzt. Damit ist eine
+     Zeitsynchronisation möglich.  Das heißt das der Status jedes
+     Schußes kann nur genau einmal gelesen werden. Hat seit dem
+     letzten @{b}get_shell_status@{ub} keine weitere Kugel ihren Flug beendet,
+     gibt die Funktion den Wert @{b}SHELL_NOT_AVAIL@{ub} zurück.
+
+     Siehe @{"Karte" Link "Karte"}, @{"shoot" Link "shoot"} und @{"Schadennehmen" Link "Schadennehmen"}.
+
+
+@EndNode
+
+@Node "isinvisible" "AmigaRobots.guide/isinvisible"
+@Next "l_atan2"
+@Prev "get_shell_status"
+@Toc "Funktionen"
+
+@{b}isinvisible@{ub}
+-----------
+
+ - C-Funktion: int isinvisible (void);
+     => @{i}Unsichtbar@{ui}
+
+     Diese Funktion meldet, ob der Roboter gerade unsichtbar ist, oder
+     nicht.
+
+     Rückgabewert:
+    @{b}0@{ub}
+          - Der Roboter ist sichtbar.
+
+    @{b}1@{ub}
+          - Der Roboter ist unsichtbar.
+
+     Siehe @{"invisibility" Link "invisibility"}, @{"Unsichtbarkeit" Link "Unsichtbarkeit"} und @{"Batterien" Link "Batterien"}.
+
+
+@EndNode
+
+@Node "l_atan2" "AmigaRobots.guide/l_atan2"
+@Next "flying_shells"
+@Prev "isinvisible"
+@Toc "Funktionen"
+
+@{b}l_atan2@{ub}
+-------
+
+ - C-Funktion: int l_atan2 (int @{i}y@{ui} , int @{i}x@{ui} );
+     => @{i}Tangenswert@{ui}
+
+     Diese Funktion gibt den Wert des Arcustangens von @{i}y@{ui}/@{i}x@{ui} zurück,
+     selbst wenn @{i}x@{ui} gleich oder in der Nähe von 0 ist.
+
+     Wenn sowohl @{i}x@{ui} als auch @{i}y@{ui} den Wert 0 haben, gibt diese Funktion 0
+     zurück.
+
+     Die Funktion verhält sich genauso wie das entsprechende C-Pendant.
+
+     Siehe @{"l_sin" Link "l_sin"}, @{"l_cos" Link "l_cos"}, @{"l_tan" Link "l_tan"} und @{"l_atan" Link "l_atan"}.
+
+
+@EndNode
+
+@Node "flying_shells" "AmigaRobots.guide/flying_shells"
+@Next "get_big_map"
+@Prev "l_atan2"
+@Toc "Funktionen"
+
+@{b}flying_shells@{ub}
+-------------
+
+ - C-Funktion: int flying_shells (void);
+     => @{i}Anzahl_der_eigenen_fliegenden_Kugeln@{ui}
+
+     Diese Funktion zeigt an, wieviele der eigenen verschossenen Kugeln
+     noch am Fliegen sind.
+
+     Diese Funktion ist nicht bei @{b}PCRobots@{ub} vorhanden. Sie ist erst bei
+     @{b}AmigaRobots@{ub} Version 1.2 aufwärts verfügbar.
+
+     Siehe @{"get_shell_status" Link "get_shell_status"}.
+
+
+@EndNode
+
+@Node "get_big_map" "AmigaRobots.guide/get_big_map"
+@Next "hit_from"
+@Prev "flying_shells"
+@Toc "Funktionen"
+
+@{b}get_big_map@{ub}
+-----------
+
+ - C-Funktion: void get_big_map (char *@{i}Puffer@{ui} );
+     => Nichts
+
+     Diese Funktion meldet dem Roboter das Aussehen der Arena in einer
+     etwas weiteren Umgebung als @{"get_local_map" Link "get_local_map"}. Dazu füllt sie ein 9x9
+     Bytes großes Feld aus, mit dem mittleren Feld als der momentanen
+     Position des Roboters. Im Gegensatz zu @{"get_local_map" Link "get_local_map"} werden hier
+     nicht die direkt angrenzenden 9x9 von 1000x1000 Feldern
+     zurückgegeben, sondern die angrenzenden 81 Zehnerblöcke. Man
+     bekommt also in den 81 Bytes des Feldes das Aussehen von 8100 von
+     1000x1000 Feldern zurück. Das ist möglich, weil in der Karte
+     immer ein 10x10-Felderblock von der gleichen Beschaffenheit sein
+     muß. Damit ist ein etwas weitsichtigeres Handeln für den Roboter
+     möglich.
+
+     Im Absatz über die Karte sind die Werte besprochen, die die
+     einzelnen Felder erhalten.
+
+     Der Vektor muß mindesten 81 Bytes lang sein.
+
+     Diese Funktion ist erst ab @{b}AmigaRobots@{ub} Version 1.2 verfügbar und
+     ist nicht @{b}PCRobots@{ub}-kompatibel.
+
+     Siehe @{"Karte" Link "Karte"}, @{"getxy" Link "getxy"}, @{"get_local_map" Link "get_local_map"}.
+
+
+@EndNode
+
+@Node "hit_from" "AmigaRobots.guide/hit_from"
+@Next "highest_player_id"
+@Prev "get_big_map"
+@Toc "Funktionen"
+
+@{b}hit_from@{ub}
+--------
+
+ - C-Funktion: int hit_from (void);
+     => @{i}Richtung_der_letzten_treffenden_Explosion@{ui}
+
+     Diese Funktion teilt dem Roboter mit, aus welcher Richtung er von
+     der letzten Explosion getroffen wurde. So könnte er
+     beispielsweise sofort in die Gegenrichtung fahren, um möglichst
+     schnell den Explosionsradius zu verlassen. Wurde der Roboter seit
+     dem letzten Abfragen dieser Funktion nicht mehr getroffen, erhält
+     man das Ergebnis @{b}SHELL_NOT_AVAIL@{ub}. Ansonsten gibt diese Funktion
+     einen Winkel im Bereich von 0°-359° zurück. Zu beachten gilt,
+     daß dieser Wert veralten kann. Sinnvollerweise empfehle ich,
+     @{b}hit_from()@{ub} nur aufzurufen, wenn man gerade getroffen wurde (siehe
+     @{"damage" Link "damage"}()), weil der Wert dann aktuell ist.
+
+    @{i}Richtung_der_letzten_treffenden_Explosion@{ui}
+          = 0 - 359 oder SHELL_NOT_AVAIL
+
+     Diese Funktion ist erst ab @{b}AmigaRobots@{ub} Version 1.2 verfügbar und
+     ist nicht @{b}PCRobots@{ub}-kompatibel.
+
+     Siehe @{"Schadennehmen" Link "Schadennehmen"}, @{"get_shell_status" Link "get_shell_status"}, @{"shoot" Link "shoot"}.
+
+
+@EndNode
+
+@Node "highest_player_id" "AmigaRobots.guide/highest_player_id"
+@Next "myid"
+@Prev "hit_from"
+@Toc "Funktionen"
+
+@{b}highest_player_id@{ub}
+-----------------
+
+ - C-Funktion: int highest_player_id (void);
+     => @{i}Höchste_ID_eines_Spielers@{ui}
+
+     Diese Funktion gibt als Rückgabewert die höchste ID zu Beginn des
+     Spieles zurück. Man kann damit also nur abfragen, wieviele
+     Roboter zu Beginn am Spiel teilgenommen haben, nicht wieviele noch
+     im Spiel sind. Der Wert dieser Funktion konnte auch über Tricks
+     mit Messages erhalten werden, deshalb ist er eigentlich nicht
+     wirklich neu.
+
+    @{i}Höchste_ID_eines_Spielers@{ui}
+          = Anzahl Spieler
+
+     Diese Funktion ist erst ab @{b}AmigaRobots@{ub} Version 1.3 verfügbar und
+     ist nicht @{b}PCRobots@{ub}-kompatibel.
+
+
+
+@EndNode
+
+@Node "myid" "AmigaRobots.guide/myid"
+@Next "version"
+@Prev "highest_player_id"
+@Toc "Funktionen"
+
+@{b}myid@{ub}
+----
+
+ - C-Funktion: int myid (void);
+     => @{i}eigene ID@{ui}
+
+     Der Rückgabewert dieser Funktion ist die eigene ID. Der Wert
+     dieser Funktion konnte auch über Tricks mit Messages erhalten
+     werden, deshalb ist er eigentlich nicht wirklich neu.
+
+     Diese Funktion ist erst ab @{b}AmigaRobots@{ub} Version 1.3 verfügbar und
+     ist nicht @{b}PCRobots@{ub}-kompatibel.
+
+
+
+@EndNode
+
+@Node "version" "AmigaRobots.guide/version"
+@Next "configure"
+@Prev "myid"
+@Toc "Funktionen"
+
+@{b}version@{ub}
+-------
+
+ - C-Funktion: int version (void);
+     => @{i}AmigaRobots Versionnummer@{ui}
+
+     Der Rückgabewert dieser Funktion ist die kodierte Versionsnummer
+     von @{b}AmigaRobots@{ub}. Die Versionsnummer errechnet sich wie folgt:
+
+    @{i}Version@{ui}
+          = Version * 1000 + Revision * 100 + Release
+
+     Die Version 1.3.7ß ergäbe also den Wert 1307.
+
+     Diese Funktion ist erst ab @{b}AmigaRobots@{ub} Version 1.3 verfügbar und
+     ist nicht @{b}PCRobots@{ub}-kompatibel.
+
+
+
+@EndNode
+
+@Node "configure" "AmigaRobots.guide/configure"
+@Next "Assembler"
+@Prev "version"
+@Toc "Funktionen"
+
+@{b}configure@{ub}
+---------
+
+ - C-Funktion: int configure (int @{i}Geschwindigkeit@{ui} , int
+          @{i}Manövrierbarkeit@{ui} , int @{i}Reichweite@{ui} , int @{i}Panzerung@{ui} , int
+          @{i}Beschleunigung@{ui} , int @{i}Tarnfähigkeit@{ui} );
+     => @{i}Konfiguration-Erfolgreich@{ui}
+
+     Dieser  Befehl erlaubt das Konfigurieren eines Roboters zu Beginn
+     des Spieles. Es @{i}muß@{ui} der erste ausgeführte Befehl sein.
+
+     Für die Bedeutung und Wirkung der Werte, @{"Konfiguration" Link "Konfiguration"}.
+
+     Wenn die Konfiguration geklappt hat, gibt sie eine 1 zurück, im
+     Falle, daß sie nicht der erste Befehl ist, eine 0. Die @{i}Reichweite@{ui}
+     bezieht sich natürlich auf die der Kanone. Bei konfigurierter
+     Tarnvorrichtung ist 9/10 das erreichbare Maximum der Munition.
+
+     @{b}configure@{ub}() @{i}muß@{ui} als erster Befehl ausgeführt werden und darf
+     @{i}kein@{ui} zweites Mal ausgeführt werden, beziehungsweise wird jedes
+     weitere Mal ignoriert.
+
+     Siehe @{"Konfiguration" Link "Konfiguration"}, @{"Batterien" Link "Batterien"}, @{"Unsichtbarkeit" Link "Unsichtbarkeit"} und @{"Schadennehmen" Link "Schadennehmen"}.
+
+
+
+@EndNode
+
+@Node "Assembler" "AmigaRobots.guide/Assembler"
+@Next "Pascal"
+@Prev "configure"
+@Toc "Main"
+
+Aufruf von Assembler
+********************
+
+Wer die Roboter unbedingt in Assembler programmieren will, kann dies
+sehr einfach tun. Er bindet die @{b}robotlib.o@{ub}-Datei an seinen
+assemblierten Code, in dem er die obigen Befehle mit
+
+     bsr  _<Funktion>
+
+aufruft. Der Rückgabewert wird in @{b}D0@{ub} zurückgegeben, die Parameter
+übergibt man auf dem Stack.
+
+        move.l   @{i}para1@{ui},-(a7)
+        move.l   @{i}para2@{ui},-(a7)
+        move.l   @{i}para3@{ui},-(a7)
+
+Das Setzen der @{b}__ProgramName@{ub} - Variablen nicht vergessen!
+
+Hoffe ich jedenfalls... Wenn ich hier beim Assembler so ad hoc einen
+Fehler gemacht haben sollte, möge man das verzeihen.
+
+
+@EndNode
+
+@Node "Pascal" "AmigaRobots.guide/Pascal"
+@Next "Kompilieren in C"
+@Prev "Assembler"
+@Toc "Main"
+
+Aufruf von Pascal
+*****************
+
+Habe ich noch nicht ausprobiert. Das Original @{b}PC-Robots@{ub}file habe ich
+beigelegt. Normalerweise müßte man einfach die @{b}robotlib.o@{ub}-Datei
+binden und dem Pascal die Syntax der Befehle verklickern. Das sollte
+eigentlich reichen.  Wenn jemand damit Erfolg haben sollte, wäre ich
+über das Zusenden sehr erfreut, damit ich es auch anderen
+Pascal-Fraggles zugänglich machen kann.
+
+
+@EndNode
+
+@Node "Kompilieren in C" "AmigaRobots.guide/Kompilieren in C"
+@Next "Dank"
+@Prev "Pascal"
+@Toc "Main"
+
+Kompilieren eines Roboters in C
+*******************************
+
+Ich habe dem Archiv ein Beispiel-Makefile beigelegt, das einwandfrei
+mit SAS-C® funktioniert. Zur Herstellung eines Roboters einfach den
+Source in das Roboterverzeichnis legen, den Namen des Roboters mit der
+Extension @{b}.rob@{ub} in der obersten Zeile eintragen und @{b}make@{ub}, bzw. @{b}smake@{ub}
+oder wie sie alle heißen, aufrufen.
+
+Grundsätzlich muß folgendes getan werden:
+
+  1. Einen C-Source erstellen, der die Mindestanforderung eines
+     AmigaRoboters erfüllt, nämlich
+       a. das @{i}includen@{ui} von @{b}PCRobots.h@{ub} mit @{b}#include <PCRobots.h>@{ub},
+
+       b. dem Vorhandensein eines Einsprungpunktes (wie in jedem
+          C-Programm) @{b}main(){}@{ub},
+
+       c. dem Aufruf der Funktion @{b}configure(...);@{ub},
+
+       d. einer endlosen Schleife, z.B. @{b}while(1){...}@{ub},
+
+       e. und in dieser Schleife mindestens einen rechenzeitabgebenden
+          Befehl, z.B. @{b}swaptask();@{ub} aufrufen.
+
+
+  2. dem Vorhandensein und Setzen der Variablen @{b}_ProgramName@{ub}, bei
+     SAS-C® im Startupcode, ansonsten durch den Befehl @{b}char
+     *_ProgramName = "Beispiel.rob";@{ub} zu Beginn des Programmes. Im
+     saubersten Falle in @{b}#ifndef __SASC@{ub} und @{b}#endif@{ub} eingeschlossen, die
+     auf Vorhandensein des eigenen Compilers prüfen.
+
+  3. das Programm im 68000er-Code kompilieren.
+
+  4. das Binden mit
+       a. dem Startup-code (@{b}lib:c.o@{ub}),
+
+       b. dem Programm-Objektcode (@{b}@{i}Programmname@{ui}.o@{ub}),
+
+       c. dem @{b}AmigaRobots@{ub}-Objektcode (@{b}robotslib.o@{ub}) und
+
+       d. der Standard-C Library (@{b}lib:c.lib@{ub}, oder bei SAS® @{b}lib:sc.lib@{ub})
+
+
+Viel Spaß mit @{b}AmigaRobots@{ub}!
+
+-- wünscht euch Hanno Behrens
+
+Meine Anschrift steht in @{"Kontaktadresse und Registrierung" Link "Kontaktadresse und Registrierung"}.
+
+
+@EndNode
+
+@Node "Dank" "AmigaRobots.guide/Dank"
+@Next "Fragen und Antworten"
+@Prev "Kompilieren in C"
+@Toc "Main"
+
+Dank
+****
+
+   @{b}*@{ub} Colin Fox/Bruce Dawson
+
+     für ihre @{b}req.library@{ub}, ohne die ich das Programm nie so schön
+     hinbekommen hätte.
+
+   @{b}*@{ub} Tom Poindexter, David Wright
+
+     für @{b}CRobots@{ub} und die Amigaimplementation.
+
+   @{b}*@{ub} P.D.Smith
+
+     für seine hervorragende Vorlage und Anleitung mit @{b}PCRobots@{ub}. Ihm
+     zu Ehren werde ich seinen simple- und demo-Roboter diesem Paket
+     beilegen.
+
+   @{b}*@{ub} Dirk Hackmann, Marco Pöhler, Sven Spreier, Florian Hinzmann und
+     Thomas Soeffing
+
+     für Ideen, Vorschläge, Beta-testen und Zeit für Tee.
+
+   @{b}*@{ub} Oliver Clouth
+
+     für seine Icons
+
+   @{b}*@{ub} China, Indien, Taiwan, u.a.
+
+     für den Tee.
+
+   @{b}*@{ub} Eirin
+
+     für Liebe, Verständnis und Kochen von hervorragendem Tee.
+
+   @{b}*@{ub} Isis, das pelzige Katzenvieh
+
+     für ihre konstruktiven Beiträge zwei Stunden vor der
+     Fütterungs-äöljuuuuttttttttssssss
+     sssssssssskml,mmmm.mmmmmmmmmmmmmzeit
+     Vieh!
+
+
+@EndNode
+
+@Node "Fragen und Antworten" "AmigaRobots.guide/Fragen und Antworten"
+@Next "Geschichte"
+@Prev "Dank"
+@Toc "Main"
+
+Fragen und Antworten
+********************
+
+Gnu-C++ und Dice-Probleme
+=========================
+
+Das @{b}robotlib.o@{ub}-File ist mit dem SAS-C compiliert worden. Es ist eine
+Linker-Objektdatei, keine Linker-Library. Das Format ist dieser
+Objektdatei ist @{b}BLink@{ub}-kompatibel. Da die anderen Compiler teilweise mit
+merkwürdigen Linkern arbeiten, kennen sie natürlich einige
+Standard-Linkervariablen wie z.B.  @{b}_LinkerDB@{ub} nicht.
+
+Dem abzuhelfen ist ganz einfach: compiliert das @{b}robotlib.o@{ub}-File einfach
+mit eurem Compiler neu. Ich habe die dazu nötigen Includedateien dem
+Paket beigelegt und in der Datei robots/makefile steht sagar die
+Anweisung für den SAS.  Also sowas ähnliches wie:
+
+     sc NOSTACKCHECK SAVEDS robotlib.c
+
+Im Verzeichnis müssen sich die Dateien @{b}pcrobots.h@{ub}, @{b}robotlib.c@{ub} und
+@{b}ar_comm.h@{ub} befinden, oder dem Compiler mit einer entsprechenden
+Includepfadangabe der Aufenthaltsort mitgeteil werden (beim SAS-C ist
+das @{b}IDIR=@{i}Pfadname@{ui}@{ub}).
+
+Dabei heißt @{b}NOSTACKCHECK@{ub}, daß der Stack nicht auf Überlauf geprüft
+wird (hab' ich nur gemacht, damit der Code etwas schneller wird und
+andere Compiler weniger Probleme mit dem File haben). @{b}SAVEDS@{ub} heißt,
+daß das Database-Register zu Beginn des Aufrufs jeder Routine neu
+geladen werden muß (hier wird auf @{b}_LinkerDB@{ub} zurückgegriffen. Diese
+Flags sollte man bei dem entsprechen Compiler auch aktivieren.
+Vielleicht ist das auch nicht nötig, probiert es halt aus.
+
+Das @{b}#include <proto/*.h>@{ub} bedeutet übrigens, daß die
+AmigaLibrary-Funktionen nicht über die @{b}Amigalib.lib@{ub} gestartet werden,
+sondern durch Direktaufruf, außerdem werden dort die Prototypen der
+Funktionen deklariert.
+
+Wenn man das @{b}makefile@{ub} für den SAS-C nicht nutzen möchte, kann man
+einen Roboter sonst auch mit
+
+     SC LINK IDIR=@{i}verzeichnis-mit-pcrobots.h@{ui} @{i}Robotername@{ui}.c robotlib.o
+
+Ich habe die Includedateien auf diese Probleme hin noch einmal
+überarbeitet und @{b}__SASC@{ub}-Switches eingebaut. Nun sollten die Teile aber
+wirklich einwandfrei compilierbar sein. Ich habe extra dafür den GCC
+bei mir installiert und die Files compiliert. Das ging einwandfrei mit:
+
+     gcc -c robotlib.c
+
+wobei der Krümel-Frontend den Pfad der Includedateien natürlich
+wissen muß. Einen Roboter kompiliert man mit dem Gnu-Compiler dann so:
+
+     gcc -lamy -o @{i}Robotname@{ui}.rob @{i}Robotname@{ui}.c robotlib.o
+
+wobei die @{b}robotlib.o@{ub}-Datei natürlich die für den Gnu-Compiler sein
+muß. Die Datei ist bereits fertig kompiliert in @{b}robots/gcc/robotlib.o@{ub}
+zu finden.
+
+Mit dem Dice-C-Compiler läßt sich die Gluedatei mit
+
+     DCC robotlib.c -orobotlib.o -c -mRR -proto -ms -mi
+     => liefert @{b}robotlib.o@{ub}
+
+Übrigens können hier Längenunterschiede auftreten, je nachdem, unter
+welchem Namen man @{b}robotlib.c@{ub} kompiliert.  Obengenannter Aufruf liefert
+eine Länge von 2316 Bytes für @{b}robotlib.o@{ub}. Roboter werden dann mit
+
+     DCC @{i}Robotername@{ui}.c robotlib.o -o@{i}Robotername@{ui}.rob -mRR -proto -ms -mi
+
+kompiliert. Unter OS1.3 sollten die @{b}-mRR@{ub}- und @{b}-proto@{ub}-Optionen
+weggelassen werden und auch die robotlib.o neu kompliliert werden.
+
+Farben und Interlacemodus
+=========================
+
+Wenn man keinen Flickerfixer sein Eigen nennt, kann man über den
+Farbrequester den Hintergrund dunkel wählen, womit das Flickern auf
+ein erträgliches Maß verringert wird.
+
+Wenn man OS2.0 sein Eigen nennt, kann man die neue @{b}-i Option@{ub} (siehe
+@{"-i Option" Link "-i Option"}) nutzen und eine andere Bildschirmauflösung wählen. Zu
+empfehlen ist Productivity 640x480 oder im Falle eines veralteten
+Chipsatzes vielleicht Pal-Hires. Durch Autoscrollen kann man sich dann
+den interessanten Teil der Arena herauspicken.
+
+Onlinehilfe im Editor
+=====================
+
+Wenn der benutzte Editor ARexx unterstützt, läßt sich sehr einfach
+eine Onlinehilfe herstellen. Dafür übergibt man AmigaGuide die Datei
+@{b}AmigaRobots.guide@{ub} und das entsprechende Suchwort. Hier ein Beispiel
+für den Cygnus-Ed:
+
+     /*rx AmigaRobots_guide.ced*/
+     options results
+     
+     LF=d2c(10)
+     CR=d2c(13)
+     
+     status 55
+     line = result
+     status 46
+     pos = result+1
+     line = translate(line," ","()=?+-*#^!$%&/{}[]<>	"CR||LF)
+     begin = lastpos(" ",line,pos)
+     ende = pos(" ",line,pos)
+     suchwort  = substr(line,begin+1,ende-begin)
+     if ~show(p,amigarobots_rexx) then do
+       address command 'run >nil: <nil: amigaguide:amigaguide \
+          AmigaRobots:doks/amigarobots.guide port=amigarobots_rexx'
+     end
+     address command waitforport amigarobots_rexx
+     address amigarobots_rexx link suchwort
+
+PublicScreen-Tips
+=================
+
+Dadurch, daß @{b}AmigaRobots@{ub} und OS2.0 auf einem public-Screen läuft,
+sind ein paar nette Ding möglich. So kann man den Editor, wenn der es
+erlaubt, auf den AmigaRobots-Screen umleiten, um seinen Roboter im
+Einzelschritt zu debuggen, und den Code simultan zu verfolgen. Ebenso
+kann der Roboter selbst ein eigenes Debugging-Fenster auf dem
+AmgigaRobots-Screen öffnen, um zusätzliche Informationen anzuzeigen.
+Mit einer Shell lassen sich direkt vom AmigaRobots-Screen Stapeldateien
+mit Roboterwettkämpfen ausführen. Die Möglichkeiten sind vielfältig.
+
+Siehe @{"-i Option" Link "-i Option"}.
+
+
+@EndNode
+
+@Node "Geschichte" "AmigaRobots.guide/Geschichte"
+@Next "Hauptindex"
+@Prev "Fragen und Antworten"
+@Toc "Main"
+
+Geschichte
+**********
+
+Programmentwicklung
+===================
+
+   @{b}*@{ub} Betareleases vom 24.12.92 bis 29.1.93 unveröffentlicht, nur für
+     Beta-Tester
+
+   @{b}*@{ub} Version 1.0.1 - 29.1.93 erste Version in der MAG Hamburg
+
+   @{b}*@{ub} Version 1.0.11 - 1.2.93 geänderter   Infotext,  die
+     Zwischenversionen  sind  für  den Versuch  draufgegangen,  die
+     langsamen Explosionen nebenläufig zu programmieren.   Da  der
+     Spaß  nichts  bringt  und sowieso nicht wirklich  stabil  lief,
+     habe  ich es wieder normal programmiert.  Sven   wird   sich
+     sicherlich   ärgern...   Außerdem  ein  paar Schönheitsfehler
+     beseitigt,  die aber sicher niemandem außer mir auffallen werden.
+        - erste Veröffentlichung im Fras-Netz
+
+        - Veröffentlichung auf TIME 206
+
+   @{b}*@{ub} Version 1.0.23 23-Jul-93
+        - Bug bei nicht vorhandener req.library beseitigt
+
+        - Alle Fonts sind auf Topaz80 festgenagelt.  Bei Nutzung eines
+          alternativen  Defaultfonts  unter  KS/WB  2.0 war die
+          Darstellung total  vermackelt.   Leider hatte ich noch keine
+          Zeit, einen frei wählbaren  Font  einzubauen.  Dafür
+          müßte ich die gesamte Grafik- und  Menüstruktur
+          neuschreiben,  da ich in einem Anflug von Wahn eine abartige
+          Menü/Grafiktoolbox benutzt habe.
+
+        - Update der Real- und Usenet-Anschrift (siehe
+          @{"Kontaktadresse und Registrierung" Link "Kontaktadresse und Registrierung"}).
+
+        - die Kommandozeilenoption -f hat sich geändert auf -o, da in
+          Zukunft -f für den Font reserviert ist (siehe @{"-o Option" Link "-o Option"}).
+
+        - Dokumentation vollständig umgestellt, Archiv beinhaltet
+          jetzt texi,dvi,dok und guide - Dokumentationen
+
+   @{b}*@{ub} Version 1.1 Programm, Version 1.3 der Dokumentation
+        - alle robotlib-Includefiles kompatibler für andere Compiler
+          gemacht
+
+        - alle Roboter @{b}_ProgramName@{ub}-Statements verpaßt und in @{b}#ifndef
+          __SASC@{ub} eingeschlossen und den ganzen Kram neu durchkompiliert.
+
+        - weitere Erweiterung und Verbesserung der Dokumentation, z.B.
+          Dice/Gnu-C++-Anhang und 1000 Kleinigkeiten (keine
+          Übertreibung) (siehe @{"Fragen und Antworten" Link "Fragen und Antworten"}).
+
+        - Schüsse werden nur noch von Wänden aufgehalten, anders als
+          bei PCRobots.  Dort werden Schüsse auch von den anderen
+          Hindernissen aufgehalten.  Das original PCRobots-Verhalten
+          kann man jetzt mit der neuen Option -c aktivieren (siehe
+          @{"-c Option" Link "-c Option"}).
+
+        - Bug beseitigt, der manchmal zu falscher Parameterübergabe
+          bei shoot führte und dort seltsame Effekte erzeugte.
+
+        - Der Menüpunkt "Entfernen" ermöglicht das Entfernen von
+          schadhaften Robotern.
+
+        - Linkfiles für Dice und Gnu-C++ liegen bei
+
+        - Neue Option -t Zeitfaktor, WB-Tooltype TIMEFACTOR, gibt die
+          Schrittweite der Simulation an, so daß man die Simulation
+          beschleunigen kann. Da dadurch eine Ungenauigkeit entsteht,
+          ist diese Option als "Draftmodus" zu verstehen (siehe
+          @{"-t Option" Link "-t Option"}).
+
+        - Das Konfigurationswindow wurde um das Zeitfaktorgadget
+          erweitert
+
+        - Das Statusfenster schaltet sich nun automatisch inaktiv,
+          damit die Menüs sofort weiter erreichbar sind.
+
+        - In der Icons-Directory liegen ein paar nette Icons für
+          AmigaRobots von Oliver Clouth. Ich konnte mich noch nicht
+          für eins entscheiden, weil die Dinger erst gestern angekommen
+          sind.
+
+        - 8.9.93 Veröffentlichung im FRAS-Netz
+
+   @{b}*@{ub} Version 1.2
+        - 10.9.93 neue -i Option, neuer MONITORID-Tooltype.
+          Dokumentation dieser Features. Damit ist es nun möglich
+          AmigaRobots auf jedem beliebigen Bildschirmmodus zu starten.
+          Diese Option ist aber nur auf Kickstart 2.0 oder höher
+          aktiviert (siehe @{"-i Option" Link "-i Option"}).
+
+        - PubName `AmigaRobots' unter 2.0. Der AmigaRobots-Bildschirm
+          ist public (@{"Systemanforderungen" Link "Systemanforderungen"} und @{"Fragen und Antworten" Link "Fragen und Antworten"}).
+
+        - Ausbau der Fragen und Antworten, der Einleitung und Hinzunahme
+          des Geschichte-Anhangs, damit man direkt an die neuen Stellen
+          blättern kann.  Siehe @{"Fragen und Antworten" Link "Fragen und Antworten"}, @{"Einleitung" Link "Einleitung"}.
+
+        - 11.9.93 Entfernte Roboter werden durchgestrichen
+
+        - 8.11.93 Statusfenster zeigt x/y Postition an
+
+        - Die voreingestellte Schußzahl wurde auf 40 gesenkt und bei
+          Tarnvorrichtung nicht mehr 9/10 sondern 1/2 der Munition
+          einbehalten.
+
+          Siehe @{"-m Option" Link "-m Option"}, @{"-c Option" Link "-c Option"}, @{"Konfiguration" Link "Konfiguration"} und @{"shoot" Link "shoot"}.
+
+        - flying_shells()-Funktion hinzugefügt
+
+          Diese Funktion ist nicht mehr PCRobots-kompatibel.
+
+          Siehe @{"flying_shells" Link "flying_shells"}.
+
+        - get_big_map()-Funktion hinzugefügt
+
+          Diese Funktion ist nicht mehr PCRobots-kompatibel.
+
+          Siehe @{"get_big_map" Link "get_big_map"}.
+
+        - hit_from()-Funktion hinzugefügt
+
+          Diese Funktion ist nicht mehr PCRobots-kompatibel.
+
+          Siehe @{"hit_from" Link "hit_from"}.
+
+        - AmigaRobots_guide.ced-Script dem Archiv beigelegt
+
+          Mit diesem Script ist es möglich, vom CygnusED aus die
+          AmigaRobots-Guide-Datei als Onlinehilfe zu benutzen. Es wird
+          automatisch der Befehl aufgerufen, auf dem der Cursor steht.
+          Anpassungen der Pfade sind allerdings von Hand vorzunehmen.
+
+        - Quadratischer Energiehaushalt für die Geschwindigkeit
+
+          Der Energiebedarf für eine Strecke ist geringer bei kleinerer
+          Geschwindigkeit. Dadurch entsteht ein realistischer
+          Energiehaushalt. Ein Roboter mit einer Geschwindigkeit von 63
+          verbraucht jetzt soviel Energie, wie die Generatoren aufladen
+          können. Dadurch sind die Roboter insgesamt beweglicher
+          geworden und die Simulation komplexer.
+
+          Siehe @{"Batterien" Link "Batterien"}, @{"-c Option" Link "-c Option"}.
+
+        - Zusätzliche Energiekosten beim Beschleunigen
+
+          Dadurch werden Schummeleffekte mit der Energie/Lenkbarkeit
+          verhindert. Die einzige Lösung für das Problem war mehr
+          Realismus. Diese Funktion ist nicht abschaltbar.
+
+          Siehe @{"Batterien" Link "Batterien"}.
+
+        - 23.12.93 korrekte Glue-Datei für DICE beigelegt Außerdem
+          wurde die Herstellungsanweisung korrigiert. Unter 1.3 müßte
+          die Datei dann aber trotzdem neu hergestellt werden.
+
+          Siehe @{"Fragen und Antworten" Link "Fragen und Antworten"}.
+
+   @{b}*@{ub} Version 1.3
+        - 26.6.95 hinzufügen der Funktionen l_asin und l_acos Diese
+          beiden Funktionen wurden vermißt und deshalb nachträglich
+          implementiert. Diese Funktionen sind nicht PC-Robots
+          kompatibel.
+
+          Siehe @{"l_asin" Link "l_asin"}, @{"l_acos" Link "l_acos"}.
+
+        - 6.7.95 hinzufügen der Funktion highest_player_id(), myid()
+          und version(). Wechsel des rechtlichen Status von Giftware auf
+          Fairware. Ab sofort voller Support auch für nicht
+          registrierte Benutzer. Überweisungen von Geld werden
+          trotzdem gern gesehen. Im Paket liegt außerdem der Roboter
+          Nexus.rob bei, der nebenbei den ersten Platz abgesahnt hat.
+
+          Siehe @{"highest_player_id" Link "highest_player_id"}, @{"myid" Link "myid"}, @{"version" Link "version"} und
+          @{"Kontaktadresse und Registrierung" Link "Kontaktadresse und Registrierung"}
+
+bekannte Bugs
+=============
+
+   - Kugeln am linken Rand verschwinden nicht.  Unerklärlich. Ich muß
+     darüber mit meinem Meditationsbrahmanen reden.
+
+   - Die Berta hat aufgehört zu schießen, obwohl noch ein Gegner
+     vorhanden war. Bug in Berta oder Robots?
+
+   - unerklärlich ist auch, warum auf außergewöhnlich schnellen (40
+     MHz) 68040-Amigas die Roboter manchmal "Spuren" hinterlassen.
+     Sollte eigentlich nicht passieren. Vielleicht ein Fehler in der
+     graphics.library?
+
+zu tun
+======
+
+   - vernünftige Statistikauswertung
+
+   - Arena-Editor
+
+   - Außergewöhnliches Icon, am besten in 8 "MagicWB"-Farben und
+     Hochauflösung, d. h. 1/1 Pixelverhältnis
+
+   - Fertigstellung meines neuesten Robterprojektes "Gänger"
+
+
+@EndNode
+
+@Node "Hauptindex" "AmigaRobots.guide/Hauptindex"
+@Next "Funktionsindex"
+@Prev "Geschichte"
+@Toc "Main"
+
+Hauptindex
+**********
+
+@Index "Hauptindex"
+
+
+
+ @{" -aArenadatei Option " Link "-a Option"}                  -a Option
+ @{" -c Option PCRobots-Wand " Link "-c Option"}              -c Option
+ @{" -d Option Debuggingmodus " Link "-d Option"}             -d Option
+ @{" -iMonitorID,Schirm_Breite,Schirm_Hohe,Breite,Hohe Option " Link "-i Option"} -i Option
+ @{" -lSpielrunden Option " Link "-l Option"}                 -l Option
+ @{" -mAnzahl-Munition Option " Link "-m Option"}             -m Option
+ @{" -oDateiname Option Ausgabedatei " Link "-o Option"}      -o Option
+ @{" -p Option feste Position " Link "-p Option"}             -p Option
+ @{" -q Option Quickmodus " Link "-q Option"}                 -q Option
+ @{" -rBatterieladung Option " Link "-r Option"}              -r Option
+ @{" -s Option Einzelschritt " Link "-s Option"}              -s Option
+ @{" -tZeitfaktor Option " Link "-t Option"}                  -t Option
+ @{" -v1/50-Sekunden Option pausieren " Link "-v Option"}     -v Option
+ @{" -x Option langsame Explosion " Link "-x Option"}         -x Option
+ @{" CLI " Link "AmigaRobots vom CLI"}                                  AmigaRobots vom CLI
+ @{" AmigaRobots vom CLI " Link "AmigaRobots vom CLI"}                  AmigaRobots vom CLI
+ @{" AmigaRobots von der Workbench " Link "AmigaRobots von der Workbench"}        AmigaRobots von der Workbench
+ @{" Arenen " Link "Arenen"}                               Arenen
+ @{" Assembler " Link "Assembler"}                            Assembler
+ @{" Batterien " Link "Batterien"}                            Batterien
+ @{" Bugs " Link "Geschichte"}                                 Geschichte
+ @{" C " Link "Funktionen"}                                    Funktionen
+ @{" Dank " Link "Dank"}                                 Dank
+ @{" Darstellung eines Roboters " Link "Roboterdarstellung"}           Roboterdarstellung
+ @{" Dice " Link "Fragen und Antworten"}                                 Fragen und Antworten
+ @{" Editor " Link "Fragen und Antworten"}                               Fragen und Antworten
+ @{" Einleitung " Link "Einleitung"}                           Einleitung
+ @{" Entfernenmenü " Link "Entfernenmenü"}                      Entfernenmenü
+ @{" Entstehungsgeschichte " Link "Entstehungsgeschichte"}                Entstehungsgeschichte
+ @{" Farben " Link "Fragen und Antworten"}                               Fragen und Antworten
+ @{" Fragen und Antworten " Link "Fragen und Antworten"}                 Fragen und Antworten
+ @{" Funktionen " Link "Funktionen"}                           Funktionen
+ @{" Funktionsimplementation " Link "Funktionsimplementation"}              Funktionsimplementation
+ @{" Geschichte " Link "Geschichte"}                           Geschichte
+ @{" Gnu-C++ " Link "Fragen und Antworten"}                              Fragen und Antworten
+ @{" History " Link "Geschichte"}                              Geschichte
+ @{" Implementation " Link "Funktionsimplementation"}                       Funktionsimplementation
+ @{" Info-Einträge " Link "AmigaRobots von der Workbench"}                       AmigaRobots von der Workbench
+ @{" Interlace " Link "Fragen und Antworten"}                            Fragen und Antworten
+ @{" Karte " Link "Karte"}                                Karte
+ @{" Kompilieren in C " Link "Kompilieren in C"}                     Kompilieren in C
+ @{" Konfiguration " Link "Konfiguration"}                        Konfiguration
+ @{" Kontaktadresse " Link "Kontaktadresse und Registrierung"}                       Kontaktadresse und Registrierung
+ @{" Koordinatensystem " Link "Koordinatensystem"}                    Koordinatensystem
+ @{" Menüfunktion " Link "Menüfunktion"}                       Menüfunktion
+ @{" Onlinehilfe " Link "Fragen und Antworten"}                          Fragen und Antworten
+ @{" Optionen " Link "AmigaRobots vom CLI"}                             AmigaRobots vom CLI
+ @{" Pascal " Link "Pascal"}                               Pascal
+ @{" Positionsmenü " Link "Positionsmenü"}                      Positionsmenü
+ @{" Programmenü " Link "Programmenü"}                        Programmenü
+ @{" PublicScreen-Tips " Link "Fragen und Antworten"}                    Fragen und Antworten
+ @{" Registrierung " Link "Kontaktadresse und Registrierung"}                        Kontaktadresse und Registrierung
+ @{" Roboterdarstellung " Link "Roboterdarstellung"}                   Roboterdarstellung
+ @{" Roboterprogramme " Link "Roboterprogramme"}                     Roboterprogramme
+ @{" Schadennehmen " Link "Schadennehmen"}                        Schadennehmen
+ @{" Simulationsmenü " Link "Simulationsmenü"}                    Simulationsmenü
+ @{" Statusmenü " Link "Statusmenü"}                         Statusmenü
+ @{" Systemanforderungen " Link "Systemanforderungen"}                  Systemanforderungen
+ @{" Tankfelder " Link "Tankfelder"}                           Tankfelder
+ @{" Tooltypes " Link "AmigaRobots von der Workbench"}                            AmigaRobots von der Workbench
+ @{" Unsichtbarkeit " Link "Unsichtbarkeit"}                       Unsichtbarkeit
+ @{" Workbenchaufruf " Link "-m Option"}                      -m Option
+
+
+@EndNode
+
+@Node "Funktionsindex" "AmigaRobots.guide/Funktionsindex"
+@Next "(dir)"
+@Prev "Hauptindex"
+@Toc "Main"
+
+Funktionsindex
+**************
+
+
+
+ @{" battery " Link "battery"}                              battery
+ @{" buy_armour " Link "buy_armour"}                           buy_armour
+ @{" buy_shells " Link "buy_shells"}                           buy_shells
+ @{" configure " Link "configure"}                            configure
+ @{" damage " Link "damage"}                               damage
+ @{" debug_flag " Link "debug_flag"}                           debug_flag
+ @{" flying_shells " Link "flying_shells"}                        flying_shells
+ @{" getxy " Link "getxy"}                                getxy
+ @{" get_big_map " Link "get_big_map"}                          get_big_map
+ @{" get_local_map " Link "get_local_map"}                        get_local_map
+ @{" get_shell_status " Link "get_shell_status"}                     get_shell_status
+ @{" highest_player_id " Link "highest_player_id"}                    highest_player_id
+ @{" hit_from " Link "hit_from"}                             hit_from
+ @{" invisibility " Link "invisibility"}                         invisibility
+ @{" isinvisible " Link "isinvisible"}                          isinvisible
+ @{" l_acos " Link "l_acos"}                               l_acos
+ @{" l_asin " Link "l_asin"}                               l_asin
+ @{" l_atan " Link "l_atan"}                               l_atan
+ @{" l_atan2 " Link "l_atan2"}                              l_atan2
+ @{" l_cos " Link "l_cos"}                                l_cos
+ @{" l_sin " Link "l_sin"}                                l_sin
+ @{" l_sqrt " Link "l_sqrt"}                               l_sqrt
+ @{" l_tan " Link "l_tan"}                                l_tan
+ @{" movement " Link "movement"}                             movement
+ @{" myid " Link "myid"}                                 myid
+ @{" receive " Link "receive"}                              receive
+ @{" scan " Link "scan"}                                 scan
+ @{" set_pattern " Link "set_pattern"}                          set_pattern
+ @{" shells_left " Link "shells_left"}                          shells_left
+ @{" shoot " Link "shoot"}                                shoot
+ @{" speed " Link "speed"}                                speed
+ @{" swaptask " Link "swaptask"}                             swaptask
+ @{" ticks " Link "ticks"}                                ticks
+ @{" transmit " Link "transmit"}                             transmit
+ @{" version " Link "version"}                              version
+
+@EndNode
+
